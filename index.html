@@ -172,6 +172,7 @@ function startTime() {
 	const collection = document.getElementsByClassName("days");
 	for (let c = 0; c < collection.length; c++) {
 	  collection[d].classList.add("active");
+	  collection[d-1].classList.remove("active");
 	}
 	setTimeout(startTime, 1000);
 	currentMonth();
@@ -185,8 +186,10 @@ function checkHour(g) {
 	if (g > 12) {
 		g = g - 12;
 		document.getElementById("pm").classList.add("active");
+		document.getElementById("am").classList.remove("active");
 	} else {
 		document.getElementById("am").classList.add("active");
+		document.getElementById("pm").classList.remove("active");
 	}
 	if (g < 10) {
 		g = "0" + g;
