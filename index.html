@@ -191,6 +191,9 @@ function checkHour(g) {
 		document.getElementById("am").classList.add("active");
 		document.getElementById("pm").classList.remove("active");
 	}
+	if (g == 0) {
+		g = g + 12;
+	}
 	if (g < 10) {
 		g = "0" + g;
 	}
