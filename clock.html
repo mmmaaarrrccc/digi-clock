@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>&lrm;</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<style type="text/css">
+		:root {
+			--active: #ddd;
+			--def:#ddd;
+			--gaps: 20px;
+		}
+/*		.main div{
+			border: dashed 2px red;
+		}*/
+		@font-face {
+		  font-family: DS-Digital;
+		  src: url(DS-DIGIB.ttf);
+		}
+		body {
+			cursor: default;
+			background: #000000;
+			overflow: hidden;
+			position: relative;
+		}
+		.main {
+			height: 100vh;
+			width: 100%;
+			padding-top: 7.5px;
+			color: #ddd;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: var(--gaps);
+		  	font-family: DS-Digital;
+		  	text-transform: uppercase;
+		}
+		.week {
+			padding-left: 3px;
+			font-size: 40px;
+			.days {
+				opacity: 0.15;
+				margin: 5px;
+			}
+		}
+		.active {
+			opacity: 1 !important;
+		}
+		.time {
+			display: flex;
+			height: 320px;
+		}
+		.deets {
+			width: 260px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: var(--gaps);
+		    justify-content: space-between;
+		    text-align: left;
+			div {
+				max-height: calc(50% - 10px);
+			}
+			.seconds {
+				width: 100%;
+				font-size: 210px;
+				margin-top: -40px;
+			}
+			.ampm {
+				font-size: 110px;
+				margin-top: 30px;
+				display: flex;
+			    justify-content: space-between;
+			    width: 255px;
+			    span {
+					opacity: 0.15;
+			    }
+			}
+			.dates {
+				font-size: 50px;
+				margin-top: -10px;
+			}
+		}
+		.clock {
+			width: 1156px;
+			font-size: 503px;
+			margin-top: -95px;
+		}
+	</style>
+</head>
+<body onload="startTime()">
+<div class="main">
+		<div class="week">
+			<div class="days">Sun</div>
+			<div class="days">Mon</div>
+			<div class="days">Tue</div>
+			<div class="days">Wed</div>
+			<div class="days">Thu</div>
+			<div class="days">Fri</div>
+			<div class="days">Sat</div>
+		</div>
+		<div class="time">
+			<span class="clock" id="clock"></span>
+			<div class="deets">
+				<div class="seconds">
+					<span id="seconds"></span>
+				</div>
+				<div class="ampm">
+					<span id="am">AM</span>
+					<span id="pm">PM</span>
+				</div>
+				<div class="dates">
+					<span id="dates"></span>
+				</div>
+			</div>
+		</div>
+</div>
+<script>
+function startTime() {
+	const today = new Date();
+	let d = today.getDay();
+	let h = today.getHours();
+	let m = today.getMinutes();
+	let s = today.getSeconds();
+	h = checkHour(h);
+	m = checkTime(m);
+	s = checkTime(s);
+	document.getElementById('clock').innerHTML =  h + ":" + m ;
+	document.getElementById('seconds').innerHTML = ":" + s;
+
+	const collection = document.getElementsByClassName("days");
+	for (let c = 0; c < collection.length; c++) {
+	  collection[d].classList.add("active");
+	}
+	setTimeout(startTime, 1000);
+	currentMonth();
+}
+
+function checkTime(i) {
+	if (i < 10) {i = "0" + i};
+	return i;
+}
+function checkHour(g) {
+	if (g > 12) {
+		g = g - 12;
+		document.getElementById("pm").classList.add("active");
+	}
+	if (g < 10) {
+		g = "0" + g;
+	}
+	return g;
+}
+function currentMonth() {
+	const today = new Date();
+	let ms = today.getMonth();
+	let ds = today.getDate();
+	let y = today.getFullYear();
+	let cmonth;
+	switch (ms) {
+	  case 0:
+	    cmonth = "Jan";
+	    break;
+	  case 1:
+	    cmonth = "Feb";
+	    break;
+	  case 2:
+	    cmonth = "Mar";
+	    break;
+	  case 3:
+	    cmonth = "Apr";
+	    break;
+	  case 4:
+	    cmonth = "May";
+	    break;
+	  case 5:
+	    cmonth = "Jun";
+	    break;
+	  case  6:
+	    cmonth = "Jul";
+	    break;
+	  case  7:
+	    cmonth = "Aug";
+	    break;
+	  case  8:
+	    cmonth = "Sep";
+	    break;
+	  case  9:
+	    cmonth = "Oct";
+	    break;
+	  case  10:
+	    cmonth = "Nov";
+	    break;
+	  case  11:
+	    cmonth = "Dec";
+	    break;
+	}
+	document.getElementById('dates').innerHTML = cmonth + " " + ds + " " + y;
+}
+</script>
+
+</body>
+</html>
