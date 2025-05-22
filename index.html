@@ -171,8 +171,14 @@ function startTime() {
 
 	const collection = document.getElementsByClassName("days");
 	for (let c = 0; c < collection.length; c++) {
-	  collection[d].classList.add("active");
-	  collection[d-1].classList.remove("active");
+
+		collection[d].classList.add("active");
+
+		if (d == 0) {
+			collection[6].classList.remove("active");
+		} else {
+			collection[d-1].classList.remove("active");
+		}
 	}
 	setTimeout(startTime, 1000);
 	currentMonth();
