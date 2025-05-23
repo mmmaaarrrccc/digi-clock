@@ -190,7 +190,7 @@ function checkTime(i) {
 	return i;
 }
 function checkHour(g) {
-	if (g > 12) {
+	if (g >= 12) {
 		g = g - 12;
 		document.getElementById("pm").classList.add("active");
 		document.getElementById("am").classList.remove("active");
