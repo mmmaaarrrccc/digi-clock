@@ -111,7 +111,7 @@ body {
 .options {
 	position: fixed;
 	bottom: 20px;
-	right: 20px;
+	right: 40px;
 	display: flex;
 	gap: 15px;
 	align-items: center;
@@ -238,6 +238,9 @@ body {
 	.dates {
 		text-align: center;
 		width: 100% !important;
+	}
+	.options {
+		right: 20px;
 	}
 }
 
