@@ -150,7 +150,10 @@ $(document).ready(function(){
         idleTime++;
         if (idleTime == 4) {
         	document.getElementById('brightness').style.opacity = "0.8";
-		document.getElementById('options').style.opacity = 0;
+        	document.getElementById('brightness2').style.opacity = "0";
+        	document.getElementById('options').style.opacity = "0";
+			$("#dim").removeClass('activemode');
+			$("#bright").addClass('activemode');
 		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
@@ -159,20 +162,35 @@ $(document).ready(function(){
     $(this).mousemove(function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
-	document.getElementById('options').style.opacity = "1";
+        document.getElementById('options').style.opacity = "1";
 	});
     $(this).keypress(function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
-	document.getElementById('options').style.opacity = "1"; 
+        document.getElementById('options').style.opacity = "1";
 	});
     $(this).on('tap', function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
-	document.getElementById('options').style.opacity = "1";
+        document.getElementById('options').style.opacity = "1";
 	});
 });
 
+$(document).ready(function(){
+	$('#dm-mode').click(function() {
+		var dimMode = $('#brightness2').css('opacity');
+
+		if (dimMode == 0) {
+        	document.getElementById('brightness2').style.opacity = "0.8";
+			$("#bright").removeClass('activemode');
+			$("#dim").addClass('activemode');	
+		} else {
+        	document.getElementById('brightness2').style.opacity = "0";
+			$("#dim").removeClass('activemode');
+			$("#bright").addClass('activemode');
+		}
+	});
+});
 
 
 function checkScreenSize(){
@@ -184,6 +202,8 @@ function checkScreenSize(){
         	document.getElementById('main').style.top = idleStart + "%";
 		}
         idleStart = idleStart + 2;
+	} else {
+        document.getElementById('main').style.top = 0;
 	}
 }
 
@@ -194,7 +214,7 @@ $(document).ready(function(){
         	document.getElementById('options').style.width = "50px";
 			$("#oc").removeClass('oc-out');
 		} else {
-        	document.getElementById('options').style.width = "155px";
+        	document.getElementById('options').style.width = "220px";
 			$("#oc").addClass('oc-out');
 		}
 
@@ -207,4 +227,24 @@ $(document).mouseup(function(e) {
         document.getElementById('options').style.width = "50px";
 		$("#oc").removeClass('oc-out');
     }
+});
+
+$('#options').ready(function(){
+    idle = 0;  
+    var idleInterval = setInterval(timer, 1000);
+
+    function timer() {
+    	if ($('#options').width() == 220) {
+	        idle++;
+	        if (idle == 10) {
+		        document.getElementById('options').style.width = "50px";
+				$("#oc").removeClass('oc-out');
+		        idle = 0;
+	        }
+    	}
+
+    }
+    $(this).mousemove(function(e){
+        idle = 0;
+	});
 });
