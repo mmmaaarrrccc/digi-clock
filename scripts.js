@@ -159,14 +159,17 @@ $(document).ready(function(){
     $(this).mousemove(function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
+	document.getElementById('options').style.opacity = "1";
 	});
     $(this).keypress(function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
+	document.getElementById('options').style.opacity = "1"; 
 	});
     $(this).on('tap', function(e){
         idleTime = 0;
         document.getElementById('brightness').style.opacity = "0";
+	document.getElementById('options').style.opacity = "1";
 	});
 });
 
