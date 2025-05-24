@@ -97,37 +97,20 @@ function currentMonth() {
 
 
 $(document).ready(function(){
-
-	$.ajax({
-	  url: "your_file.txt",
-	  dataType: "text",
-	  success: function(data) {
-	    console.log(data);
-
-		  $("#dl-mode").click(function(){
-		  	if ( data = 1) {
-
-					$("#filter").addClass('f-active');
-					$("#dl-mode").addClass('light');
-					$("#dl-mode").addClass('light');
-					$("#dl-mode").removeClass('dark');	
-					$("#sun").removeClass('activemode');
-					console.log('yes');
-
-				} else {
-
-					$("#dl-mode").addClass('dark');
-					$("#sun").addClass('activemode');
-					$("#filter").removeClass('f-active');
-					$("#dl-mode").removeClass('light');
-					$("#moon").removeClass('activemode');
-					console.log('no');
-
-				}
-
-			});
-
-	  }
+	$("#dl-mode").click(function(){
+		if ( $("#filter").hasClass('f-active')) {
+			$("#filter").removeClass('f-active');
+			$("#dl-mode").removeClass('light');
+			$("#dl-mode").addClass('dark');
+			$("#sun").addClass('activemode');
+			$("#moon").removeClass('activemode');
+		} else {
+			$("#filter").addClass('f-active');
+			$("#dl-mode").addClass('light');
+			$("#dl-mode").removeClass('dark');	
+			$("#moon").addClass('activemode');	
+			$("#sun").removeClass('activemode');	
+		}
 
 	});
 });
