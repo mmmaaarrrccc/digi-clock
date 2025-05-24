@@ -87,24 +87,65 @@ body {
 	pointer-events: none;
 	height: 0vh;
 	width: 100vw;
+	transition: all 1s;
+}
+.filter1 {
 	background-image: linear-gradient(to bottom, white 50%, transparent 100%);
 	mix-blend-mode: difference;
-	transition: all 1s;
+}
+.filter2 {
+	mix-blend-mode: multiply;
+    background: linear-gradient(-45deg, #00ff14, #ff0000, #1b00ff, #d8ff00);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
 }
 .filter.f-active {
 	height: 200vh;
 }
-.dl-mode {
+
+.options {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	width: 25px;
+	overflow: hidden;
+	transition: all 0.3s;
+}
+.oc {
+	cursor: pointer;
+	width: 30px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	transition: all 0.3s;
+}
+
+.oc.darkm {
+	color: white;
+}.oc.lightm {
+	color: black;
+}
+
+.options:hover {
+	width: 160px !important;
+}
+.options:hover .oc {
+	rotate: 180deg;
+}
+.btn-mode {
 	cursor: pointer;
 	height: 50px;
 	width: 50px;
+	background: none;
 	border-radius: 50px;
-	border: none;
-    rotate: -30deg;
+	border-width: 2px;
+	border-style: solid;
     transition: all 0.3s;
+    min-width: 50px;
     i {
     	transition: all 0.3s;
     	opacity: 0;
@@ -115,18 +156,23 @@ body {
 		font-size: 30px !important;
     }
 }
-.dl-mode.dark {
-	background: #eee;
-	color: #222;
-	box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.1);
+
+.btn-mode.dark {
+	border-color: white;
+	color: white;
 }
-.dl-mode.light {
-	background: #222;
-	color: #eee;
-	box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+.btn-mode.light {
+	border-color: black;
+	color: black;
 }
-.dl-mode:hover {
-	filter: invert(1);
+
+.btn-mode.dark:hover {
+	background: white;
+	color: black;
+}
+.btn-mode.light:hover {
+	background: black;
+	color: white;
 }
 
 @media only screen and (max-width: 1159px) {
@@ -169,5 +215,17 @@ body {
 	.dates {
 		text-align: center;
 		width: 100% !important;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
 	}
 }

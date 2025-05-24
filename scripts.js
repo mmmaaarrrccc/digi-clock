@@ -98,19 +98,45 @@ function currentMonth() {
 
 $(document).ready(function(){
 	$("#dl-mode").click(function(){
-		if ( $("#filter").hasClass('f-active')) {
-			$("#filter").removeClass('f-active');
+		if ( $("#filter1").hasClass('f-active')) {
+			$("#filter1").removeClass('f-active');
 			$("#dl-mode").removeClass('light');
 			$("#dl-mode").addClass('dark');
+			$("#fs-mode").removeClass('light');
+			$("#fs-mode").addClass('dark');
 			$("#sun").addClass('activemode');
 			$("#moon").removeClass('activemode');
+			$("#oc").addClass('darkm');
+			$("#oc").removeClass('lightm');
 		} else {
-			$("#filter").addClass('f-active');
+			$("#filter1").addClass('f-active');
 			$("#dl-mode").addClass('light');
-			$("#dl-mode").removeClass('dark');	
+			$("#dl-mode").removeClass('dark');
+			$("#fs-mode").addClass('light');
+			$("#fs-mode").removeClass('dark');	
 			$("#moon").addClass('activemode');	
 			$("#sun").removeClass('activemode');	
+			$("#oc").addClass('lightm');
+			$("#oc").removeClass('darkm');
 		}
 
 	});
 });
+
+function toggleFullscreen(elem) {
+	elem = elem || document.documentElement;
+	if (!document.fullscreenElement) {
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen();
+			$("#fs-on").removeClass('activemode');
+			$("#fs-off").addClass('activemode');	
+		}
+	} else {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+			$("#fs-off").removeClass('activemode');
+			$("#fs-on").addClass('activemode');
+		}
+	}
+}
+
