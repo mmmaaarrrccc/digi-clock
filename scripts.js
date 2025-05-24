@@ -102,6 +102,8 @@ $(document).ready(function(){
 			$("#filter1").removeClass('f-active');
 			$("#dl-mode").removeClass('light');
 			$("#dl-mode").addClass('dark');
+			$("#dm-mode").removeClass('light');
+			$("#dm-mode").addClass('dark');
 			$("#fs-mode").removeClass('light');
 			$("#fs-mode").addClass('dark');
 			$("#sun").addClass('activemode');
@@ -112,6 +114,8 @@ $(document).ready(function(){
 			$("#filter1").addClass('f-active');
 			$("#dl-mode").addClass('light');
 			$("#dl-mode").removeClass('dark');
+			$("#dm-mode").addClass('light');
+			$("#dm-mode").removeClass('dark');
 			$("#fs-mode").addClass('light');
 			$("#fs-mode").removeClass('dark');	
 			$("#moon").addClass('activemode');	
