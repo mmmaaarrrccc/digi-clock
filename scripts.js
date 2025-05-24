@@ -190,7 +190,7 @@ $(document).ready(function(){
         	document.getElementById('options').style.width = "50px";
 			$("#oc").removeClass('oc-out');
 		} else {
-        	document.getElementById('options').style.width = "180px";
+        	document.getElementById('options').style.width = "155px";
 			$("#oc").addClass('oc-out');
 		}
 
@@ -198,10 +198,9 @@ $(document).ready(function(){
 });
 
 $(document).mouseup(function(e) {
-    var container = $("#oc");
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
-    {
-        	document.getElementById('options').style.width = "50px";
-			$("#oc").removeClass('oc-out');
+    var container = $("#options");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        document.getElementById('options').style.width = "50px";
+		$("#oc").removeClass('oc-out');
     }
 });

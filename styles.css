@@ -118,6 +118,11 @@ body {
 	overflow: hidden;
 	transition: all 0.3s;
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	pointer-events: none;
+}
+
+.options * {
+	pointer-events: initial;	
 }
 .oc {
 	cursor: pointer;
@@ -137,6 +142,7 @@ body {
 }
 .oc.oc-out {
 	rotate: 180deg;
+	min-width: 25px;
 }
 .btn-mode {
 	cursor: pointer;
