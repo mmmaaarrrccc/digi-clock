@@ -94,16 +94,21 @@ function currentMonth() {
 	document.getElementById('dates').innerHTML = cmonth + " " + ds + " " + y;
 }
 
-$.ajax({
-  url: "your_file.txt",
-  dataType: "text",
-  success: function(data) {
-    // 'data' contains the text content of the file
-    return data;
-  }
-});
-    console.log(data);
+
+
 $(document).ready(function(){
+	let data;
+	$.ajax({
+	  url: "your_file.txt",
+	  dataType: "text",
+	  success: function(data) {
+	    // 'data' contains the text content of the file
+	    return data;
+	  }
+	});
+	console.log(data);
+
+	
 	$("#dl-mode").click(function(){
 		if ( $("#filter").hasClass('f-active')) {
 			$("#filter").removeClass('f-active');
@@ -120,4 +125,5 @@ $(document).ready(function(){
 		}
 
 	});
+
 });
