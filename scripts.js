@@ -188,9 +188,11 @@ $(document).ready(function(){
 		var optWidth = $("#options").width();
 		if ( optWidth > 50) {
         	document.getElementById('options').style.width = "50px";
+        	document.getElementById('options').style.marginRight = "-23px";
 			$("#oc").removeClass('oc-out');
 		} else {
         	document.getElementById('options').style.width = "155px";
+        	document.getElementById('options').style.marginRight = "0px";
 			$("#oc").addClass('oc-out');
 		}
 
