@@ -149,7 +149,8 @@ $(document).ready(function(){
     function timerIncrement() {
         idleTime++;
         if (idleTime == 4) {
-        	document.getElementById('brightness').style.opacity = "0.7";
+        	document.getElementById('brightness').style.opacity = "0.8";
+		document.getElementById('options').style.opacity = 0;
 		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
