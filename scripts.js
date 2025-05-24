@@ -182,3 +182,4 @@ function checkScreenSize(){
 		}
 	}
 }
+alert($(window).width());
