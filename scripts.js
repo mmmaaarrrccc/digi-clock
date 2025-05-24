@@ -180,7 +180,5 @@ function checkScreenSize(){
 			idleStart = 10;
         	document.getElementById('main').style.top = idleStart + "%";
 		}
-	} else {
-        document.getElementById('main').style.top = "0%";		
 	}
 }
