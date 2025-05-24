@@ -200,12 +200,20 @@ body {
 	z-index: 9;
 	opacity: 0;
 }
+@media only screen and (max-width: 599px) {
+	.main {
+		top: 10%;
+		height: auto !important;
+	}
+	.time {
+		padding-bottom: 0px !important;
+	}
+}
 
 @media only screen and (max-width: 1159px) {
 	.main {
 		flex-direction: column;
-		height: auto !important;
-		top: 10%;
+		padding-top: 0px !important;
 	}
 	.week {
 		padding: 0px !important;
@@ -220,6 +228,8 @@ body {
 	.time {
 		flex-direction: column;
 		text-align: center;
+		height: auto !important;
+		padding-bottom: 70px;
 	}
 	.clock {
 		width: 100% !important;
