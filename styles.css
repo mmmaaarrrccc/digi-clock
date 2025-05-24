@@ -30,6 +30,7 @@ body {
   	text-transform: uppercase;
   	position: relative;
   	transition: all 0.3s;
+  	top: 0px;
 }
 .week {
 	padding-left: 3px;
@@ -148,12 +149,15 @@ body {
 	cursor: pointer;
 	height: 50px;
 	width: 50px;
+    min-width: 50px;
 	background: none;
 	border-radius: 50px;
 	border-width: 2px;
 	border-style: solid;
     transition: all 0.3s;
-    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     i {
     	transition: all 0.3s;
     	opacity: 0;
@@ -161,7 +165,8 @@ body {
     }
     i.activemode {
     	opacity: 1 !important;
-		font-size: 30px !important;
+		font-size: 20px !important;
+    	line-height: 30px ;
     }
 }
 
@@ -204,6 +209,7 @@ body {
 	}
 	.week {
 		padding: 0px !important;
+		font-size: 25px !important;
 	}
 	.days {
 		display: none;
@@ -218,7 +224,7 @@ body {
 	.clock {
 		width: 100% !important;
 		margin-top: -20px !important;
-		font-size: 150px !important;
+		font-size: 90px !important;
 	}
 	.deets {
 		width: 100% !important;
@@ -229,8 +235,8 @@ body {
 		display: none;
 	}
 	.ampm {
-		margin-top: 0px !important;
-		font-size: 30px !important;
+		margin-top: 5px !important;
+		font-size: 20px !important;
 		justify-content: center	!important;
 		gap: var(--gaps);
 		width: 100% !important;
@@ -238,6 +244,7 @@ body {
 	.dates {
 		text-align: center;
 		width: 100% !important;
+		font-size: 30px !important;
 	}
 }
 
