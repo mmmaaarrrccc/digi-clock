@@ -15,6 +15,7 @@ body {
 	background: #000000;
 	overflow: hidden;
 	position: relative;
+	height: 100vh;
 }
 .main {
 	height: 100vh;
@@ -27,6 +28,7 @@ body {
 	gap: var(--gaps);
   	font-family: DS-Digital;
   	text-transform: uppercase;
+  	position: relative;
 }
 .week {
 	padding-left: 3px;
@@ -88,6 +90,7 @@ body {
 	height: 0vh;
 	width: 100vw;
 	transition: all 1s;
+	opacity: 0;
 }
 .filter1 {
 	background-image: linear-gradient(to bottom, white 50%, transparent 100%);
@@ -101,6 +104,7 @@ body {
 }
 .filter.f-active {
 	height: 200vh;
+	opacity: 1;
 }
 
 .options {
@@ -186,12 +190,14 @@ body {
 	width: 100vw;
 	transition: all 1s;
 	z-index: 9;
-	opacity: 0.8;
+	opacity: 0;
 }
 
 @media only screen and (max-width: 1159px) {
 	.main {
 		flex-direction: column;
+		height: auto !important;
+		top: 10%;
 	}
 	.week {
 		padding: 0px !important;

@@ -140,3 +140,45 @@ function toggleFullscreen(elem) {
 	}
 }
 
+$(document).ready(function(){
+    idleTime = 0;   
+
+    var idleInterval = setInterval(timerIncrement, 5000);
+
+    function timerIncrement() {
+        idleTime++;
+        if (idleTime == 4) {
+        	document.getElementById('brightness').style.opacity = "0.8";
+			idleStart = 10;
+		    var idleCount = setInterval(checkScreenSize, 60000);
+			checkScreenSize();
+        }
+
+    }
+    $(this).mousemove(function(e){
+        idleTime = 0;
+        document.getElementById('brightness').style.opacity = "0";
+	});
+    $(this).keypress(function(e){
+        idleTime = 0;
+        document.getElementById('brightness').style.opacity = "0";
+	});
+    $(this).on('tap', function(e){
+        idleTime = 0;
+        document.getElementById('brightness').style.opacity = "0";
+	});
+});
+
+
+
+function checkScreenSize(){
+	var newWindowWidth = $(window).width();
+	if (newWindowWidth < 481) {
+        document.getElementById('main').style.top = idleStart + "%";
+        idleStart++;
+		if (idleStart == 27){
+			idleStart = 10;
+        	document.getElementById('main').style.top = idleStart + "%";
+		}
+	}
+}
