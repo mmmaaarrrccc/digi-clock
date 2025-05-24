@@ -196,3 +196,12 @@ $(document).ready(function(){
 
 	});
 });
+
+$(document).mouseup(function(e) {
+    var container = $("#oc");
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        	document.getElementById('options').style.width = "50px";
+			$("#oc").removeClass('oc-out');
+    }
+});
