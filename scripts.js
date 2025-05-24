@@ -149,8 +149,8 @@ $(document).ready(function(){
     function timerIncrement() {
         idleTime++;
         if (idleTime == 4) {
-        	document.getElementById('brightness').style.opacity = "0.8";
-		    var idleCount = setInterval(checkScreenSize, 1000);
+        	document.getElementById('brightness').style.opacity = "0.7";
+		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
 
@@ -175,11 +175,24 @@ function checkScreenSize(){
 	var newWindowWidth = $(window).width();
 	if (newWindowWidth < 481) {
         document.getElementById('main').style.top = idleStart + "%";
-        idleStart++;
-		if (idleStart == 27){
+		if (idleStart >= 28){
 			idleStart = 10;
         	document.getElementById('main').style.top = idleStart + "%";
 		}
+        idleStart = idleStart + 2;
 	}
 }
-alert($(window).width());
+
+$(document).ready(function(){
+	$("#oc").click(function(){
+		var optWidth = $("#options").width();
+		if ( optWidth > 50) {
+        	document.getElementById('options').style.width = "50px";
+			$("#oc").removeClass('oc-out');
+		} else {
+        	document.getElementById('options').style.width = "180px";
+			$("#oc").addClass('oc-out');
+		}
+
+	});
+});

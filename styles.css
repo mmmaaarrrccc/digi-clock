@@ -29,6 +29,7 @@ body {
   	font-family: DS-Digital;
   	text-transform: uppercase;
   	position: relative;
+  	transition: all 0.3s;
 }
 .week {
 	padding-left: 3px;
@@ -114,9 +115,9 @@ body {
 	display: flex;
 	gap: 15px;
 	align-items: center;
-	width: 50px;
 	overflow: hidden;
 	transition: all 0.3s;
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .oc {
 	cursor: pointer;
@@ -134,11 +135,7 @@ body {
 }.oc.lightm {
 	color: black;
 }
-
-.options:hover {
-	width: 180px !important;
-}
-.options:hover .oc {
+.oc.oc-out {
 	rotate: 180deg;
 }
 .btn-mode {
