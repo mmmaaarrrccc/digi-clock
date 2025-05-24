@@ -141,7 +141,8 @@ function toggleFullscreen(elem) {
 }
 
 $(document).ready(function(){
-    idleTime = 0;   
+    idleTime = 0;  
+	idleStart = 10; 
 
     var idleInterval = setInterval(timerIncrement, 5000);
 
@@ -149,8 +150,7 @@ $(document).ready(function(){
         idleTime++;
         if (idleTime == 4) {
         	document.getElementById('brightness').style.opacity = "0.8";
-			idleStart = 10;
-		    var idleCount = setInterval(checkScreenSize, 60000);
+		    var idleCount = setInterval(checkScreenSize, 1000);
 			checkScreenSize();
         }
 
