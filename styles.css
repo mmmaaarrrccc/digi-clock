@@ -175,6 +175,19 @@ body {
 	color: white;
 }
 
+.brightness {
+	background: black;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+	height: 100vh;
+	width: 100vw;
+	transition: all 1s;
+	z-index: 9;
+	opacity: 0.9;
+}
+
 @media only screen and (max-width: 1159px) {
 	.main {
 		flex-direction: column;
