@@ -150,7 +150,7 @@ $(document).ready(function(){
         idleTime++;
         if (idleTime == 4) {
         	document.getElementById('brightness').style.opacity = "0.8";
-		    var idleCount = setInterval(checkScreenSize, 60000);
+		    var idleCount = setInterval(checkScreenSize, 1000);
 			checkScreenSize();
         }
 
