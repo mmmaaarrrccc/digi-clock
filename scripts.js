@@ -112,6 +112,7 @@ $(document).ready(function(){
 					$("#dl-mode").addClass('light');
 					$("#dl-mode").removeClass('dark');	
 					$("#sun").removeClass('activemode');
+					console.log('yes');
 
 				} else {
 
@@ -120,6 +121,7 @@ $(document).ready(function(){
 					$("#filter").removeClass('f-active');
 					$("#dl-mode").removeClass('light');
 					$("#moon").removeClass('activemode');
+					console.log('no');
 
 				}
 
