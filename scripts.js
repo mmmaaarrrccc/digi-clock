@@ -97,33 +97,39 @@ function currentMonth() {
 
 
 $(document).ready(function(){
-	let data;
+
 	$.ajax({
 	  url: "your_file.txt",
 	  dataType: "text",
 	  success: function(data) {
-	    // 'data' contains the text content of the file
-	    return data;
+	    console.log(data);
+
+
+		  $("#dl-mode").click(function(){
+				if ( $("#filter").hasClass('f-active')) {
+					$("#filter").removeClass('f-active');
+					$("#dl-mode").removeClass('light');
+					$("#dl-mode").addClass('dark');
+					$("#sun").addClass('activemode');
+					$("#moon").removeClass('activemode');
+				} else {
+					$("#filter").addClass('f-active');
+					$("#dl-mode").addClass('light');
+					$("#dl-mode").removeClass('dark');	
+					$("#moon").addClass('activemode');	
+					$("#sun").removeClass('activemode');	
+				}
+
+			});
+
+
 	  }
-	});
-	console.log(data);
 
-	
-	$("#dl-mode").click(function(){
-		if ( $("#filter").hasClass('f-active')) {
-			$("#filter").removeClass('f-active');
-			$("#dl-mode").removeClass('light');
-			$("#dl-mode").addClass('dark');
-			$("#sun").addClass('activemode');
-			$("#moon").removeClass('activemode');
-		} else {
-			$("#filter").addClass('f-active');
-			$("#dl-mode").addClass('light');
-			$("#dl-mode").removeClass('dark');	
-			$("#moon").addClass('activemode');	
-			$("#sun").removeClass('activemode');	
-		}
 
 	});
+
+
+
+
 
 });
