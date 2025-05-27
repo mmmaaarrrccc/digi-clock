@@ -110,6 +110,8 @@ $(document).ready(function(){
 			$("#moon").removeClass('activemode');
 			$("#oc").addClass('darkm');
 			$("#oc").removeClass('lightm');
+			$("#lock-btn").addClass('darkm');
+			$("#lock-btn").removeClass('lightm');
 		} else {
 			$("#filter1").addClass('f-active');
 			$("#dl-mode").addClass('light');
@@ -122,6 +124,8 @@ $(document).ready(function(){
 			$("#sun").removeClass('activemode');	
 			$("#oc").addClass('lightm');
 			$("#oc").removeClass('darkm');
+			$("#lock-btn").addClass('lightm');
+			$("#lock-btn").removeClass('darkm');
 		}
 
 	});
@@ -147,6 +151,7 @@ function toggleFullscreen(elem) {
 $(document).ready(function(){
     idleTime = 0;  
 	idleStart = 10; 
+	var lockMode = $('#screenlock').css('height');
 
     var idleInterval = setInterval(timerIncrement, 5000);
 
@@ -156,29 +161,80 @@ $(document).ready(function(){
         	document.getElementById('brightness').style.opacity = "0.8";
         	document.getElementById('brightness2').style.opacity = "0";
         	document.getElementById('options').style.opacity = "0";
+        	document.getElementById('lock-btn').style.opacity = "0";
 			$("#dim").removeClass('activemode');
 			$("#bright").addClass('activemode');
 		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
+        if (idleTime == 2) {
+        	document.getElementById('screenlock').style.height = "100%";
+			$("#lock").removeClass('activemode');
+			$("#ulock").addClass('activemode');	
+			lockMode = $('#screenlock').css('height');
 
+        }
+        
     }
-    $(this).mousemove(function(e){
-        idleTime = 0;
-        document.getElementById('brightness').style.opacity = "0";
-        document.getElementById('options').style.opacity = "1";
+
+
+	$('#lock-btn').click(function() {
+		if (lockMode == '0px') {
+        	document.getElementById('screenlock').style.height = "100%";
+        	document.getElementById('lock-btn').style.opacity = "1";
+			$("#lock").removeClass('activemode');
+			$("#ulock").addClass('activemode');	
+			lockMode = $('#screenlock').css('height');
+
+		} else {
+			document.getElementById('screenlock').style.height = "0px";
+        	document.getElementById('lock-btn').style.opacity = "1";
+			$("#ulock").removeClass('activemode');
+			$("#lock").addClass('activemode');
+			lockMode = $('#screenlock').css('height');
+			idleTime = 0;
+			document.getElementById('brightness').style.opacity = "0";
+			document.getElementById('options').style.opacity = "1";
+		}
 	});
-    $(this).keypress(function(e){
-        idleTime = 0;
-        document.getElementById('brightness').style.opacity = "0";
-        document.getElementById('options').style.opacity = "1";
+
+
+	$(this).mousemove(function(e){
+		if (lockMode == '0px') {
+			idleTime = 0;
+			document.getElementById('brightness').style.opacity = "0";
+			document.getElementById('options').style.opacity = "1";
+		} else {
+        	document.getElementById('lock-btn').style.opacity = "1";
+        	idleTime = 0;
+        	timerIncrement();
+		}
 	});
-    $(this).on('tap', function(e){
-        idleTime = 0;
-        document.getElementById('brightness').style.opacity = "0";
-        document.getElementById('options').style.opacity = "1";
+	$(this).keypress(function(e){
+		if (lockMode == '0px') {
+			idleTime = 0;
+			document.getElementById('brightness').style.opacity = "0";
+			document.getElementById('options').style.opacity = "1";
+		} else {
+        	document.getElementById('lock-btn').style.opacity = "1";
+        	idleTime = 0;
+        	timerIncrement();
+		}
 	});
+	$(this).on('tap', function(e){
+		if (lockMode == '0px') {
+			idleTime = 0;
+			document.getElementById('brightness').style.opacity = "0";
+			document.getElementById('options').style.opacity = "1";
+		} else {
+        	document.getElementById('lock-btn').style.opacity = "1";
+        	idleTime = 0;
+        	timerIncrement();
+		}
+	});
+
 });
+
 
 $(document).ready(function(){
 	$('#dm-mode').click(function() {
