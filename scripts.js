@@ -167,7 +167,7 @@ $(document).ready(function(){
 		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
-        if (idleTime == 2) {
+        if (idleTime == 3) {
         	document.getElementById('screenlock').style.height = "100%";
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
