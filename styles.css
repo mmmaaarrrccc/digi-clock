@@ -274,6 +274,15 @@ body {
 	.main > .deets{
 		padding-bottom: 0px !important;
 	}
+	.battery {
+		position: relative !important;
+		gap: 5px !important;
+		font-size: 20px !important;
+	}
+	.battery svg {
+		width: 26px !important;
+		height: 26px !important;
+	}
 }
 
 @media only screen and (max-width: 1159px) {
