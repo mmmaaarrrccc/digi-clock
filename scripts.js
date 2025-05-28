@@ -1,109 +1,11 @@
-function startTime() {
-	const today = new Date();
-	let d = today.getDay();
-	let h = today.getHours();
-	let m = today.getMinutes();
-	let s = today.getSeconds();
-	h = checkHour(h);
-	m = checkTime(m);
-	s = checkTime(s);
-	document.getElementById('clock').innerHTML =  h + ":" + m ;
-	document.getElementById('seconds').innerHTML = ":" + s;
-
-	const collection = document.getElementsByClassName("days");
-	for (let c = 0; c < collection.length; c++) {
-
-		collection[d].classList.add("active");
-
-		if (d == 0) {
-			collection[6].classList.remove("active");
-		} else {
-			collection[d-1].classList.remove("active");
-		}
-	}
-	
-	setTimeout(startTime, 1000);
-	currentMonth();
-}
-
-function checkTime(i) {
-	if (i < 10) {i = "0" + i};
-	return i;
-}
-function checkHour(g) {
-	if (g >= 12) {
-		g = g - 12;
-		document.getElementById("pm").classList.add("active");
-		document.getElementById("am").classList.remove("active");
-	} else {
-		document.getElementById("am").classList.add("active");
-		document.getElementById("pm").classList.remove("active");
-	}
-	if (g == 0) {
-		g = g + 12;
-	}
-	if (g < 10) {
-		g = "0" + g;
-	}
-	return g;
-}
-function currentMonth() {
-	const today = new Date();
-	let ms = today.getMonth();
-	let ds = today.getDate();
-	let y = today.getFullYear();
-	let cmonth;
-	switch (ms) {
-	  case 0:
-	    cmonth = "Jan";
-	    break;
-	  case 1:
-	    cmonth = "Feb";
-	    break;
-	  case 2:
-	    cmonth = "Mar";
-	    break;
-	  case 3:
-	    cmonth = "Apr";
-	    break;
-	  case 4:
-	    cmonth = "May";
-	    break;
-	  case 5:
-	    cmonth = "Jun";
-	    break;
-	  case  6:
-	    cmonth = "Jul";
-	    break;
-	  case  7:
-	    cmonth = "Aug";
-	    break;
-	  case  8:
-	    cmonth = "Sep";
-	    break;
-	  case  9:
-	    cmonth = "Oct";
-	    break;
-	  case  10:
-	    cmonth = "Nov";
-	    break;
-	  case  11:
-	    cmonth = "Dec";
-	    break;
-	}
-	document.getElementById('dates').innerHTML = cmonth + " " + ds + " " + y;
-}
-
-
-
+//Dark Mode or Light Mode 
+//---Start---//
 $(document).ready(function(){
 	$("#dl-mode").click(function(){
 		if ( $("#filter1").hasClass('f-active')) {
 			$("#filter1").removeClass('f-active');
 			$("#dl-mode").removeClass('light');
 			$("#dl-mode").addClass('dark');
-			$("#dm-mode").removeClass('light');
-			$("#dm-mode").addClass('dark');
 			$("#fs-mode").removeClass('light');
 			$("#fs-mode").addClass('dark');
 			$("#sun").addClass('activemode');
@@ -116,8 +18,6 @@ $(document).ready(function(){
 			$("#filter1").addClass('f-active');
 			$("#dl-mode").addClass('light');
 			$("#dl-mode").removeClass('dark');
-			$("#dm-mode").addClass('light');
-			$("#dm-mode").removeClass('dark');
 			$("#fs-mode").addClass('light');
 			$("#fs-mode").removeClass('dark');	
 			$("#moon").addClass('activemode');	
@@ -130,7 +30,11 @@ $(document).ready(function(){
 
 	});
 });
+//---End---//
 
+
+//Fullscreen Mode
+//---Start---//
 function toggleFullscreen(elem) {
 	elem = elem || document.documentElement;
 	if (!document.fullscreenElement) {
@@ -147,6 +51,7 @@ function toggleFullscreen(elem) {
 		}
 	}
 }
+//---End---//
 
 $(document).ready(function(){
     idleTime = 0;  
@@ -159,22 +64,21 @@ $(document).ready(function(){
         idleTime++;
         if (idleTime == 4) {
         	document.getElementById('brightness').style.opacity = "0.8";
-        	document.getElementById('brightness2').style.opacity = "0";
         	document.getElementById('options').style.opacity = "0";
-        	document.getElementById('lock-btn').style.opacity = "0";
+        	document.getElementById('lock-btn').style.opacity = "0.2";
 			$("#dim").removeClass('activemode');
 			$("#bright").addClass('activemode');
 		    var idleCount = setInterval(checkScreenSize, 60000);
 			checkScreenSize();
         }
-        if (idleTime == 3) {
+        if (idleTime == 6) {
         	document.getElementById('screenlock').style.height = "100%";
+        	document.getElementById('lock-btn').style.opacity = "0";
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
 
         }
-        
     }
 
 
@@ -182,12 +86,16 @@ $(document).ready(function(){
 		if (lockMode == '0px') {
         	document.getElementById('screenlock').style.height = "100%";
         	document.getElementById('lock-btn').style.opacity = "1";
+        	document.getElementById('brightness').style.opacity = "0.8";
+        	document.getElementById('options').style.opacity = "0";
+        	document.getElementById('lock-btn').style.opacity = "0.2";
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
 
 		} else {
 			document.getElementById('screenlock').style.height = "0px";
+        	document.getElementById('lock-btn').style.opacity = "1";
         	document.getElementById('lock-btn').style.opacity = "1";
 			$("#ulock").removeClass('activemode');
 			$("#lock").addClass('activemode');
@@ -204,8 +112,10 @@ $(document).ready(function(){
 			idleTime = 0;
 			document.getElementById('brightness').style.opacity = "0";
 			document.getElementById('options').style.opacity = "1";
+        	document.getElementById('lock-btn').style.opacity = "1";
 		} else {
         	document.getElementById('lock-btn').style.opacity = "1";
+			document.getElementById('brightness').style.opacity = "0";
         	idleTime = 0;
         	timerIncrement();
 		}
@@ -217,6 +127,7 @@ $(document).ready(function(){
 			document.getElementById('options').style.opacity = "1";
 		} else {
         	document.getElementById('lock-btn').style.opacity = "1";
+			document.getElementById('brightness').style.opacity = "0";
         	idleTime = 0;
         	timerIncrement();
 		}
@@ -228,6 +139,7 @@ $(document).ready(function(){
 			document.getElementById('options').style.opacity = "1";
 		} else {
         	document.getElementById('lock-btn').style.opacity = "1";
+			document.getElementById('brightness').style.opacity = "0";
         	idleTime = 0;
         	timerIncrement();
 		}
@@ -236,26 +148,11 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-	$('#dm-mode').click(function() {
-		var dimMode = $('#brightness2').css('opacity');
-
-		if (dimMode == 0) {
-        	document.getElementById('brightness2').style.opacity = "0.8";
-			$("#bright").removeClass('activemode');
-			$("#dim").addClass('activemode');	
-		} else {
-        	document.getElementById('brightness2').style.opacity = "0";
-			$("#dim").removeClass('activemode');
-			$("#bright").addClass('activemode');
-		}
-	});
-});
-
-
+//Changing position on mobile
+//---Start---//
 function checkScreenSize(){
 	var newWindowWidth = $(window).width();
-	if (newWindowWidth < 481) {
+	if (newWindowWidth < 1024) {
         document.getElementById('main').style.top = idleStart + "%";
 		if (idleStart >= 28){
 			idleStart = 10;
@@ -266,7 +163,12 @@ function checkScreenSize(){
         document.getElementById('main').style.top = 0;
 	}
 }
+//---End---//
 
+
+//Options
+//---Start---//
+//Toggle Options Menu
 $(document).ready(function(){
 	$("#oc").click(function(){
 		var optWidth = $("#options").width();
@@ -274,13 +176,14 @@ $(document).ready(function(){
         	document.getElementById('options').style.width = "50px";
 			$("#oc").removeClass('oc-out');
 		} else {
-        	document.getElementById('options').style.width = "220px";
+        	document.getElementById('options').style.width = "155px";
 			$("#oc").addClass('oc-out');
 		}
 
 	});
 });
 
+//Click anywhere to close menu
 $(document).mouseup(function(e) {
     var container = $("#options");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -289,6 +192,7 @@ $(document).mouseup(function(e) {
     }
 });
 
+//Auto close after 10secs
 $('#options').ready(function(){
     idle = 0;  
     var idleInterval = setInterval(timer, 1000);
@@ -308,3 +212,75 @@ $('#options').ready(function(){
         idle = 0;
 	});
 });
+//---End---//
+
+
+
+$(document).ready(function() {
+
+
+
+
+
+navigator.getBattery().then((battery) => {
+  function updateAllBatteryInfo() {
+  	updateChargingInfo();
+    updateLevelInfo();
+  }
+
+  updateAllBatteryInfo();
+
+  //When the charging status changes
+  battery.addEventListener("chargingchange", () => {
+    updateAllBatteryInfo();
+  });
+
+  //When the Battery Levvel Changes
+  battery.addEventListener("levelchange", () => {
+    updateAllBatteryInfo();
+  });
+
+  function updateChargingInfo() {
+    if (battery.charging) {
+		$("#Folder-2").css("opacity","1");
+		$(".bci").css("opacity", "0");
+    } else {
+		$("#Folder-2").css("opacity","0");
+    }
+  }
+
+  //Updating battery level
+  function updateLevelInfo() {
+    let batteryLevel = Math.round(battery.level * 100);
+	$("#batteryPerc").text(batteryLevel);
+	if (!battery.charging) {
+		if (batteryLevel >=80 ) {
+			$(".bci").css("opacity", "1");
+		}
+		if (batteryLevel >=60 && batteryLevel < 80) {
+			$(".bci.b25").css("opacity", "1");
+			$(".bci.b50").css("opacity", "1");
+			$(".bci.b75").css("opacity", "1");
+			$(".bci.b100").css("opacity", "0");
+		}
+		if (batteryLevel >=40 && batteryLevel < 60) {
+			$(".bci.b25").css("opacity", "1");
+			$(".bci.b50").css("opacity", "1");
+			$(".bci.b75").css("opacity", "0");
+			$(".bci.b100").css("opacity", "0");
+		}
+		if (batteryLevel >=20 && batteryLevel < 40) {
+			$(".bci.b25").css("opacity", "1");
+			$(".bci.b50").css("opacity", "0");
+			$(".bci.b75").css("opacity", "0");
+			$(".bci.b100").css("opacity", "0");
+		}
+		if (batteryLevel >=0 && batteryLevel < 20) {
+			$(".bci").css("opacity", "0");
+		}
+	}
+  }
+});
+});
+
+
