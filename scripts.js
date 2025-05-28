@@ -1,36 +1,4 @@
-//Dark Mode or Light Mode 
-//---Start---//
-$(document).ready(function(){
-	$("#dl-mode").click(function(){
-		if ( $("#filter1").hasClass('f-active')) {
-			$("#filter1").removeClass('f-active');
-			$("#dl-mode").removeClass('light');
-			$("#dl-mode").addClass('dark');
-			$("#fs-mode").removeClass('light');
-			$("#fs-mode").addClass('dark');
-			$("#sun").addClass('activemode');
-			$("#moon").removeClass('activemode');
-			$("#oc").addClass('darkm');
-			$("#oc").removeClass('lightm');
-			$("#lock-btn").addClass('darkm');
-			$("#lock-btn").removeClass('lightm');
-		} else {
-			$("#filter1").addClass('f-active');
-			$("#dl-mode").addClass('light');
-			$("#dl-mode").removeClass('dark');
-			$("#fs-mode").addClass('light');
-			$("#fs-mode").removeClass('dark');	
-			$("#moon").addClass('activemode');	
-			$("#sun").removeClass('activemode');	
-			$("#oc").addClass('lightm');
-			$("#oc").removeClass('darkm');
-			$("#lock-btn").addClass('lightm');
-			$("#lock-btn").removeClass('darkm');
-		}
 
-	});
-});
-//---End---//
 
 
 //Fullscreen Mode
