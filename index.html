@@ -6,6 +6,7 @@
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="styles.css">
 	<script src="https://kit.fontawesome.com/0cf501324e.js" crossorigin="anonymous"></script>
+	<script src="clock.js"></script>
 	<script src="scripts.js"></script>
 	<title>&lrm;</title>
 </head>
@@ -22,33 +23,40 @@
 		</div>
 		<div class="time">
 			<span class="clock" id="clock"></span>
-			<div class="deets">
-				<div class="seconds">
-					<span id="seconds"></span>
-				</div>
+		</div>
+		<div class="deets">
+				<div class="seconds" id="seconds"></div>
 				<div class="ampm">
 					<span id="am">AM</span>
 					<span id="pm">PM</span>
 				</div>
-				<div class="dates">
-					<span id="dates"></span>
+				<div class="dates" id="dates"></div>
+				<div class="battery">
+					<div class="batteryLevel"><span class="batteryPerc" id="batteryPerc"></span><span class="percentage">%</span></div>
+						<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+							<g id="Folder-1">
+								<path fill-rule="evenodd" class="bci b25" d="m7 9h-2v6h2v-6z"/>
+								<path fill-rule="evenodd" class="bci b50" d="m10 9h-2v6h2v-6z"/>
+								<path fill-rule="evenodd" class="bci b75" d="m13 9h-2v6h2v-6z"/>
+								<path fill-rule="evenodd" class="bci b100" d="m16 9h-2v6h2v-6z"/>
+							</g>
+							<path class="batteryIcon" d="m19 6h-17v12h17v-2h3v-8h-3zm-2 2v2h2 1v4h-1-2v2h-13v-8z"/>
+							<g id="Folder-2" style="opacity: 0;">
+								<path class="chargingIcon" id="chargingIcon" d="m15.8 11.2l-3.3-0.5 3.1-7.3c0.1-0.2-0.2-0.4-0.4-0.2l-10.1 9.2c-0.2 0.1-0.1 0.4 0.1 0.4l3.3 0.5-3.1 7.3c-0.1 0.2 0.2 0.4 0.4 0.2l10.1-9.2c0.2-0.1 0.1-0.4-0.1-0.4z"/>
+							</g>
+						</svg>
 				</div>
 			</div>
-		</div>
 </div>
 <div class="filter filter1" id="filter1"></div>
-<div class="filter filter2" id="filter2"></div>
 <div class="options" id="options" style="width: 50px">
 	<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
-	<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>
-	<button class="btn-mode dark" id="dm-mode"><i class="fa-regular fa-circle activemode" id="bright"></i><i class="fa-solid fa-circle" id="dim"></i></i></button>
-	<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
+	<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>	<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
 </div>
 <div class="pLock darkm" id="lock-btn">
 	<i class="fa-solid fa-lock-open activemode" id="lock"></i><i class="fa-solid fa-lock" id="ulock"></i>
 </div>
 <div class="brightness" id="brightness" style="opacity: 0;"></div>
-<div class="brightness" id="brightness2" style="opacity: 0;"></div>
 <div class="screenlock" id="screenlock" style="height: 0px;"></div>
 </body>
 </html>
