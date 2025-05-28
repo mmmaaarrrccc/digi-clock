@@ -20,7 +20,6 @@ body {
 .main {
 	height: 100vh;
 	width: 100%;
-	padding-top: 7.5px;
 	color: var(--active);
 	display: flex;
 	align-items: center;
@@ -32,21 +31,33 @@ body {
   	transition: all 0.3s;
   	top: 0px;
 }
+.main > div {
+	padding-bottom: 20px;
+}
+
+
+.active {
+	opacity: 1 !important;
+}
+
 .week {
 	padding-left: 3px;
-	font-size: 40px;
+	font-size: 43px;
 	.days {
 		opacity: var(--def);
 		margin: 5px;
 	}
 }
-.active {
-	opacity: 1 !important;
-}
 .time {
 	display: flex;
 	height: 320px;
 }
+.clock {
+	width: 1156px;
+	font-size: 503px;
+	margin-top: -95px;
+}
+
 .deets {
 	width: 260px;
 	display: flex;
@@ -55,34 +66,63 @@ body {
 	gap: var(--gaps);
     justify-content: space-between;
     text-align: left;
-	div {
-		max-height: calc(50% - 10px);
-	}
 	.seconds {
 		width: 100%;
 		font-size: 210px;
-		margin-top: -40px;
+		margin-top: -28px;
+		margin-bottom: -35px;
 	}
 	.ampm {
 		font-size: 110px;
-		margin-top: 30px;
 		display: flex;
 	    justify-content: space-between;
 	    width: 255px;
+	    margin-bottom: -7px;
 	    span {
 			opacity: var(--def);
 	    }
 	}
 	.dates {
 		font-size: 50px;
-		margin-top: -10px;
+	}
+	.battery {
+		display: flex;
+	    color: var(--active);
+	    align-items: center;
+	    justify-content: center;
+	    position: fixed;
+	    bottom: 20px;
+	    left: 0px;
+	    width: 100%;
+	    font-size: 24px;
+	    height: 50px;
+	    fill: var(--active);
+	    gap: 10px;
+	}
+	.battery svg {
+		width: 30px;
+		height: 30px;
+		margin-top: 1px;
 	}
 }
-.clock {
-	width: 1156px;
-	font-size: 503px;
-	margin-top: -95px;
+
+.chargingIcon {    
+	stroke-width: 1.5px;
+    stroke: black;
+    opacity: 0;
+	animation-name: batterycharging;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
 }
+#Folder-2, .chargingIcon, .bci {
+	transition: opacity 0.3s;
+}
+
+.bci {
+	opacity: 0;
+}
+
+
 
 .filter {
 	position: fixed;
@@ -97,12 +137,6 @@ body {
 .filter1 {
 	background-image: linear-gradient(to bottom, white 50%, transparent 100%);
 	mix-blend-mode: difference;
-}
-.filter2 {
-	mix-blend-mode: multiply;
-    background: linear-gradient(-45deg, #00ff14, #ff0000, #1b00ff, #d8ff00);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
 }
 .filter.f-active {
 	height: 200vh;
@@ -206,7 +240,6 @@ body {
     	position: absolute;
     	transition: all 0.3s;
     	opacity: 0;
-		font-size: 20px;
     	line-height: 30px;
     }
     i.activemode {
@@ -233,12 +266,12 @@ body {
 	width: 100vw;
 	z-index: 10;
 }
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 1023px) {
 	.main {
 		top: 10%;
 		height: auto !important;
 	}
-	.time {
+	.main > .deets{
 		padding-bottom: 0px !important;
 	}
 }
@@ -246,7 +279,11 @@ body {
 @media only screen and (max-width: 1159px) {
 	.main {
 		flex-direction: column;
+		gap: 0px !important;
 		padding-top: 0px !important;
+	}
+	.main > .deets{
+		padding-bottom: 100px;
 	}
 	.week {
 		padding: 0px !important;
@@ -262,7 +299,8 @@ body {
 		flex-direction: column;
 		text-align: center;
 		height: auto !important;
-		padding-bottom: 70px;
+		padding-bottom: 0px !important;
+		padding-top: 16px !important;
 	}
 	.clock {
 		width: 100% !important;
@@ -291,14 +329,8 @@ body {
 	}
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+@keyframes batterycharging {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
 }
