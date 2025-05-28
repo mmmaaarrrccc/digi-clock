@@ -16,11 +16,12 @@ body {
 	overflow: hidden;
 	position: relative;
 	height: 100vh;
+	transition: all 1s;
+	margin: 0px;
 }
 .main {
 	height: 100vh;
 	width: 100%;
-	color: var(--active);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -30,6 +31,7 @@ body {
   	position: relative;
   	transition: all 0.3s;
   	top: 0px;
+  	z-index: 1;
 }
 .main > div {
 	padding-bottom: 20px;
@@ -87,7 +89,6 @@ body {
 	}
 	.battery {
 		display: flex;
-	    color: var(--active);
 	    align-items: center;
 	    justify-content: center;
 	    position: fixed;
@@ -96,7 +97,6 @@ body {
 	    width: 100%;
 	    font-size: 24px;
 	    height: 50px;
-	    fill: var(--active);
 	    gap: 10px;
 	}
 	.battery svg {
@@ -108,7 +108,6 @@ body {
 
 .chargingIcon {    
 	stroke-width: 1.5px;
-    stroke: black;
     opacity: 0;
 	animation-name: batterycharging;
 	animation-duration: 1s;
@@ -133,10 +132,10 @@ body {
 	width: 100vw;
 	transition: all 1s;
 	opacity: 0;
+	z-index: 0;
 }
 .filter1 {
 	background-image: linear-gradient(to bottom, white 50%, transparent 100%);
-	mix-blend-mode: difference;
 }
 .filter.f-active {
 	height: 200vh;
@@ -154,6 +153,7 @@ body {
 	transition: all 0.3s;
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	pointer-events: none;
+	z-index: 2;
 }
 
 .options * {
@@ -171,10 +171,18 @@ body {
 }
 
 .darkm {
-	color: white;
+	color: var(--active);
+	fill: var(--active);
+	.chargingIcon {
+		stroke: black;
+	}
 }
 .lightm {
-	color: black;
+	color: #212121;
+	fill: #212121;
+	.chargingIcon {
+		stroke: white;
+	}
 }
 .oc.oc-out {
 	rotate: 180deg;
