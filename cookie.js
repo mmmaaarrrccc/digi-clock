@@ -1,29 +1,53 @@
 //Dark Mode or Light Mode 
 //---Start---//
 $(document).ready(function(){
-	$("#dl-mode").click(function(){
+	let curMode = Cookies.get('darkMode');
+	if (curMode == undefined) {
+		Cookies.set('darkMode', 'true');
+		darkMode();
+	} else if (curMode == 'true') {
+		darkMode();
+    } else {
+		lightMode();
+    }
 
-		if ( $("#filter1").hasClass('f-active')) {
+    $("#dl-mode").click(function(){
 
-			$("#filter1").removeClass('f-active');
-			$("#dl-mode, #fs-mode").removeClass('light');
-			$("#dl-mode, #fs-mode").addClass('dark');
-			$("#sun").addClass('activemode');
-			$("#moon").removeClass('activemode');
-			$("#oc, #lock-btn, #main").addClass('darkm');
-			$("#oc, #lock-btn, #main").removeClass('lightm');
-
+		let curMode = Cookies.get('darkMode');
+		if ( curMode == 'true') {
+			Cookies.remove('darkMode', { path: '' })
+			lightMode();
+			Cookies.set('darkMode', 'false');
 		} else {
-			
-			$("#filter1").addClass('f-active');
-			$("#dl-mode, #fs-mode").addClass('light');
-			$("#dl-mode, #fs-mode").removeClass('dark');
-			$("#moon").addClass('activemode');	
-			$("#sun").removeClass('activemode');	
-			$("#oc, #lock-btn, #main").addClass('lightm');
-			$("#oc, #lock-btn, #main").removeClass('darkm');
+			Cookies.remove('darkMode', { path: '' })
+			darkMode();
+			Cookies.set('darkMode', 'true');
 		}
 
 	});
+
 });
+
+function darkMode() {
+
+	$("#filter1").removeClass('f-active');
+	$("#dl-mode, #fs-mode").removeClass('light');
+	$("#dl-mode, #fs-mode").addClass('dark');
+	$("#sun").addClass('activemode');
+	$("#moon").removeClass('activemode');
+	$("#oc, #lock-btn, #main").addClass('darkm');
+	$("#oc, #lock-btn, #main").removeClass('lightm');
+
+}
+function lightMode() {
+			
+	$("#filter1").addClass('f-active');
+	$("#dl-mode, #fs-mode").addClass('light');
+	$("#dl-mode, #fs-mode").removeClass('dark');
+	$("#moon").addClass('activemode');	
+	$("#sun").removeClass('activemode');	
+	$("#oc, #lock-btn, #main").addClass('lightm');
+	$("#oc, #lock-btn, #main").removeClass('darkm');
+
+}
 //---End---//
