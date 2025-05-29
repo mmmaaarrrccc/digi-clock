@@ -1,12 +1,9 @@
 //Dark Mode or Light Mode 
 //---Start---//
 $(document).ready(function(){
-  	console.log(navigator.cookieEnabled);
   if (navigator.cookieEnabled) {
-  	console.log('enabled');
     cookiesEnabled();
   } else {
-  	console.log('disabled');
     cookiesDisabled();
   }
 });
@@ -65,6 +62,4 @@ function lightMode() {
   $("#oc, #lock-btn, #main").addClass('lightm');
   $("#oc, #lock-btn, #main").removeClass('darkm');
 }
-
-console.log(Cookies.get('darkMode'));
 //---End---//
