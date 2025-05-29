@@ -91,7 +91,7 @@ $(document).ready(function(){
 function dinBrightness() {
 	document.getElementById('brightness').style.opacity = "0.8";
 	document.getElementById('options').style.opacity = "0";
-	document.getElementById('lock-btn').style.opacity = "0.2";
+	document.getElementById('lock-btn').style.opacity = "0.4";
 }
 
 function idleUnlock() {
