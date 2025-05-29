@@ -12,7 +12,7 @@ $(document).ready(function(){
 function cookiesEnabled() { 
   let curMode = Cookies.get('darkMode');
   if (curMode == undefined) {
-    Cookies.set('darkMode', 'true');
+    Cookies.set('darkMode', 'true', { expires: 365 });
     darkMode();
   } else if (curMode == 'true') {
     darkMode();
@@ -25,11 +25,11 @@ function cookiesEnabled() {
     if ( curMode == 'true') {
       Cookies.remove('darkMode', { path: '' })
       lightMode();
-      Cookies.set('darkMode', 'false');
+      Cookies.set('darkMode', 'false', { expires: 365 });
     } else {
       Cookies.remove('darkMode', { path: '' })
       darkMode();
-      Cookies.set('darkMode', 'true');
+      Cookies.set('darkMode', 'true', { expires: 365 });
     }
   });
 }
