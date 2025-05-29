@@ -1,7 +1,8 @@
 //Dark Mode or Light Mode 
 //---Start---//
 $(document).ready(function(){
-  if (navigator.cookieEnabled) {
+  let protocol = location.protocol;
+  if ( protocol != 'file:') {
     cookiesEnabled();
   } else {
     cookiesDisabled();
