@@ -2,9 +2,9 @@
 //---Start---//
 $(document).ready(function(){
   if (navigator.cookieEnabled == 'true') {
-    cookiesEnabled()
+    cookiesEnabled();
   } else {
-    cookiesDisabled()
+    cookiesDisabled();
   }
 });
 
