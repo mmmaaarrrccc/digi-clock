@@ -1,9 +1,12 @@
 //Dark Mode or Light Mode 
 //---Start---//
 $(document).ready(function(){
+  	console.log(navigator.cookieEnabled);
   if (navigator.cookieEnabled == 'true') {
+  	console.log('enabled');
     cookiesEnabled();
   } else {
+  	console.log('disabled');
     cookiesDisabled();
   }
 });
