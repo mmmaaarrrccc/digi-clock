@@ -28,7 +28,7 @@ $(document).ready(function(){
     function timerIncrement() {
         idleTime++;
         if (idleTime == 4) {
-        	dinBrightness();
+        	dimBrightness();
 			$("#dim").removeClass('activemode');
 			$("#bright").addClass('activemode');
 		    var idleCount = setInterval(checkScreenSize, 60000);
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	$('#lock-btn').click(function() {
 		if (lockMode == '0px') {
         	document.getElementById('screenlock').style.height = "100%";
-        	dinBrightness();
+        	dimBrightness();
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
@@ -88,7 +88,7 @@ $(document).ready(function(){
 
 });
 
-function dinBrightness() {
+function dimBrightness() {
 	document.getElementById('brightness').style.opacity = "0.8";
 	document.getElementById('options').style.opacity = "0";
 	document.getElementById('lock-btn').style.opacity = "0.4";
