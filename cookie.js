@@ -62,4 +62,6 @@ function lightMode() {
   $("#oc, #lock-btn, #main").addClass('lightm');
   $("#oc, #lock-btn, #main").removeClass('darkm');
 }
+
+console.log(Cookies.get('darkMode'));
 //---End---//
