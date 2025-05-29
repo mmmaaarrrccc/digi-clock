@@ -2,7 +2,7 @@
 //---Start---//
 $(document).ready(function(){
   	console.log(navigator.cookieEnabled);
-  if (navigator.cookieEnabled == 'true') {
+  if (navigator.cookieEnabled) {
   	console.log('enabled');
     cookiesEnabled();
   } else {
