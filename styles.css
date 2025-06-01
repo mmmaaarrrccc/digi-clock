@@ -124,7 +124,7 @@ body {
 
   &::after {
     content: attr(data-value);
-    visibility: visible;
+    visibility: hidden;
     white-space: pre-wrap;
     font-size: inherit;
     margin-top: -0.9em;
