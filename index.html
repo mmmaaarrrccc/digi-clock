@@ -12,7 +12,7 @@
 	<script src="cookie.js"></script>
 	<title>&lrm;</title>
 </head>
-<body onload="startTime()">
+<body onload="startClock()">
 <div class="main darkm" id="main">
 		<div class="week">
 			<div class="days">Sun</div>
@@ -32,7 +32,12 @@
 					<span id="am">AM</span>
 					<span id="pm">PM</span>
 				</div>
-				<div class="dates" id="dates"></div>
+				<div class="dates" id="dates">
+					<span class="comma">, </span>
+					<span id="month"></span>
+					<span id="day"></span>
+					<span id="year"></span>
+				</div>
 				<div class="battery">
 					<div class="batteryLevel"><span class="batteryPerc" id="batteryPerc"></span><span class="percentage">%</span></div>
 						<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
