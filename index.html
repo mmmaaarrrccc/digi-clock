@@ -13,7 +13,7 @@
 	<title>&lrm;</title>
 </head>
 <body onload="startClock()">
-<div class="main darkm" id="main">
+	<div class="main darkm" id="main">
 		<div class="week">
 			<div class="days">Sun</div>
 			<div class="days">Mon</div>
@@ -54,16 +54,21 @@
 						</svg>
 				</div>
 			</div>
-</div>
-<div class="filter filter1" id="filter1"></div>
-<div class="options" id="options" style="width: 50px">
-	<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
-	<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>	<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
-</div>
-<div class="pLock darkm" id="lock-btn">
-	<i class="fa-solid fa-lock-open activemode" id="lock"></i><i class="fa-solid fa-lock" id="ulock"></i>
-</div>
-<div class="brightness" id="brightness" style="opacity: 0;"></div>
-<div class="screenlock" id="screenlock" style="height: 0px;"></div>
+			<div class="nameSection">
+				<div class="nameContainer">
+					<input type="text" name="nameInput" id="nameInput" size="6" maxlength="12" placeholder="------" onInput="this.parentNode.dataset.value = this.value" spellcheck="false">
+				</div>
+			</div>
+	</div>
+	<div class="filter filter1" id="filter1"></div>
+	<div class="options" id="options" style="width: 50px">
+		<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
+		<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>	<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
+	</div>
+	<div class="pLock darkm" id="lock-btn">
+		<i class="fa-solid fa-lock-open activemode" id="lock"></i><i class="fa-solid fa-lock" id="ulock"></i>
+	</div>
+	<div class="brightness" id="brightness" style="opacity: 0;"></div>
+	<div class="screenlock" id="screenlock" style="height: 0px;"></div>
 </body>
 </html>
