@@ -75,6 +75,7 @@ function lightMode() {
 
 function nameInput() {
   let curVal = $('#nameInput').val();
+    console.log(curVal);
   Cookies.set('name', curVal, { expires: 365 });
     console.log(curVal);  
   // $(document).ready(function(){
