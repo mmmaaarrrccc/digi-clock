@@ -38,6 +38,7 @@ function cookiesEnabled() {
   if (name != undefined) {
     console.log(name);
     $('#nameInput').val(name);
+    $('#nameInput').attr('data-value', name);
   } else {
     console.log(name);    
   }
