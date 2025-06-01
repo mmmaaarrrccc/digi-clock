@@ -124,10 +124,19 @@ function checkScreenSize(){
         	document.getElementById('main').style.top = idleStart + "%";
 		}
         idleStart = idleStart + 2;
-	} else {
-        document.getElementById('main').style.top = 0;
 	}
 }
+
+$(document).ready(function(){
+  $(window).resize(function(){
+    if ($(window).width() > 1023) {
+        document.getElementById('main').style.top = 0;
+    } else if ($(window).width() < 1024) {
+        document.getElementById('main').style.top = "10%";    	
+    }
+  });
+});
+
 //---End---//
 
 
