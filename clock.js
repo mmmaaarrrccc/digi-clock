@@ -1,3 +1,8 @@
+function startClock() {
+	startTime();
+	currentMonth();
+}
+
 function startTime() {
 	const today = new Date();
 	let d = today.getDay();
@@ -23,7 +28,6 @@ function startTime() {
 	}
 	
 	setTimeout(startTime, 1000);
-	currentMonth();
 }
 
 function checkTime(i) {
@@ -51,9 +55,20 @@ function checkHour(g) {
 
 
 function currentMonth() {
-  const today = new Date();
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  let today = new Date();
+  let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const dateStr = `${months[today.getMonth()]} ${today.getDate()} ${today.getFullYear()}`;
-  document.getElementById('dates').innerHTML = dateStr;
+  let dateMonth = months[today.getMonth()];
+  let dateDay = today.getDate();
+  let dateYear = today.getFullYear();
+	dateDay = checkYear(dateDay);
+  document.getElementById('month').innerHTML = dateMonth;
+  document.getElementById('day').innerHTML = dateDay;
+  document.getElementById('year').innerHTML = dateYear;
+}
+
+
+function checkYear(d) {
+	if (d < 10) {d = "0" + d};
+	return d;
 }
