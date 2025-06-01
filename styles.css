@@ -26,12 +26,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: var(--gaps);
-  	font-family: DS-Digital;
-  	text-transform: uppercase;
-  	position: relative;
-  	transition: all 0.3s;
-  	top: 0px;
-  	z-index: 1;
+  font-family: DS-Digital;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s;
+  flex-wrap: wrap;
+  align-content: center;
+  z-index: 1;
 }
 .main > div {
 	padding-bottom: 20px;
@@ -86,18 +87,20 @@ body {
 	}
 	.dates {
 		font-size: 50px;
+		text-align: center;
+		width: 252px;
 	}
 	.battery {
 		display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    position: fixed;
-	    bottom: 20px;
-	    left: 0px;
-	    width: 100%;
-	    font-size: 24px;
-	    height: 50px;
-	    gap: 10px;
+	  align-items: center;
+	  justify-content: center;
+	  position: fixed;
+	  bottom: 20px;
+		left: 0px;
+		width: 100%;
+		font-size: 24px;
+		height: 50px;
+		gap: 10px;
 	}
 	.battery svg {
 		width: 30px;
@@ -106,6 +109,51 @@ body {
 	}
 }
 
+.nameSection {
+	text-align: center;
+	width: 100%;
+}
+
+.nameContainer {
+  display: inline-grid;
+  font-size: 50px;
+	padding: 0 40px;
+	border-bottom: 3px solid transparent;
+	transition: all 0.3s;
+	height: 1.2em;
+
+  &::after {
+    content: attr(data-value);
+    visibility: hidden;
+    white-space: pre-wrap;
+    font-size: inherit;
+    margin-top: -0.9em;
+    position: relative;
+  }
+}
+
+.nameContainer:has(input:focus) {
+	border-color: inherit;
+}
+
+.nameSection input {
+	background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  text-align: center;
+  width: auto;
+  cursor: default;
+  font-size: inherit;
+  border:none;
+  padding: 0;
+}
+.nameSection input::placeholder {
+	color: inherit;
+}
+
+.nameSection input:focus, .nameSection input:focus-visible {
+	outline: none !important;
+}
 .chargingIcon {    
 	stroke-width: 1.5px;
     opacity: 0;
@@ -120,8 +168,6 @@ body {
 .bci {
 	opacity: 0;
 }
-
-
 
 .filter {
 	position: fixed;
@@ -173,6 +219,12 @@ body {
 .darkm {
 	color: var(--active);
 	fill: var(--active);
+	border-color: var(--acive);
+
+	&::selection {
+		color: #010101;
+		background-color: var(--active);
+	}
 	.chargingIcon {
 		stroke: black;
 	}
@@ -180,6 +232,11 @@ body {
 .lightm {
 	color: #010101;
 	fill: #010101;
+
+	&::selection {
+		color: var(--active);
+		background-color: #010101;
+	}
 	.chargingIcon {
 		stroke: white;
 	}
@@ -302,7 +359,7 @@ body {
 		text-align: center;
 		height: auto !important;
 		padding-bottom: 0px !important;
-		padding-top: 16px !important;
+		padding-top: 10px !important;
 		width: 100%;
 		margin-bottom: -20px;
 		order: 1;
@@ -310,6 +367,7 @@ body {
 	.clock {
 		width: 100% !important;
 		margin-top: -20px !important;
+		font-size: 300px !important;
 	}
 	.deets {
 		width: auto !important;
@@ -326,9 +384,9 @@ body {
 		display: none !important;
 	}*/
 	.dates {
-		text-align: center;
+		width: auto !important;
 	}
-	.week, .dates {
+	.week, .dates, .nameContainer {
 		font-size: 40px !important;
 	}
 	.comma {
@@ -337,11 +395,10 @@ body {
 	#year, .seconds, .ampm, .days {
 		display: none !important;
 	}
-}
-
-@media only screen and (max-width: 1599px) {
-	.clock {
-		font-size: 300px !important;
+	.nameSection {
+		padding-bottom: 0px !important;
+		margin-bottom: -20px;
+		z-index: 2;
 	}
 }
 
@@ -351,6 +408,9 @@ body {
 	}
 	.time {
 		margin-bottom: 0px;
+	}
+	.nameSection {
+		margin-bottom: -10px;
 	}
 }
 
@@ -362,7 +422,7 @@ body {
 	.clock {
 		font-size: 120px !important;
 	}
-	.week, .dates {
+	.week, .dates, .nameContainer {
 		font-size: 30px !important;
 	}
 	.week, .deets {
@@ -376,6 +436,9 @@ body {
 	.battery svg {
 		width: 26px !important;
 		height: 26px !important;
+	}
+	.nameSection {
+		margin-bottom: 5px;
 	}
 }
 
