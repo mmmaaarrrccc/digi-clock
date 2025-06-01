@@ -38,7 +38,7 @@ function cookiesEnabled() {
   if (name != undefined) {
     console.log(name);
     $('#nameInput').val(name);
-    $('#nameInput').attr('data-value', name);
+    $('.nameContainer').attr('data-value', name);
   } else {
     console.log(name);    
   }
@@ -76,8 +76,10 @@ function lightMode() {
 
 function nameInput() {
   let curVal = $('#nameInput').val();
+  Cookies.remove('name', { path: '' })
   console.log(curVal);
   Cookies.set('name', curVal, { expires: 365 });
+  console.log(curVal);
   // $(document).ready(function(){
   //   $("input").on("input",function(){
     
