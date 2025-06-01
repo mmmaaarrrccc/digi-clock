@@ -274,16 +274,102 @@ body {
 	width: 100vw;
 	z-index: 10;
 }
+
+.comma {
+	display: none;
+}
+
+
+@media only screen and (max-width: 1599px) {
+	.main {
+		flex-direction: row;
+		gap: 0px !important;
+		padding-top: 0px !important;
+		align-content: center;
+		flex-wrap: wrap;
+	}
+	.week, .deets {
+		padding-bottom: 100px !important;
+	}
+	.week {
+		order: 2;
+	}
+	.days.active {
+		display: block !important;
+	}
+	.time {
+		flex-direction: column;
+		text-align: center;
+		height: auto !important;
+		padding-bottom: 0px !important;
+		padding-top: 16px !important;
+		width: 100%;
+		margin-bottom: -20px;
+		order: 1;
+	}
+	.clock {
+		width: 100% !important;
+		margin-top: -20px !important;
+	}
+	.deets {
+		width: auto !important;
+		align-items: center;
+		justify-content: center	!important;
+		order: 3;
+	}
+/*	.ampm {
+		margin-top: 5px !important;
+		font-size: 20px !important;
+		justify-content: center	!important;
+		gap: var(--gaps);
+		width: 100% !important;
+		display: none !important;
+	}*/
+	.dates {
+		text-align: center;
+	}
+	.week, .dates {
+		font-size: 40px !important;
+	}
+	.comma {
+		display: inline !important;
+	}
+	#year, .seconds, .ampm, .days {
+		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 1599px) {
+	.clock {
+		font-size: 300px !important;
+	}
+}
+
+@media only screen and (max-width: 1159px) {
+	.clock {
+		font-size: 200px !important;
+	}
+	.time {
+		margin-bottom: 0px;
+	}
+}
+
 @media only screen and (max-width: 1023px) {
 	.main {
 		top: 10%;
 		height: auto !important;
 	}
-	.main > .deets{
-		padding-bottom: 0px !important;
+	.clock {
+		font-size: 120px !important;
+	}
+	.week, .dates {
+		font-size: 30px !important;
+	}
+	.week, .deets {
+		padding-bottom: 70px !important;
 	}
 	.battery {
-		position: relative !important;
+		position: absolute !important;
 		gap: 5px !important;
 		font-size: 20px !important;
 	}
@@ -293,57 +379,11 @@ body {
 	}
 }
 
-@media only screen and (max-width: 1159px) {
-	.main {
-		flex-direction: column;
-		gap: 0px !important;
-		padding-top: 0px !important;
-	}
-	.main > .deets{
-		padding-bottom: 100px;
-	}
-	.week {
-		padding: 0px !important;
-		font-size: 25px !important;
-	}
-	.days {
-		display: none;
-	}
-	.days.active {
-		display: block;
-	}
-	.time {
-		flex-direction: column;
-		text-align: center;
-		height: auto !important;
-		padding-bottom: 0px !important;
-		padding-top: 16px !important;
-	}
+@media only screen and (max-width: 600px) {
 	.clock {
-		width: 100% !important;
-		margin-top: -20px !important;
 		font-size: 90px !important;
 	}
-	.deets {
-		width: 100% !important;
-		align-items: center;
-		justify-content: center	!important;
-	}
-	.seconds {
-		display: none;
-	}
-	.ampm {
-		margin-top: 5px !important;
-		font-size: 20px !important;
-		justify-content: center	!important;
-		gap: var(--gaps);
-		width: 100% !important;
-	}
-	.dates {
-		text-align: center;
-		width: 100% !important;
-		font-size: 30px !important;
-	}
+
 }
 
 @keyframes batterycharging {
