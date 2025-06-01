@@ -32,6 +32,12 @@ function cookiesEnabled() {
       Cookies.set('darkMode', 'true', { expires: 365 });
     }
   });
+
+  let name = Cookies.get('name');
+
+  if (name != undefined) {
+    $('#nameInput').val(name);
+  }
 }
 
 function cookiesDisabled() {
@@ -62,5 +68,17 @@ function lightMode() {
   $("#sun").removeClass('activemode');  
   $("#oc, #lock-btn, #main").addClass('lightm');
   $("#oc, #lock-btn, #main").removeClass('darkm');
+}
+
+function nameInput() {
+  let curVal = $('#nameInput').val();
+  Cookies.set('name', curVal, { expires: 365 });
+  // $(document).ready(function(){
+  //   $("input").on("input",function(){
+    
+  //     $('#test').html($('input').val());
+  //     //($('input').val());
+  //   });
+  // });
 }
 //---End---//
