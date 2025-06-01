@@ -36,7 +36,10 @@ function cookiesEnabled() {
   let name = Cookies.get('name');
 
   if (name != undefined) {
+    console.log(name);
     $('#nameInput').val(name);
+  } else {
+    console.log(name);    
   }
 }
 
@@ -73,6 +76,7 @@ function lightMode() {
 function nameInput() {
   let curVal = $('#nameInput').val();
   Cookies.set('name', curVal, { expires: 365 });
+    console.log(curVal);  
   // $(document).ready(function(){
   //   $("input").on("input",function(){
     
