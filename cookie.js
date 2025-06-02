@@ -43,7 +43,7 @@ function cookiesEnabled() {
 
 function cookiesDisabled() {
   $("#dl-mode").click(function(){
-    if ( $("#filter1").hasClass('f-active')) {
+    if ( $("#overlay").hasClass('o-active')) {
       darkMode();
     } else {
       lightMode();
@@ -52,7 +52,7 @@ function cookiesDisabled() {
 }
 
 function darkMode() {
-  $("#filter1").removeClass('f-active');
+  $("#overlay").removeClass('o-active');
   $("#dl-mode, #fs-mode").removeClass('light');
   $("#dl-mode, #fs-mode").addClass('dark');
   $("#sun").addClass('activemode');
@@ -62,7 +62,7 @@ function darkMode() {
 }
 
 function lightMode() {
-  $("#filter1").addClass('f-active');
+  $("#overlay").addClass('o-active');
   $("#dl-mode, #fs-mode").addClass('light');
   $("#dl-mode, #fs-mode").removeClass('dark');
   $("#moon").addClass('activemode');  
@@ -75,5 +75,5 @@ function nameInput() {
   let curVal = $('#nameInput').val();
   Cookies.remove('name', { path: '' })
   Cookies.set('name', curVal, { expires: 365 });
-}
+} 
 //---End---//
