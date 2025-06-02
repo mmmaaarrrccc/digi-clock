@@ -186,7 +186,7 @@ body {
 	height: 100vh;
 	width: 100vw;
 	transition: all 0.8s;
-	opacity: 0;
+	opacity: 1;
 	z-index: 0;
 }
 .overlay.o-active {
@@ -379,14 +379,6 @@ body {
 		justify-content: center	!important;
 		order: 3;
 	}
-/*	.ampm {
-		margin-top: 5px !important;
-		font-size: 20px !important;
-		justify-content: center	!important;
-		gap: var(--gaps);
-		width: 100% !important;
-		display: none !important;
-	}*/
 	.dates {
 		width: auto !important;
 	}
