@@ -1,6 +1,7 @@
 :root {
 	--active:#ddd;
-	--inactive: #434343;
+	--inactiveDm: #434343;
+	--inactiveLm: #434343;
 	--def: 0.3;
 	--gaps: 20px;
 }
