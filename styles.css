@@ -33,7 +33,7 @@ body {
   font-family: DS-Digital;
   text-transform: uppercase;
   position: relative;
-  transition: all 0.3s;
+  transition: all 1s;
   flex-wrap: wrap;
   align-content: center;
   z-index: 1;
