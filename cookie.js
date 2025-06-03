@@ -87,22 +87,23 @@ function nameInput() {
 }
 
 $(document).ready(function(){
+
+  //---Background Image
   $("#bgImage").change(function(){
   let bgImage = $("#bgImage").val();
     Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
   });
-}); 
 
-$(document).ready(function(){
+  //---Clear Background Image
   $("#clearBg").click(function(){
     $("#bgImage").val('');
     Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','none');
     Cookies.set('backgroundImage', '', { expires: 365 });
   });
-});
+}); 
 
 $(document).ready(function(){
   $("#bgSize").change(function(){
