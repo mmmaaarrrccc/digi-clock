@@ -126,13 +126,12 @@ $(document).ready(function(){
     $('body').css('background-size',bgSize);
   });
 
-}); 
-
-$(document).ready(function(){
+  //---Background Position
   $("#bgPosition").change(function(){
-  let bgPosition = $("#bgPosition").val();
+    let bgPosition = $("#bgPosition").val();
     $('body').css('background-position',bgPosition);
   });
+
 }); 
 
 $(document).ready(function(){
