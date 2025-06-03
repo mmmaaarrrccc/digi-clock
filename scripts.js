@@ -85,6 +85,14 @@ $(document).ready(function(){
         	timerIncrement();
 		}
 	});
+	$(this).on('click', function(e){
+		if (lockMode == '0px') {
+			idleUnlock();
+		} else {
+			idleLock()
+        	timerIncrement();
+		}
+	});
 
 });
 
