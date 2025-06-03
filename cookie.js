@@ -143,6 +143,7 @@ $(document).ready(function(){
 
   $('#fileImage').focus(function () {
     Cookies.remove('backgroundImage', { path: '' });
+      console.log(Cookies.get('backgroundImage'));
   });
 
   $('#fileImage').change(function () {
