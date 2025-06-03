@@ -44,6 +44,7 @@ function cookiesEnabled() {
 
   if (backgroundImage != undefined) {
     $('#bgImage').val(backgroundImage);
+    $('body').css('background-image','url(' + backgroundImage + ')');
   }
 }
 
