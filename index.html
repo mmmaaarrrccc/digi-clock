@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#319197">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="styles.css">
@@ -63,12 +64,58 @@
 	<div class="overlay" id="overlay"></div>
 	<div class="options" id="options" style="width: 50px">
 		<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
-		<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>	<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
+		<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>
+		<button class="btn-mode dark" id="toggleBGSettings"><i class="fa-regular fa-image activemode"></i></button>
+		<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
 	</div>
 	<div class="pLock darkm" id="lock-btn">
 		<i class="fa-solid fa-lock-open activemode" id="lock"></i><i class="fa-solid fa-lock" id="ulock"></i>
 	</div>
 	<div class="brightness" id="brightness" style="opacity: 0;"></div>
 	<div class="screenlock" id="screenlock" style="height: 0px;"></div>
+	<div class="bgSettings" id="bgSettings" style="display: none;">
+		<div class="backgroundImage">
+			<p>Background Image:</p>
+			<input type="text" name="bgImage" id="bgImage">
+			<span class="clearBg" id="clearBg"><i class="fa-solid fa-xmark"></i></span>
+		</div>
+		<div class="backgroundSize">
+			<p>Background Size</p>
+			<select name="bgSize" id="bgSize">
+				<option value="cover" selected>Cover</option>
+				<option value="auto">Auto</option>
+				<option value="contain">Contain</option>
+			</select>
+		</div>
+		<div class="backgroundPosition">
+			<p>Background Position</p>
+			<select name="bgPosition" id="bgPosition">
+				<option value="center center" selected>Center Center</option>
+				<option value="center left">Center left</option>
+				<option value="center right">Center Right</option>
+				<option value="top center">Top Center</option>
+				<option value="top left">Top Left</option>
+				<option value="top right">Top Right</option>
+				<option value="bottom center">Bottom Center</option>
+				<option value="bottom left">Bottom Left</option>
+				<option value="bottom right">Bottom Right</option>
+			</select>
+		</div>
+		<div class="backgroundRepeat">
+			<p>Background Repeat</p>
+			<select name="bgRepeat" id="bgRepeat">
+				<option value="no-repeat" selected>No-Repeat</option>
+				<option value="repeat">Repeat</option>
+				<option value="repeat-x">Repeat-x</option>
+				<option value="repeat-y">Repeat-y</option>
+			</select>
+		</div>
+		<div class="overlayOpacity">
+			<p>Overlay Opacity</p>
+			<input type="range" name="olOpacity" id="olOpacity" min="0.4" max="0.9" step="0.01" value="0.8">
+			<span class="opacityVal" id="opacityVal"></span>
+		</div>
+		<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
+	</div>
 </body>
 </html>
