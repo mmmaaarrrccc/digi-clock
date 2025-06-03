@@ -185,6 +185,9 @@ $('#options').ready(function(){
 	$(this).on('tap', function(e){
         idle = 0;
 	});
+	$(this).on('click', function(e){
+        idle = 0;
+	});
 });
 
 function closeOptions() {
