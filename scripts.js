@@ -295,13 +295,6 @@ $('#bgSettings').ready(function(){
 });
 
 $(document).ready(function(){
-  $("#clearBg").click(function(){
-  	$("#bgImage").val('');
-    $('body').css('background-image','none');
-  });
-});
-
-$(document).ready(function(){
 	var r = document.querySelector(':root');
 	const min = $('#olOpacity').attr('min');
 	const max = $('#olOpacity').attr('max');
