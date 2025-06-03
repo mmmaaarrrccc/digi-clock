@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
 :root {
-	--active:#ddd;
-	--inactiveDm: #434343;
-	--inactiveLm: #434343;
+	--activeDm:#ddd;
+	--activeLm:#010101;
+	--inactiveDm: #5a5a5a;
+	--inactiveLm: #7a7a7a;
 	--def: 0.3;
 	--gaps: 20px;
+	--sliderbgDm: linear-gradient(to right, white 0%, black 0%);
+	--sliderbgLm: linear-gradient(to right, black 0%, white 0%);
 }
 /*.main div{
 	border: dashed 2px red;
@@ -34,7 +39,7 @@ body {
   font-family: DS-Digital;
   text-transform: uppercase;
   position: relative;
-  transition: all 1s;
+  transition: all 0.3s;
   flex-wrap: wrap;
   align-content: center;
   z-index: 1;
@@ -44,18 +49,28 @@ body {
 }
 
 
-.active {
-	opacity: 1 !important;
+.darkm .active {
+	color: var(--activeDm) !important;
+}
+.lightm .active {
+	color: var(--activeLm) !important;
 }
 
 .week {
 	padding-left: 3px;
 	font-size: 43px;
-	.days {
-		opacity: var(--def);
-		margin: 5px;
-	}
 }
+.days {
+	margin: 5px;
+	transition: all 1s;
+}
+.darkm .days {
+	color: var(--inactiveDm);
+}
+.lightm .days {
+	color: var(--inactiveLm);
+}
+
 .time {
 	display: flex;
 	height: 320px;
@@ -87,11 +102,8 @@ body {
 	  width: 255px;
 	  margin-bottom: -7px;
 		text-align: center;
-	    span {
-				opacity: var(--def);
-	    }
 	}
-	.dates {
+		.dates {
 		font-size: 49px;
 		text-align: center;
 		width: 256px;
@@ -113,6 +125,18 @@ body {
 		height: 30px;
 		margin-top: 1px;
 	}
+}
+
+.ampm span {
+	transition: all 1s;
+}
+
+.darkm .ampm span {
+	color: var(--inactiveDm);
+}
+
+.lightm .ampm span {
+	color: var(--inactiveLm);
 }
 
 .nameSection {
@@ -187,9 +211,10 @@ body {
 	height: 100vh;
 	width: 100vw;
 	transition: all 0.8s;
-	opacity: 1;
+	opacity: 0.8;
 	z-index: 0;
 }
+
 .overlay.o-active {
   background-position: top center;
 }
@@ -223,13 +248,13 @@ body {
 }
 
 .darkm {
-	color: var(--active);
-	fill: var(--active);
+	color: var(--activeDm);
+	fill: var(--activeDm);
 	border-color: var(--acive);
 
 	&::selection {
 		color: #010101;
-		background-color: var(--active);
+		background-color: var(--activeDm);
 	}
 	.chargingIcon {
 		stroke: black;
@@ -240,7 +265,7 @@ body {
 	fill: #010101;
 
 	&::selection {
-		color: var(--active);
+		color: var(--activeDm);
 		background-color: #010101;
 	}
 	.chargingIcon {
@@ -255,15 +280,16 @@ body {
 	cursor: pointer;
 	height: 50px;
 	width: 50px;
-    min-width: 50px;
+  min-width: 50px;
 	background: none;
 	border-radius: 50px;
 	border-width: 2px;
 	border-style: solid;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
     i {
     	transition: all 0.3s;
     	opacity: 0;
@@ -274,6 +300,9 @@ body {
 		font-size: 20px !important;
     	line-height: 30px ;
     }
+}
+.btn-mode:focus, .btn-mode:focus-visible, .btn-mode:active, {
+	outline: none;
 }
 
 .btn-mode.dark {
@@ -342,6 +371,181 @@ body {
 	display: none;
 }
 
+.bgSettings {
+	width: 80%;
+	height: auto;
+	max-width: 600px;
+	max-height: 600px;
+	border-style: solid;
+	border-width: 2px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50%);
+	z-index: 9;
+	padding: 40px;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6em;
+	backdrop-filter: blur(10px);
+}
+
+.bgSettings *:not(span, p, i, div) {
+	font: inherit;
+	text-transform: uppercase;
+  letter-spacing: 5px;
+	color: inherit;
+	background-color: transparent;
+	border: none;
+	border-bottom-style: solid;
+	border-bottom-size: 2px;
+	border-bottom-color: inherit;
+	width: 100%;
+	padding: 12px 0;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+
+.bgSettings input[type=range] {
+	width: calc(100% - 80px);
+	margin-bottom: 0px;
+	-webkit-appearance: none;
+  -webkit-transition: .2s;
+	border: 0;
+	height: 3px;
+	padding: 0px;
+	margin-top: 10px;
+}
+
+.bgSettings input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border-style: solid;
+  border-size: 2px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+.bgSettings p {
+	margin: 0;
+}
+
+.bgSettings :focus, .bgSettings :focus-visible {
+	outline: none;
+}
+.backgroundImage {
+	position: relative;
+}
+.backgroundImage input {
+	padding-right: 40px;
+}
+.backgroundImage .clearBg {
+	position: absolute;
+	bottom: 2.15em;
+	right: -3px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	text-align: right;
+	font-size: 14px;
+}
+.overlayOpacity {
+	display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeBtn {
+	position: absolute;
+	top: 21px;
+	right: 20px;
+	color: inherit;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
+	border: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	transition: all 0.3s;
+	border-radius: 50%;
+}
+.closeBtn i {
+	width: 11px;
+	height: 11px;
+	line-height: 11px;
+	margin-top: 2.5px;
+	margin-right: 1px;
+}
+
+.darkm ~ .bgSettings .closeBtn:hover {
+	background-color: white;
+	color: black;
+}
+
+.lightm ~ .bgSettings .closeBtn:hover {
+	background-color: black;
+	color: white;
+}
+
+.darkm ~ .bgSettings {
+	background-color: rgba(0,0,0,0.8);	
+	border-color: white;
+	color: var(--activeDm) !important;
+}
+
+.lightm ~ .bgSettings {
+	background-color: rgba(255,255,255,0.8);	
+	border-color: black;
+	color: var(--activeLm);
+}
+
+.darkm ~ .bgSettings input[type=range] {
+	background: white;
+}
+
+.lightm ~ .bgSettings input[type=range] {
+	background: black;
+}
+
+.darkm ~ .bgSettings input[type=range]::-webkit-slider-thumb {
+  background-image: var(--sliderbgDm);
+  border-color: white;
+}
+
+.lightm ~ .bgSettings input[type=range]::-webkit-slider-thumb {
+  background-image: var(--sliderbgLm);
+  border-color: black;
+}
+
+.darkm ~ .bgSettings option {
+	background-color: black;
+}
+
+.lightm ~ .bgSettings option {
+	background-color: white;
+}
+
+.darkm ~ .bgSettings select:focus option:checked {
+	background-color: white;
+	color: black;	
+}
+
+.lightm ~ .bgSettings select:focus option:checked {
+	background-color: black;
+	color: white;	
+}
+
 @media only screen and (max-width: 1599px) {
 	.main {
 		flex-direction: row;
@@ -380,6 +584,14 @@ body {
 		justify-content: center	!important;
 		order: 3;
 	}
+/*	.ampm {
+		margin-top: 5px !important;
+		font-size: 20px !important;
+		justify-content: center	!important;
+		gap: var(--gaps);
+		width: 100% !important;
+		display: none !important;
+	}*/
 	.dates {
 		width: auto !important;
 	}
