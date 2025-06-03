@@ -142,7 +142,7 @@ $(document).ready(function(){
   });
 
   $('#fileImage').focus(function () {
-    Cookies.remove('backgroundImage', { path: '' });
+    Cookies.remove('backgroundImage');
       console.log(Cookies.get('backgroundImage'));
   });
 
