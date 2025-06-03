@@ -165,7 +165,8 @@ $(document).ready(function(){
     }
     reader.onloadend = function () {
       $('#bgImage').val(reader.result);
-      var bg = $('#bgImage').val();
+      var bg = reader.result;
+      console.log(bg);
       $('body').css('background-image', 'url("' + bg + '")');
       Cookies.set('backgroundImage', bg, { expires: 365 });
       console.log(Cookies.get('backgroundImage'));
