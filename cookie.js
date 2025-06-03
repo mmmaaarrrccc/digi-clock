@@ -132,14 +132,13 @@ $(document).ready(function(){
     $('body').css('background-position',bgPosition);
   });
 
-}); 
-
-$(document).ready(function(){
+  //---Background Repeat
   $("#bgRepeat").change(function(){
-  let bgRepeat = $("#bgRepeat").val();
+    let bgRepeat = $("#bgRepeat").val();
     $('body').css('background-repeat',bgRepeat);
   });
-}); 
+
+});  
 
 $(document).ready(function(){
   let olOpacity = $("#olOpacity").val();
