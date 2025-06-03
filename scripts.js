@@ -89,7 +89,7 @@ $(document).ready(function(){
 });
 
 function dimBrightness() {
-	document.getElementById('brightness').style.opacity = "0.8";
+	document.getElementById('brightness').style.opacity = "0.6";
 	document.getElementById('options').style.opacity = "0";
 	let lockBtn = $('#lock-btn');
 	if (lockBtn.hasClass('darkm')) {
