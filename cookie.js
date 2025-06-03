@@ -132,46 +132,11 @@ function nameInput() {
 $(document).ready(function(){
 
   //---Background Image
-  $("#bgImage").focus(function(){
-    Cookies.remove('backgroundImage', { path: '' });
-  });
-  $("#bgImage").blur(function(){
+  $("#bgImage").change(function(){
     let bgImage = $("#bgImage").val();
+    Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
-  });
-
-  $('#fileImage').focus(function () {
-    Cookies.remove('backgroundImage');
-      console.log(Cookies.get('backgroundImage'));
-  });
-
-  $('#fileImage').change(function () {
-    var file = this.files[0];
-    var reader = new FileReader();
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-    reader.onloadend = function () {
-      $('#bgImage').val(reader.result);
-      var bg = $('#bgImage').val();
-    }
-  });
-
-  $('#fileImage').blur(function () {
-    var file = this.files[0];
-    var reader = new FileReader();
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-    reader.onloadend = function () {
-      $('#bgImage').val(reader.result);
-      var bg = reader.result;
-      console.log(bg);
-      $('body').css('background-image', 'url("' + bg + '")');
-      Cookies.set('backgroundImage', bg, { expires: 365 });
-      console.log(Cookies.get('backgroundImage'));
-    }
   });
 
   //---Clear Background Image
@@ -217,6 +182,21 @@ $(document).ready(function(){
     olOpacity = $("#olOpacity").val();
     Cookies.remove('overlayOpacity', { path: '' });
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
+  });
+
+  $('#fileImage').change(function () {
+    var file = this.files[0];
+    var reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    reader.onloadend = function () {
+      $('#bgImage').val(reader.result);
+      var bg = $('#bgImage').val();
+      Cookies.remove('backgroundImage', { path: '' });
+      $('body').css('background-image', 'url("' + bg + '")');
+      Cookies.set('backgroundImage', bg, { expires: 365 });
+    }
   });
 });  
 //---End---//
