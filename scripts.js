@@ -301,6 +301,9 @@ $('#bgSettings').ready(function(){
 	$(this).on('tap', function(e){
         idleBg = 0;
 	});
+	$(this).on('click', function(e){
+        idleBg = 0;
+	});
 	$(this).on('scroll', function(e){
         idleBg = 0;
 	});
