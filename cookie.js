@@ -96,6 +96,14 @@ $(document).ready(function(){
 }); 
 
 $(document).ready(function(){
+  $("#clearBg").click(function(){
+    $("#bgImage").val('');
+    Cookies.remove('backgroundImage', { path: '' })
+    $('body').css('background-image','none');
+  });
+});
+
+$(document).ready(function(){
   $("#bgSize").change(function(){
   let bgSize = $("#bgSize").val();
     $('body').css('background-size',bgSize);
