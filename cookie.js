@@ -70,6 +70,15 @@ function cookiesEnabled() {
   } else {
     $('body').css('background-repeat','no-repeat');    
   }
+
+  let overlayOpacity = Cookies.get('overlayOpacity');
+  if (overlayOpacity != undefined) {
+    $('#olOpacity').val(overlayOpacity);
+    $('.overlay').css('opacity',overlayOpacity);
+  } else {
+    $('#olOpacity').val('0.8');
+    $('.overlay').css('opacity','0.8');    
+  }
 }
 
 function cookiesDisabled() {
@@ -156,10 +165,16 @@ $(document).ready(function(){
   let olOpacity = $("#olOpacity").val();
   $('#opacityVal').html(olOpacity);
 
-  $("#olOpacity").on('input',function(){
+  $("#olOpacity").change(function(){
+    $("#olOpacity").on('input',function(){
+      olOpacity = $("#olOpacity").val();
+      $('.overlay').css('opacity', olOpacity);
+      $('#opacityVal').html(olOpacity);
+    });
+
     olOpacity = $("#olOpacity").val();
-    $('.overlay').css('opacity', olOpacity);
-    $('#opacityVal').html(olOpacity);
-  });
+    Cookies.remove('overlayOpacity', { path: '' });
+    Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
+   });
 });  
 //---End---//
