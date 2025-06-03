@@ -288,6 +288,7 @@ $('#bgSettings').ready(function(){
     		$("#bgSettings").hide(300);
 		    idleBg = 0;
 	    }
+        console.log(idleBg);
     }
     $(this).mousemove(function(e){
         idleBg = 0;
@@ -301,8 +302,16 @@ $('#bgSettings').ready(function(){
 	$(this).on('scroll', function(e){
         idleBg = 0;
 	});
+	$('.bgSettingsContainer').on('scroll', function(e){
+        idleBg = 0;
+        console.log(idleBg);
+	});
 	$(this).on('swipe', function(e){
         idleBg = 0;
+	});
+	$('.bgSettingsContainer').on('swipe', function(e){
+        idleBg = 0;
+        console.log(idleBg);
 	});
 });
 
