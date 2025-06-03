@@ -72,14 +72,25 @@ function cookiesEnabled() {
   }
 
   let overlayOpacity = Cookies.get('overlayOpacity');
+  var r = document.querySelector(':root');
+  const min = $('#olOpacity').attr('min');
+  const max = $('#olOpacity').attr('max');
+
   if (overlayOpacity != undefined) {
     $('#olOpacity').val(overlayOpacity);
     $('.overlay').css('opacity',overlayOpacity);
     $('#opacityVal').html(overlayOpacity);
+
+    var percentage = ((overlayOpacity - min) / (max - min)) * 100;
+
+    r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
+    r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
   } else {
     $('#olOpacity').val('0.8');
     $('.overlay').css('opacity','0.8');  
     $('#opacityVal').html('0.8');  
+    r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white 80%, black 80%)');
+    r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black 80%, white 80%)');
   }
 }
 
