@@ -23,11 +23,11 @@ function cookiesEnabled() {
   $("#dl-mode").click(function(){
     let curMode = Cookies.get('darkMode');
     if ( curMode == 'true') {
-      Cookies.remove('darkMode', { path: '' })
+      Cookies.remove('darkMode', { path: '' });
       lightMode();
       Cookies.set('darkMode', 'false', { expires: 365 });
     } else {
-      Cookies.remove('darkMode', { path: '' })
+      Cookies.remove('darkMode', { path: '' });
       darkMode();
       Cookies.set('darkMode', 'true', { expires: 365 });
     }
@@ -82,14 +82,14 @@ function lightMode() {
 
 function nameInput() {
   let curVal = $('#nameInput').val();
-  Cookies.remove('name', { path: '' })
+  Cookies.remove('name', { path: '' });
   Cookies.set('name', curVal, { expires: 365 });
 }
 
 $(document).ready(function(){
   $("#bgImage").change(function(){
   let bgImage = $("#bgImage").val();
-    Cookies.remove('backgroundImage', { path: '' })
+    Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
   });
@@ -98,7 +98,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#clearBg").click(function(){
     $("#bgImage").val('');
-    Cookies.remove('backgroundImage', { path: '' })
+    Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','none');
   });
 });
