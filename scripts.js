@@ -321,9 +321,12 @@ $('#bgSettings').ready(function(){
 });
 
 $(document).ready(function(){
+	var r = document.querySelector(':root');
+	const min = $('#olOpacity').attr('min');
+	const max = $('#olOpacity').attr('max');
 	$('#olOpacity').on('input', function(){
-		opacity = $('#olOpacity').val();
-		percentage = ((opacity - min) / (max - min)) * 100;
+		var opacity = $('#olOpacity').val();
+		var percentage = ((opacity - min) / (max - min)) * 100;
 		r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
 		r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
 	});
