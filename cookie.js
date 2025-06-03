@@ -146,9 +146,7 @@ $(document).ready(function(){
     $('body').css('background-repeat',bgRepeat);
   });
 
-});  
-
-$(document).ready(function(){
+  //---Overlay Opacity
   let olOpacity = $("#olOpacity").val();
   $('#opacityVal').html(olOpacity);
   $("#olOpacity").on('input',function(){
@@ -156,5 +154,5 @@ $(document).ready(function(){
     $('.overlay').css('opacity', olOpacity);
     $('#opacityVal').html(olOpacity);
   });
-}); 
+});  
 //---End---//
