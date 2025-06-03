@@ -54,6 +54,14 @@ function cookiesEnabled() {
   } else {
     $('body').css('background-size','cover');    
   }
+
+  let backgroundPosition = Cookies.get('backgroundPosition');
+  if (backgroundPosition != undefined) {
+    $('#bgPosition').val(backgroundPosition);
+    $('body').css('background-position','url(' + backgroundPosition + ')');
+  } else {
+    $('body').css('background-position','center center');    
+  }
 }
 
 function cookiesDisabled() {
