@@ -162,8 +162,6 @@ $(document).ready(function(){
   });
 
   //---Overlay Opacity
-  let olOpacity = $("#olOpacity").val();
-  $('#opacityVal').html(olOpacity);
 
   $("#olOpacity").change(function(){
     $("#olOpacity").on('input',function(){
