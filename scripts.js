@@ -149,7 +149,7 @@ $(document).ready(function(){
 		if ( optWidth > 50) {
         	closeOptions();
 		} else {
-        	document.getElementById('options').style.width = "155px";
+        	document.getElementById('options').style.width = "220px";
 			$("#oc").addClass('oc-out');
 		}
 
@@ -254,4 +254,67 @@ $(document).ready(function() {
 		}
 	});
 });
+
 //---End---//
+
+$(document).ready(function(){
+  $("#toggleBGSettings").click(function(){
+  	let bgSettings = $("#bgSettings");
+  	if (bgSettings.css('display') == 'none') {
+  		$("#bgSettings").show(300);
+  	} else {
+    	$("#bgSettings").hide(300);
+  	}
+  });
+  $("#closeBtn").click(function(){
+    $("#bgSettings").hide(300);
+  });
+});
+
+$(document).mouseup(function(e) {
+    var container = $("#bgSettings");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+    	$("#bgSettings").hide(300);
+    }
+});
+
+$('#bgSettings').ready(function(){
+    idleBg = 0;  
+    var idleInterval = setInterval(timer, 1000);
+
+    function timer() {
+	    idleBg++;
+	    if (idleBg == 10) {
+    		$("#bgSettings").hide(300);
+		    idleBg = 0;
+	    }
+    }
+    $(this).mousemove(function(e){
+        idleBg = 0;
+	});
+});
+
+$(document).ready(function(){
+  $("#clearBg").click(function(){
+  	$("#bgImage").val('');
+    $('body').css('background-image','none');
+  });
+});
+
+$(document).ready(function(){
+	var r = document.querySelector(':root');
+	const min = $('#olOpacity').attr('min');
+	const max = $('#olOpacity').attr('max');
+	var opacity = $('#olOpacity').val();
+	var percentage = ((opacity - min) / (max - min)) * 100;
+
+	r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
+	r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
+
+	$('#olOpacity').on('input', function(){
+		opacity = $('#olOpacity').val();
+		percentage = ((opacity - min) / (max - min)) * 100;
+		r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
+		r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
+	});
+});
