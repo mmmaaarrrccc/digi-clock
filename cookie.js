@@ -44,7 +44,7 @@ function cookiesEnabled() {
     $('#bgImage').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
   } else {
-    $('body').css('background-image','none');    
+    $('body').css('background-image','none');   
   }
 
   let backgroundSize = Cookies.get('backgroundSize');
@@ -68,7 +68,7 @@ function cookiesEnabled() {
     $('#bgRepeat').val(backgroundRepeat);
     $('body').css('background-repeat',backgroundRepeat);
   } else {
-    $('body').css('background-repeat','no-repeat');    
+    $('body').css('background-repeat','no-repeat');
   }
 
   let overlayOpacity = Cookies.get('overlayOpacity');
@@ -91,6 +91,14 @@ function cookiesDisabled() {
       lightMode();
     }
   });
+
+  $('body').css('background-image','none'); 
+  $('body').css('background-size','cover');  
+  $('body').css('background-position','center center'); 
+  $('body').css('background-repeat','no-repeat');
+  $('#olOpacity').val('0.8');
+  $('.overlay').css('opacity','0.8');  
+  $('#opacityVal').html('0.8');  
 }
 
 function darkMode() {
