@@ -23,11 +23,11 @@ function cookiesEnabled() {
   $("#dl-mode").click(function(){
     let curMode = Cookies.get('darkMode');
     if ( curMode == 'true') {
-      Cookies.remove('darkMode', { path: '' });
+      Cookies.remove('darkMode');
       lightMode();
       Cookies.set('darkMode', 'false', { expires: 365 });
     } else {
-      Cookies.remove('darkMode', { path: '' });
+      Cookies.remove('darkMode');
       darkMode();
       Cookies.set('darkMode', 'true', { expires: 365 });
     }
@@ -125,7 +125,7 @@ function lightMode() {
 
 function nameInput() {
   let curVal = $('#nameInput').val();
-  Cookies.remove('name', { path: '' });
+  Cookies.remove('name');
   Cookies.set('name', curVal, { expires: 365 });
 }
 
@@ -134,7 +134,7 @@ $(document).ready(function(){
   //---Background Image
   $("#bgImage").change(function(){
     let bgImage = $("#bgImage").val();
-    Cookies.remove('backgroundImage', { path: '' });
+    Cookies.remove('backgroundImage');
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
   });
@@ -142,7 +142,7 @@ $(document).ready(function(){
   //---Clear Background Image
   $("#clearBg").click(function(){
     $("#bgImage").val('');
-    Cookies.remove('backgroundImage', { path: '' });
+    Cookies.remove('backgroundImage');
     $('body').css('background-image','none');
     Cookies.set('backgroundImage', '', { expires: 365 });
   });
@@ -150,7 +150,7 @@ $(document).ready(function(){
   //---Background Size
   $("#bgSize").change(function(){
     let bgSize = $("#bgSize").val();
-    Cookies.remove('backgroundSize', { path: '' });
+    Cookies.remove('backgroundSize');
     $('body').css('background-size',bgSize);
     Cookies.set('backgroundSize', bgSize, { expires: 365 });
   });
@@ -158,7 +158,7 @@ $(document).ready(function(){
   //---Background Position
   $("#bgPosition").change(function(){
     let bgPosition = $("#bgPosition").val();
-    Cookies.remove('backgroundPosition', { path: '' });
+    Cookies.remove('backgroundPosition');
     $('body').css('background-position',bgPosition);
     Cookies.set('backgroundPosition', bgPosition, { expires: 365 });
   });
@@ -166,7 +166,7 @@ $(document).ready(function(){
   //---Background Repeat
   $("#bgRepeat").change(function(){
     let bgRepeat = $("#bgRepeat").val();
-    Cookies.remove('backgroundRepeat', { path: '' });
+    Cookies.remove('backgroundRepeat');
     $('body').css('background-repeat',bgRepeat);
     Cookies.set('backgroundRepeat', bgRepeat, { expires: 365 });
   });
@@ -180,7 +180,7 @@ $(document).ready(function(){
 
   $("#olOpacity").change(function(){
     olOpacity = $("#olOpacity").val();
-    Cookies.remove('overlayOpacity', { path: '' });
+    Cookies.remove('overlayOpacity');
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
   });
 
@@ -193,9 +193,7 @@ $(document).ready(function(){
     reader.onloadend = function () {
       $('#bgImage').val(reader.result);
       var bg = $('#bgImage').val();
-      Cookies.remove('backgroundImage', { path: '' });
       $('body').css('background-image', 'url("' + bg + '")');
-      Cookies.set('backgroundImage', bg, { expires: 365 });
     }
   });
 });  
