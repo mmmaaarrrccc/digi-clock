@@ -100,6 +100,7 @@ $(document).ready(function(){
     $("#bgImage").val('');
     Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','none');
+    Cookies.set('backgroundImage', '', { expires: 365 });
   });
 });
 
