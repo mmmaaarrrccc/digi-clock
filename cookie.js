@@ -149,8 +149,9 @@ $(document).ready(function(){
   //---Overlay Opacity
   let olOpacity = $("#olOpacity").val();
   $('#opacityVal').html(olOpacity);
+  
   $("#olOpacity").on('input',function(){
-    let olOpacity = $("#olOpacity").val();
+    olOpacity = $("#olOpacity").val();
     $('.overlay').css('opacity', olOpacity);
     $('#opacityVal').html(olOpacity);
   });
