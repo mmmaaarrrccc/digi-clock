@@ -132,11 +132,45 @@ function nameInput() {
 $(document).ready(function(){
 
   //---Background Image
-  $("#bgImage").change(function(){
-    let bgImage = $("#bgImage").val();
+  $("#bgImage").focus(function(){
     Cookies.remove('backgroundImage', { path: '' });
+  });
+  $("#bgImage").blur(function(){
+    let bgImage = $("#bgImage").val();
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
+  });
+
+  $('#fileImage').focus(function () {
+    Cookies.remove('backgroundImage', { path: '' });
+  });
+
+  $('#fileImage').change(function () {
+    var file = this.files[0];
+    var reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    reader.onloadend = function () {
+      $('#bgImage').val(reader.result);
+      var bg = $('#bgImage').val();
+      $('body').css('background-image', 'url("' + bg + '")');
+    }
+  });
+
+  $('#fileImage').blur(function () {
+    var file = this.files[0];
+    var reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    reader.onloadend = function () {
+      $('#bgImage').val(reader.result);
+      var bg = $('#bgImage').val();
+      $('body').css('background-image', 'url("' + bg + '")');
+      Cookies.set('backgroundImage', bg, { expires: 365 });
+      console.log(bg);
+    }
   });
 
   //---Clear Background Image
@@ -182,22 +216,6 @@ $(document).ready(function(){
     olOpacity = $("#olOpacity").val();
     Cookies.remove('overlayOpacity', { path: '' });
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
-  });
-
-  $('#fileImage').change(function () {
-    Cookies.remove('backgroundImage', { path: '' });
-    var file = this.files[0];
-    var reader = new FileReader();
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-    reader.onloadend = function () {
-      $('#bgImage').val(reader.result);
-      var bg = $('#bgImage').val();
-      $('body').css('background-image', 'url("' + bg + '")');
-      Cookies.set('backgroundImage', bg, { expires: 365 });
-      console.log(Cookies.get('backgroundImage'));
-    }
   });
 });  
 //---End---//
