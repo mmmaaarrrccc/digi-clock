@@ -75,9 +75,11 @@ function cookiesEnabled() {
   if (overlayOpacity != undefined) {
     $('#olOpacity').val(overlayOpacity);
     $('.overlay').css('opacity',overlayOpacity);
+    $('#opacityVal').html(overlayOpacity);
   } else {
     $('#olOpacity').val('0.8');
-    $('.overlay').css('opacity','0.8');    
+    $('.overlay').css('opacity','0.8');  
+    $('#opacityVal').html('0.8');  
   }
 }
 
@@ -162,17 +164,16 @@ $(document).ready(function(){
   });
 
   //---Overlay Opacity
+  $("#olOpacity").on('input',function(){
+    olOpacity = $("#olOpacity").val();
+    $('.overlay').css('opacity', olOpacity);
+    $('#opacityVal').html(olOpacity);
+  });
 
   $("#olOpacity").change(function(){
-    $("#olOpacity").on('input',function(){
-      olOpacity = $("#olOpacity").val();
-      $('.overlay').css('opacity', olOpacity);
-      $('#opacityVal').html(olOpacity);
-    });
-
     olOpacity = $("#olOpacity").val();
     Cookies.remove('overlayOpacity', { path: '' });
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
-   });
+  });
 });  
 //---End---//
