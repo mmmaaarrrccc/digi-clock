@@ -65,7 +65,7 @@ $(document).ready(function(){
 		if (lockMode == '0px') {
 			idleUnlock();
 		} else {
-			idleLock()
+			idleLock();
         	timerIncrement();
 		}
 	});
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		if (lockMode == '0px') {
 			idleUnlock();
 		} else {
-			idleLock()
+			idleLock();
         	timerIncrement();
 		}
 	});
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		if (lockMode == '0px') {
 			idleUnlock();
 		} else {
-			idleLock()
+			idleLock();
         	timerIncrement();
 		}
 	});
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		if (lockMode == '0px') {
 			idleUnlock();
 		} else {
-			idleLock()
+			idleLock();
         	timerIncrement();
 		}
 	});
