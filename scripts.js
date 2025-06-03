@@ -182,6 +182,9 @@ $('#options').ready(function(){
     $(this).mousemove(function(e){
         idle = 0;
 	});
+	$(this).on('tap', function(e){
+        idle = 0;
+	});
 });
 
 function closeOptions() {
