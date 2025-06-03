@@ -50,7 +50,7 @@ function cookiesEnabled() {
   let backgroundSize = Cookies.get('backgroundSize');
   if (backgroundSize != undefined) {
     $('#bgSize').val(backgroundSize);
-    $('body').css('background-size','url(' + backgroundSize + ')');
+    $('body').css('background-size',backgroundSize);
   } else {
     $('body').css('background-size','cover');    
   }
@@ -58,9 +58,17 @@ function cookiesEnabled() {
   let backgroundPosition = Cookies.get('backgroundPosition');
   if (backgroundPosition != undefined) {
     $('#bgPosition').val(backgroundPosition);
-    $('body').css('background-position','url(' + backgroundPosition + ')');
+    $('body').css('background-position',backgroundPosition);
   } else {
     $('body').css('background-position','center center');    
+  }
+
+  let backgroundRepeat = Cookies.get('backgroundRepeat');
+  if (backgroundRepeat != undefined) {
+    $('#bgRepeat').val(backgroundRepeat);
+    $('body').css('background-repeat',backgroundRepeat);
+  } else {
+    $('body').css('background-repeat','no-repeat');    
   }
 }
 
@@ -142,9 +150,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   let olOpacity = $("#olOpacity").val();
-    $('#opacityVal').html(olOpacity);
+  $('#opacityVal').html(olOpacity);
   $("#olOpacity").on('input',function(){
-  let olOpacity = $("#olOpacity").val();
+    let olOpacity = $("#olOpacity").val();
     $('.overlay').css('opacity', olOpacity);
     $('#opacityVal').html(olOpacity);
   });
