@@ -292,6 +292,18 @@ $('#bgSettings').ready(function(){
     $(this).mousemove(function(e){
         idleBg = 0;
 	});
+	$(this).keypress(function(e){
+        idleBg = 0;
+	});
+	$(this).on('tap', function(e){
+        idleBg = 0;
+	});
+	$(this).on('scroll', function(e){
+        idleBg = 0;
+	});
+	$(this).on('swipe', function(e){
+        idleBg = 0;
+	});
 });
 
 $(document).ready(function(){
