@@ -196,6 +196,7 @@ $(document).ready(function(){
       Cookies.remove('backgroundImage', { path: '' });
       $('body').css('background-image', 'url("' + bg + '")');
       Cookies.set('backgroundImage', bg, { expires: 365 });
+      console.log(Cookies.get('backgroundImage'));
     }
   });
 });  
