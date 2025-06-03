@@ -131,25 +131,31 @@ $(document).ready(function(){
   //---Background Size
   $("#bgSize").change(function(){
     let bgSize = $("#bgSize").val();
+    Cookies.remove('backgroundSize', { path: '' });
     $('body').css('background-size',bgSize);
+    Cookies.set('backgroundSize', bgSize, { expires: 365 });
   });
 
   //---Background Position
   $("#bgPosition").change(function(){
     let bgPosition = $("#bgPosition").val();
+    Cookies.remove('backgroundPosition', { path: '' });
     $('body').css('background-position',bgPosition);
+    Cookies.set('backgroundPosition', bgPosition, { expires: 365 });
   });
 
   //---Background Repeat
   $("#bgRepeat").change(function(){
     let bgRepeat = $("#bgRepeat").val();
+    Cookies.remove('backgroundRepeat', { path: '' });
     $('body').css('background-repeat',bgRepeat);
+    Cookies.set('backgroundRepeat', bgRepeat, { expires: 365 });
   });
 
   //---Overlay Opacity
   let olOpacity = $("#olOpacity").val();
   $('#opacityVal').html(olOpacity);
-  
+
   $("#olOpacity").on('input',function(){
     olOpacity = $("#olOpacity").val();
     $('.overlay').css('opacity', olOpacity);
