@@ -427,7 +427,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   border-style: solid;
-  border-size: 2px;
+  border-width: 2px;
   box-sizing: border-box;
   transition: all 0.3s;
 }
@@ -443,7 +443,7 @@ body {
 	position: relative;
 }
 .backgroundImage input {
-	padding-right: 40px;
+	padding-right: 210px;
 }
 .backgroundImage .clearBg {
 	position: absolute;
@@ -483,6 +483,49 @@ body {
 	width: 11px;
 	height: 11px;
 	line-height: 11px;
+}
+
+.bgSettings #fileImage {
+	color: transparent;
+	position: absolute;
+	right: 30px;
+	bottom: 31px;
+	width: 160px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	border-bottom: 0;
+}
+
+.bgSettings #fileImage::file-selector-button {
+	all: unset;
+	background-color: transparent;
+	color: inherit;
+	border-width: 2px;
+	border-style: solid;
+	padding: 3px 10px 1px 14px;
+	font-size: 10px;
+	transition: all 0.3s;
+}
+
+.darkm ~ .bgSettings #fileImage::file-selector-button {
+	color: var(--activeDm);
+	border-color: white;
+}
+
+.darkm ~ .bgSettings #fileImage::file-selector-button:hover {
+	color: black;
+	background-color: white;
+}
+
+.lightm ~ .bgSettings #fileImage::file-selector-button {
+	color: var(--activeLm);
+	border-color: black;
+}
+
+.lightm ~ .bgSettings #fileImage::file-selector-button:hover {
+	color: white;
+	background-color: black;
 }
 
 .darkm ~ .bgSettings .closeBtn:hover {
