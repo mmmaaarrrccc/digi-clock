@@ -34,17 +34,25 @@ function cookiesEnabled() {
   });
 
   let name = Cookies.get('name');
-
   if (name != undefined) {
     $('#nameInput').val(name);
     $('.nameContainer').attr('data-value', name);
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
-
   if (backgroundImage != undefined) {
     $('#bgImage').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
+  } else {
+    $('body').css('background-image','none');    
+  }
+
+  let backgroundSize = Cookies.get('backgroundSize');
+  if (backgroundSize != undefined) {
+    $('#bgSize').val(backgroundSize);
+    $('body').css('background-size','url(' + backgroundSize + ')');
+  } else {
+    $('body').css('background-size','cover');    
   }
 }
 
@@ -90,7 +98,7 @@ $(document).ready(function(){
 
   //---Background Image
   $("#bgImage").change(function(){
-  let bgImage = $("#bgImage").val();
+    let bgImage = $("#bgImage").val();
     Cookies.remove('backgroundImage', { path: '' });
     $('body').css('background-image','url(' + bgImage + ')');
     Cookies.set('backgroundImage', bgImage, { expires: 365 });
@@ -103,13 +111,13 @@ $(document).ready(function(){
     $('body').css('background-image','none');
     Cookies.set('backgroundImage', '', { expires: 365 });
   });
-}); 
 
-$(document).ready(function(){
+  //---Background Size
   $("#bgSize").change(function(){
-  let bgSize = $("#bgSize").val();
+    let bgSize = $("#bgSize").val();
     $('body').css('background-size',bgSize);
   });
+
 }); 
 
 $(document).ready(function(){
