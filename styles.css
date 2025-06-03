@@ -327,11 +327,11 @@ body {
 	left: 20px;
 	display: flex;
 	align-items: center;
-    justify-content: center;
+  justify-content: center;
 	min-width: 50px;
-    height: 50px;
-    z-index: 11;
-    transition: all 0.3s;
+  height: 50px;
+  z-index: 12;
+  transition: all 0.3s;
 
     i {
     	position: absolute;
@@ -361,7 +361,7 @@ body {
 	top: 0px;
 	left: 0px;
 	width: 100vw;
-	z-index: 10;
+	z-index: 11;
 }
 
 .comma {
@@ -372,7 +372,7 @@ body {
 	width: 80%;
 	height: auto;
 	max-width: 600px;
-	max-height: 500px;
+	max-height: 600px;
 	border-style: solid;
 	border-width: 2px;
 	box-sizing: border-box;
@@ -380,7 +380,7 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate( -50%, -50%);
-	z-index: 9;
+	z-index: 11;
 	padding: 40px;
   font-family: "Orbitron", sans-serif;
   letter-spacing: 5px;
@@ -389,6 +389,7 @@ body {
   font-size: 16px;
   line-height: 1.6em;
 	backdrop-filter: blur(10px);
+	overflow: hidden;
 }
 
 .bgSettings *:not(span, p, i, div) {
@@ -463,8 +464,8 @@ body {
 
 .closeBtn {
 	position: absolute;
-	top: 21px;
-	right: 20px;
+	top: 0px;
+	right: 0px;
 	color: inherit;
 	cursor: pointer;
 	width: 32px;
@@ -475,14 +476,14 @@ body {
 	justify-content: center;
 	box-sizing: border-box;
 	transition: all 0.3s;
-	border-radius: 50%;
+	border-top-width: 0px;
+	border-right-width: 0px;
 }
 .closeBtn i {
 	width: 11px;
 	height: 11px;
 	line-height: 11px;
-	margin-top: 2.5px;
-	margin-right: 1px;
+	margin-top: 2px;
 }
 
 .darkm ~ .bgSettings .closeBtn:hover {
@@ -652,7 +653,17 @@ body {
 	.clock {
 		font-size: 90px !important;
 	}
-
+	.bgSettings {
+		max-height: 450px;
+		height: 100%;
+		padding: 40px 30px;
+		width: 85%;
+	}
+	.bgSettingsContainer {
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
 }
 
 @keyframes batterycharging {
