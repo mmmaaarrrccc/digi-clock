@@ -183,22 +183,20 @@ $(document).ready(function(){
     Cookies.remove('overlayOpacity', { path: '' });
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
   });
+
+  $('#fileImage').change(function () {
+    var file = this.files[0];
+    var reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    reader.onloadend = function () {
+      $('#bgImage').val(reader.result);
+      var bg = $('#bgImage').val();
+      Cookies.remove('backgroundImage', { path: '' });
+      $('body').css('background-image', 'url("' + bg + '")');
+      Cookies.set('backgroundImage', bg, { expires: 365 });
+    }
+  });
 });  
 //---End---//
-
-$(document).ready(function() {
-        $('#fileImage').change(function () {
-            var file = this.files[0];
-            var reader = new FileReader();
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-            reader.onloadend = function () {
-              $('#bgImage').val(reader.result);
-              var bg = $('#bgImage').val();
-              Cookies.remove('backgroundImage', { path: '' });
-              $('body').css('background-image', 'url("' + bg + '")');
-              Cookies.set('backgroundImage', bg, { expires: 365 });
-            }
-        });
-});
