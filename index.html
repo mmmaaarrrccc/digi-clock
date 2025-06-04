@@ -66,6 +66,7 @@
 		<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
 		<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>
 		<button class="btn-mode dark" id="toggleBGSettings"><i class="fa-regular fa-image activemode"></i></button>
+		<button class="btn-mode dark" id="speak"><i class="fa-solid fa-volume-high activemode"></i></button>
 		<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
 	</div>
 	<div class="pLock darkm" id="lock-btn">
@@ -120,5 +121,36 @@
 		</div>
 		<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 	</div>
+	<script>
+		const button = document.getElementById('speak');
+		const textToSpeech = () => {
+			const today = new Date();
+			let h = today.getHours();
+			let m = today.getMinutes();
+			h = currentHour(h);
+			m = checkTime(m);
+
+			if (h >= 12) {
+				h = h - 12;
+				var text = 'Time Now Is: ' + h + ':' + m + 'pm';
+				const voice = new SpeechSynthesisUtterance(text);
+				window.speechSynthesis.speak(voice);
+			} else {
+				let text = 'Time Now Is: ' + h + ':' + m + 'am';
+				const voice = new SpeechSynthesisUtterance(text);
+				window.speechSynthesis.speak(voice);
+			}
+		}
+		button.addEventListener('click', textToSpeech);
+		function currentHour(g) {
+			if (g == 0) {
+				g = g + 12;
+			}
+			if (g < 10) {
+				g = "0" + g;
+			}
+			return g;
+		}
+	</script>
 </body>
 </html>
