@@ -164,7 +164,10 @@ $(document).ready(function(){
 		} else {
         	document.getElementById('options').style.width = "285px";
 			$("#oc").addClass('oc-out');
-			$("#lock-btn").css('opacity','0');
+			if ($(window).width() < 601) {
+				$("#lock-btn").css('opacity','0');
+				$("#lock-btn").css('pointer-events','none');
+			}
 		}
 
 	});
@@ -208,6 +211,7 @@ function closeOptions() {
 	document.getElementById('options').style.width = "50px";
 	$("#oc").removeClass('oc-out');
 	$("#lock-btn").css('opacity','1');
+	$("#lock-btn").css('pointer-events','unset');
 }
 //---End---//
 
