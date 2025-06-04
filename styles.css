@@ -298,7 +298,7 @@ body {
     	line-height: 30px ;
     }
 }
-.btn-mode:focus, .btn-mode:focus-visible, .btn-mode:active, {
+.btn-mode:focus, .btn-mode:focus-visible, .btn-mode:active {
 	outline: none;
 }
 
