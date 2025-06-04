@@ -247,7 +247,6 @@ body {
 .darkm {
 	color: var(--activeDm);
 	fill: var(--activeDm);
-	border-color: var(--acive);
 
 	&::selection {
 		color: #010101;
@@ -272,6 +271,7 @@ body {
 .oc.oc-out {
 	rotate: 180deg;
 	min-width: 25px;
+	justify-content: start;
 }
 .btn-mode {
 	cursor: pointer;
