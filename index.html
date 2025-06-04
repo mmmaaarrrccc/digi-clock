@@ -127,29 +127,36 @@
 			const today = new Date();
 			let h = today.getHours();
 			let m = today.getMinutes();
-			h = currentHour(h);
 			m = checkTime(m);
 
 			if (h >= 12) {
 				h = h - 12;
-				var text = 'Time Now Is: ' + h + ':' + m + 'pm';
-				const voice = new SpeechSynthesisUtterance(text);
-				window.speechSynthesis.speak(voice);
+				if (h == 0) {
+					h = h + 12;
+					speakPm(h,m);
+				} else {
+					speakPm(h,m);
+				}
 			} else {
-				let text = 'Time Now Is: ' + h + ':' + m + 'am';
-				const voice = new SpeechSynthesisUtterance(text);
-				window.speechSynthesis.speak(voice);
+				speakAm(h,m);
 			}
 		}
 		button.addEventListener('click', textToSpeech);
-		function currentHour(g) {
-			if (g == 0) {
-				g = g + 12;
+		function speakPm(h,m) {
+			if (m == 0 || m == 00){
+				m = 'o&apos;clock';
 			}
-			if (g < 10) {
-				g = "0" + g;
+			var text = 'Time Now Is: ' + h + ':' + m + ' pm';
+			const voice = new SpeechSynthesisUtterance(text);
+			window.speechSynthesis.speak(voice);
+		}
+		function speakAm(h,m) {
+			if (m == 0 || m == 00){
+				m = 'o&apos;clock';
 			}
-			return g;
+			let text = 'Time Now Is: ' + h + ':' + m + 'am';
+			const voice = new SpeechSynthesisUtterance(text);
+			window.speechSynthesis.speak(voice);
 		}
 	</script>
 </body>
