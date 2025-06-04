@@ -695,7 +695,7 @@ body {
 	}
 	.bgSettingsContainer {
 		height: 100%;
-		overflow-y: hidden;
+		overflow-y: auto;
 		overflow-x: hidden;
   	scrollbar-gutter: stable both-edges;
   	transition: all 0.3s;
@@ -706,8 +706,8 @@ body {
 	  }
 	  &::-webkit-scrollbar-track {
 	    background: transparent; 
-	    margin-top: 1em;
-	    margin-bottom: 1em;
+	    margin-top: 7px;
+	    margin-bottom: 7px;
 	  }
 	  &::-webkit-scrollbar-thumb {
 	    background: rgba(255,255,255,0.2); 
@@ -719,9 +719,6 @@ body {
 	    border-radius: 20px;
 	    cursor: pointer;
 	  }
-	}
-	.bgSettingsContainer:hover {
-		overflow-y: auto;
 	}
 	.bgSettings #bgImage {
 		padding-right: 30px;
