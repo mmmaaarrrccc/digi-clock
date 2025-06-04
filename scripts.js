@@ -40,6 +40,7 @@ $(document).ready(function(){
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
+			$('#lock-btn').css('z-index','12');
 
         }
     }
@@ -51,18 +52,24 @@ $(document).ready(function(){
 			$("#lock").removeClass('activemode');
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
+			$('#lock-btn').css('z-index','12');
 
 		} else {
 			document.getElementById('screenlock').style.height = "0px";
 			$("#ulock").removeClass('activemode');
 			$("#lock").addClass('activemode');
 			lockMode = $('#screenlock').css('height');
+			$('#lock-btn').css('z-index','6');
 			idleUnlock();
 		}
 	});
 
 	$(this).mousemove(function(e){
+		let brightnessOpacity = $('#brightness').css('opacity');
 		if (lockMode == '0px') {
+			if (brightnessOpacity != 0) {
+				$('#lock-btn').css('opacity','1');
+			}
 			idleUnlock();
 		} else {
 			idleLock();
@@ -70,7 +77,11 @@ $(document).ready(function(){
 		}
 	});
 	$(this).keypress(function(e){
+		let brightnessOpacity = $('#brightness').css('opacity');
 		if (lockMode == '0px') {
+			if (brightnessOpacity != 0) {
+				$('#lock-btn').css('opacity','1');
+			}
 			idleUnlock();
 		} else {
 			idleLock();
@@ -78,7 +89,11 @@ $(document).ready(function(){
 		}
 	});
 	$(this).on('tap', function(e){
+		let brightnessOpacity = $('#brightness').css('opacity');
 		if (lockMode == '0px') {
+			if (brightnessOpacity != 0) {
+				$('#lock-btn').css('opacity','1');
+			}
 			idleUnlock();
 		} else {
 			idleLock();
@@ -102,7 +117,6 @@ function idleUnlock() {
 	idleTime = 0;
 	document.getElementById('brightness').style.opacity = "0";
 	document.getElementById('options').style.opacity = "1";
-    document.getElementById('lock-btn').style.opacity = "1";
 }
 
 function idleLock() {
@@ -148,8 +162,9 @@ $(document).ready(function(){
 		if ( optWidth > 50) {
         	closeOptions();
 		} else {
-        	document.getElementById('options').style.width = "220px";
+        	document.getElementById('options').style.width = "285px";
 			$("#oc").addClass('oc-out');
+			$("#lock-btn").css('opacity','0');
 		}
 
 	});
@@ -192,6 +207,7 @@ $('#options').ready(function(){
 function closeOptions() {
 	document.getElementById('options').style.width = "50px";
 	$("#oc").removeClass('oc-out');
+	$("#lock-btn").css('opacity','1');
 }
 //---End---//
 
