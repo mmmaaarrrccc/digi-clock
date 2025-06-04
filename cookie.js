@@ -115,8 +115,8 @@ function cookiesDisabled() {
 function darkMode() {
   $("body").css('background-color', 'black');
   $("#overlay").removeClass('o-active');
-  $("#dl-mode, #fs-mode, #toggleBGSettings").removeClass('light');
-  $("#dl-mode, #fs-mode, #toggleBGSettings").addClass('dark');
+  $("#dl-mode, #fs-mode, #toggleBGSettings, #speak").removeClass('light');
+  $("#dl-mode, #fs-mode, #toggleBGSettings, #speak").addClass('dark');
   $("#sun").addClass('activemode');
   $("#moon").removeClass('activemode');
   $("#oc, #lock-btn, #main").addClass('darkm');
@@ -126,8 +126,8 @@ function darkMode() {
 function lightMode() {
   $("body").css('background-color', 'white');
   $("#overlay").addClass('o-active');
-  $("#dl-mode, #fs-mode, #toggleBGSettings").addClass('light');
-  $("#dl-mode, #fs-mode, #toggleBGSettings").removeClass('dark');
+  $("#dl-mode, #fs-mode, #toggleBGSettings, #speak").addClass('light');
+  $("#dl-mode, #fs-mode, #toggleBGSettings, #speak").removeClass('dark');
   $("#moon").addClass('activemode');  
   $("#sun").removeClass('activemode');  
   $("#oc, #lock-btn, #main").addClass('lightm');
