@@ -63,13 +63,13 @@ function currentMonth() {
   let dateMonth = months[today.getMonth()];
   let dateDay = today.getDate();
   let dateYear = today.getFullYear();
-	dateDay = checkYear(dateDay);
+	dateDay = checkDay(dateDay);
   document.getElementById('month').innerHTML = dateMonth;
   document.getElementById('day').innerHTML = dateDay;
   document.getElementById('year').innerHTML = dateYear;
 }
 
-function checkYear(d) {
+function checkDay(d) {
 	if (d < 10) {d = "0" + d};
 	return d;
 }
