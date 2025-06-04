@@ -121,43 +121,5 @@
 		</div>
 		<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 	</div>
-	<script>
-		const button = document.getElementById('speak');
-		const textToSpeech = () => {
-			const today = new Date();
-			let h = today.getHours();
-			let m = today.getMinutes();
-			m = checkTime(m);
-
-			if (h >= 12) {
-				h = h - 12;
-				if (h == 0) {
-					h = h + 12;
-					speakPm(h,m);
-				} else {
-					speakPm(h,m);
-				}
-			} else {
-				speakAm(h,m);
-			}
-		}
-		button.addEventListener('click', textToSpeech);
-		function speakPm(h,m) {
-			if (m == 0 || m == 00){
-				m = 'o&apos;clock';
-			}
-			var text = 'Time Now Is: ' + h + ':' + m + ' pm';
-			const voice = new SpeechSynthesisUtterance(text);
-			window.speechSynthesis.speak(voice);
-		}
-		function speakAm(h,m) {
-			if (m == 0 || m == 00){
-				m = 'o&apos;clock';
-			}
-			let text = 'Time Now Is: ' + h + ':' + m + 'am';
-			const voice = new SpeechSynthesisUtterance(text);
-			window.speechSynthesis.speak(voice);
-		}
-	</script>
 </body>
 </html>
