@@ -698,13 +698,33 @@ body {
 	.bgSettings {
 		max-height: 450px;
 		height: 100%;
-		padding: 40px 30px;
+		padding: 40px 26px;
 		width: 85%;
 	}
 	.bgSettingsContainer {
 		height: 100%;
-		overflow-y: auto;
+		overflow-y: hidden;
 		overflow-x: hidden;
+  	scrollbar-gutter: stable both-edges;
+  	transition: all 0.3s;
+    
+	  &::-webkit-scrollbar {
+	    transition: all 0.3s;
+	    width: 4px;
+	  }
+	  &::-webkit-scrollbar-track {
+	    background: transparent; 
+	    margin-top: 1em;
+	    margin-bottom: 1em;
+	  }
+	  &::-webkit-scrollbar-thumb {
+	    background: rgba(255,255,255,0.2); 
+	    border-radius: 20px;
+	    cursor: pointer;
+	  }
+	}
+	.bgSettingsContainer:hover {
+		overflow-y: auto;
 	}
 	.bgSettings #bgImage {
 		padding-right: 30px;
