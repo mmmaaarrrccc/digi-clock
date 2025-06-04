@@ -351,3 +351,9 @@ $(document).ready(function(){
 		r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
 	});
 });
+
+$(document).ready(function(){
+	$('#speak').on('click', function(){
+		textToSpeech();
+	});
+});
