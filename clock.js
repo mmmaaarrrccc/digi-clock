@@ -6,9 +6,10 @@ function startClock() {
 
 function startTime() {
 	const today = new Date();
-	let h = today.getHours();
-	let m = today.getMinutes();
-	let s = today.getSeconds();
+	h = today.getHours();
+	h24 = today.getHours();
+	m = today.getMinutes();
+	s = today.getSeconds();
 	h = checkHour(h);
 	m = checkTime(m);
 	s = checkTime(s);
@@ -72,4 +73,27 @@ function currentMonth() {
 function checkDay(d) {
 	if (d < 10) {d = "0" + d};
 	return d;
+}
+
+function textToSpeech() {
+	startTime();
+	let meridian;
+	if (h24 >= 12) {
+		meridian = 'pm';
+		speakTime(h24,m, meridian);
+	} else {
+		meridian = 'am';
+		speakTime(h24,m, meridian);
+	}
+}
+function speakTime(h24,m, meridian) {
+	if (m == 0 || m == '00'){
+		m = 'o&apos;clock ';
+	}
+	if (h24 > 12) {
+		h24 = h24 - 12;
+	}
+	var text = 'Time Now Is: ' + h24 + ':' + m + meridian;
+	const voice = new SpeechSynthesisUtterance(text);
+	window.speechSynthesis.speak(voice);	
 }
