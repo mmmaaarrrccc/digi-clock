@@ -12,6 +12,14 @@
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 	<script src="cookie.js"></script>
 	<title>&lrm;</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+	<script>
+		$( function() {
+			$( "#bgSettings" ).draggable({ containment: "#settingsWrapper", scroll: false, handle: "#titleBar", cancel: '#closeBtn' });
+		});
+	</script>
 </head>
 <body onload="startClock()">
 	<div class="main darkm" id="main">
@@ -78,54 +86,59 @@
 	</div>
 	<div class="brightness" id="brightness" style="opacity: 0;"></div>
 	<div class="screenlock" id="screenlock" style="height: 0px;"></div>
-	<div class="bgSettings" id="bgSettings" style="display: none;">
-		<div class="bgSettingsContainer">
-			<div class="backgroundImage">
-				<p>Wallpaper</p>
-				<input type="file" name="fileImage" id="fileImage" accept="image/*">
-				<input type="text" name="bgLink" id="bgLink">
-				<span class="clearBg" id="clearBg"><i class="fa-solid fa-xmark"></i></span>
+	<div id="settingsWrapper">
+		<div class="bgSettings" id="bgSettings" style="display: none;">
+			<div id="titleBar">
+				<span class="title">Wallpaper Settings</span>
+				<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 			</div>
-			<div class="backgroundSize">
-				<p>Wallpaper Size</p>
-				<select name="bgSize" id="bgSize">
-					<option value="cover" selected>Cover</option>
-					<option value="auto">Auto</option>
-					<option value="contain">Contain</option>
-					<option value="150%">150%</option>
-					<option value="200%">200%</option>
-				</select>
-			</div>
-			<div class="backgroundPosition">
-				<p>Wallpaper Position</p>
-				<select name="bgPosition" id="bgPosition">
-					<option value="center center" selected>Center Center</option>
-					<option value="center left">Center left</option>
-					<option value="center right">Center Right</option>
-					<option value="top center">Top Center</option>
-					<option value="top left">Top Left</option>
-					<option value="top right">Top Right</option>
-					<option value="bottom center">Bottom Center</option>
-					<option value="bottom left">Bottom Left</option>
-					<option value="bottom right">Bottom Right</option>
-				</select>
-			</div>
-			<div class="backgroundRepeat">
-				<p>Wallpaper Repeat</p>
-				<select name="bgRepeat" id="bgRepeat">
-					<option value="no-repeat" selected>No-Repeat</option>
-					<option value="repeat">Repeat</option>
-					<option value="repeat-x">Repeat-x</option>
-					<option value="repeat-y">Repeat-y</option>
-				</select>
-			</div>
-			<div class="overlayOpacity">
-				<p>Overlay Opacity</p>
-				<input type="range" name="olOpacity" id="olOpacity" min="0.4" max="0.9" step="0.01">
-				<span class="opacityVal" id="opacityVal"></span>
+			<div class="bgSettingsContainer">
+				<div class="backgroundImage">
+					<p>Wallpaper</p>
+					<input type="file" name="fileImage" id="fileImage" accept="image/*">
+					<input type="text" name="bgLink" id="bgLink">
+					<span class="clearBg" id="clearBg"><i class="fa-solid fa-xmark"></i></span>
+				</div>
+				<div class="backgroundSize">
+					<p>Wallpaper Size</p>
+					<select name="bgSize" id="bgSize">
+						<option value="cover" selected>Cover</option>
+						<option value="auto">Auto</option>
+						<option value="contain">Contain</option>
+						<option value="150%">150%</option>
+						<option value="200%">200%</option>
+					</select>
+				</div>
+				<div class="backgroundPosition">
+					<p>Wallpaper Position</p>
+					<select name="bgPosition" id="bgPosition">
+						<option value="center center" selected>Center Center</option>
+						<option value="center left">Center left</option>
+						<option value="center right">Center Right</option>
+						<option value="top center">Top Center</option>
+						<option value="top left">Top Left</option>
+						<option value="top right">Top Right</option>
+						<option value="bottom center">Bottom Center</option>
+						<option value="bottom left">Bottom Left</option>
+						<option value="bottom right">Bottom Right</option>
+					</select>
+				</div>
+				<div class="backgroundRepeat">
+					<p>Wallpaper Repeat</p>
+					<select name="bgRepeat" id="bgRepeat">
+						<option value="no-repeat" selected>No-Repeat</option>
+						<option value="repeat">Repeat</option>
+						<option value="repeat-x">Repeat-x</option>
+						<option value="repeat-y">Repeat-y</option>
+					</select>
+				</div>
+				<div class="overlayOpacity">
+					<p>Overlay Opacity</p>
+					<input type="range" name="olOpacity" id="olOpacity" min="0.4" max="0.9" step="0.01">
+					<span class="opacityVal" id="opacityVal"></span>
+				</div>
 			</div>
 		</div>
-		<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 	</div>
 	<video autoplay muted loop class="videoBg" id="videoBg">
 	  <source src="" type="video/mp4">
