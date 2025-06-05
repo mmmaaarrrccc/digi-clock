@@ -43,6 +43,10 @@ function cookiesEnabled() {
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
+    var video = $("#videoBg")[0];
+    video.src = bgLink;
+    video.load();
+    video.play();
   } else {
     $('body').css('background-image','none');   
   }
