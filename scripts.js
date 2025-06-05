@@ -42,6 +42,7 @@ $(document).ready(function(){
 			$("#ulock").addClass('activemode');	
 			lockMode = $('#screenlock').css('height');
 			$('#lock-btn').css('z-index','12');
+    		$("#bgSettings").hide(300);
 
         }
     }
@@ -308,43 +309,6 @@ $(document).mouseup(function(e) {
     if (!container.is(e.target) && container.has(e.target).length === 0) {
     	$("#bgSettings").hide(300);
     }
-});
-
-$('#bgSettings').ready(function(){
-    idleBg = 0;  
-    var idleInterval = setInterval(timer, 1000);
-
-    function timer() {
-	    idleBg++;
-	    if (idleBg == 10) {
-    		$("#bgSettings").hide(300);
-		    idleBg = 0;
-	    }
-    }
-    $(this).mousemove(function(e){
-        idleBg = 0;
-	});
-	$(this).keypress(function(e){
-        idleBg = 0;
-	});
-	$(this).on('tap', function(e){
-        idleBg = 0;
-	});
-	$(this).on('click', function(e){
-        idleBg = 0;
-	});
-	$(this).on('scroll', function(e){
-        idleBg = 0;
-	});
-	$('.bgSettingsContainer').on('scroll', function(e){
-        idleBg = 0;
-	});
-	$(this).on('swipe', function(e){
-        idleBg = 0;
-	});
-	$('.bgSettingsContainer').on('swipe', function(e){
-        idleBg = 0;
-	});
 });
 
 $(document).ready(function(){
