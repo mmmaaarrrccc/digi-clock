@@ -145,13 +145,12 @@ function nameInput() {
 
 $(document).ready(function(){
 
+  var video = $("#videoBg")[0];
   //---Background
   $("#bgLink").change(function(){
     let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
     $('body').css('background-image','url(' + bgLink + ')');
-    var video = $("#videoBg")[0];
-    video.src = bgLink;
     video.play();
     Cookies.set('backgroundImage', bgLink, { expires: 365 });
   });
@@ -162,6 +161,7 @@ $(document).ready(function(){
     $("#fileImage").val('');
     Cookies.remove('backgroundImage');
     $('body').css('background-image','none');
+    video.src = '';
     Cookies.set('backgroundImage', '', { expires: 365 });
   });
 
