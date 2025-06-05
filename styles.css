@@ -632,6 +632,10 @@ body {
 	z-index: 0;
 }
 
+.ui-draggable-handle {
+	touch-action: auto !important;
+}
+
 @media only screen and (max-width: 1599px) {
 	.main {
 		flex-direction: row;
@@ -762,9 +766,9 @@ body {
 	.backgroundImage span:first-child {
 		display: block;
 	}
-.backgroundImage input[type=text] {
-	padding-right: 20px;
-}
+	.backgroundImage input[type=text] {
+		padding-right: 20px;
+	}
 }
 
 @keyframes batterycharging {
