@@ -151,6 +151,7 @@ $(document).ready(function(){
     let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
     $('body').css('background-image','url(' + bgLink + ')');
+    video.src = bgLink;
     video.play();
     Cookies.set('backgroundImage', bgLink, { expires: 365 });
   });
