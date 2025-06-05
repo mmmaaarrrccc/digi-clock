@@ -41,7 +41,7 @@ function cookiesEnabled() {
 
   let backgroundImage = Cookies.get('backgroundImage');
   if (backgroundImage != undefined) {
-    $('#bgImage').val(backgroundImage);
+    $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
   } else {
     $('body').css('background-image','none');   
@@ -142,17 +142,22 @@ function nameInput() {
 
 $(document).ready(function(){
 
-  //---Background Image
-  $("#bgImage").change(function(){
-    let bgImage = $("#bgImage").val();
+  //---Background
+  $("#bgLink").change(function(){
+    let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
-    $('body').css('background-image','url(' + bgImage + ')');
-    Cookies.set('backgroundImage', bgImage, { expires: 365 });
+    $('body').css('background-image','url(' + bgLink + ')');
+    var video = $("#videoBg")[0];
+    video.src = bgLink;
+    video.load();
+    video.play();
+    Cookies.set('backgroundImage', bgLink, { expires: 365 });
   });
 
-  //---Clear Background Image
+  //---Clear Background
   $("#clearBg").click(function(){
-    $("#bgImage").val('');
+    $("#bgLink").val('');
+    $("#fileImage").val('');
     Cookies.remove('backgroundImage');
     $('body').css('background-image','none');
     Cookies.set('backgroundImage', '', { expires: 365 });
@@ -202,9 +207,9 @@ $(document).ready(function(){
       reader.readAsDataURL(file);
     }
     reader.onloadend = function () {
-      $('#bgImage').val(reader.result);
-      var bg = $('#bgImage').val();
-      $('body').css('background-image', 'url("' + bg + '")');
+      // $('#bgLink').val(reader.result);
+      // var bg = $('#bgLink').val();
+      $('body').css('background-image', 'url("' + reader.result + '")');
     }
   });
 });  
