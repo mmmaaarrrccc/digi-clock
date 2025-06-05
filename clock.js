@@ -74,7 +74,7 @@ function currentMonth() {
 function textToSpeech() {
 	const now = new Date();
 	let hour = now.getHours();
-	let minutes = now.getMinutes();
+	let minutes = formatTimeUnit(now.getMinutes());
 	let meridian;
 	
 	if (hour < 12) {
