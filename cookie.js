@@ -40,7 +40,7 @@ function cookiesEnabled() {
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
-  var video = $("#videoBg")[0];
+  var video = $("#videoBg");
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
@@ -152,7 +152,7 @@ $(document).ready(function(){
     let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
     $('body').css('background-image','url(' + bgLink + ')');
-    var video = $("#videoBg")[0];
+    var video = $("#videoBg");
     video.src = bgLink;
     video.load();
     video.play();
