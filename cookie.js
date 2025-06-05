@@ -49,6 +49,8 @@ function cookiesEnabled() {
     video.play();
   } else {
     $('body').css('background-image','none');   
+    var video = $("#videoBg")[0];
+    video.src = '';
   }
 
   let backgroundSize = Cookies.get('backgroundSize');
