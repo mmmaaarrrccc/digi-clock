@@ -40,17 +40,16 @@ function cookiesEnabled() {
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
+  var video = $("#videoBg")[0];
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
-    var video = $("#videoBg")[0];
     video.src = bgLink;
     video.load();
     video.play();
   } else {
     $('body').css('background-image','none');   
-    var video = $("#videoBg")[0];
-    video.src = '';
+    video.src = 'demo.mp4';
   }
 
   let backgroundSize = Cookies.get('backgroundSize');
