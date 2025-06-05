@@ -239,13 +239,14 @@ $(document).ready(function() {
 
 		function updateChargingInfo() {
 			if (battery.charging) {
-				$("#Folder-2").css("opacity","1");
 				$(".bci").css("opacity", "0");
 				$("#batteryIconCharging").css("opacity","1");
+				$("#chargingIcon").css('animation-name','batterycharging');
 				$('#batteryIcon').css('animation-name','batterycharging2')
 			} else {
-				$("#Folder-2").css("opacity","0");
 				$("#batteryIconCharging").css("opacity","0");
+				$("#chargingIcon").css('animation-name','');
+				$('#batteryIcon').css('animation-name','')
 			}
 		}
 
