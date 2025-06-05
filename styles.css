@@ -397,11 +397,12 @@ body {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	height: 100vh;
-	width: 100vw;
+	height: calc(100% - 40px);
+	width: calc(100% - 40px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 20px;
 }
 #settingsWrapper:has(+ .ui-draggable-dragging) {
 	display: block;
@@ -632,10 +633,6 @@ body {
 	z-index: 0;
 }
 
-.ui-draggable-handle {
-	touch-action: auto !important;
-}
-
 @media only screen and (max-width: 1599px) {
 	.main {
 		flex-direction: row;
@@ -768,6 +765,9 @@ body {
 	}
 	.backgroundImage input[type=text] {
 		padding-right: 20px;
+	}
+	#settingsWrapper {
+		margin: 0;
 	}
 }
 
