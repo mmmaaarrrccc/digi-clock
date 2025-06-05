@@ -45,7 +45,7 @@ function cookiesEnabled() {
     console.log(backgroundImage);
     $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
-    // video.src = bgLink;
+    video.src = bgLink;
     // video.play();
   } else {
     $('body').css('background-image','none');   
