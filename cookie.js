@@ -40,7 +40,7 @@ function cookiesEnabled() {
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
-  // var video = $("#videoBg")[0];
+  var video = $("#videoBg")[0];
   if (backgroundImage != undefined) {
     console.log(backgroundImage);
     $('#bgLink').val(backgroundImage);
