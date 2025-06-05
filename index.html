@@ -79,7 +79,7 @@
 			<div class="backgroundImage">
 				<p>Background Image:</p>
 				<input type="file" name="fileImage" id="fileImage" accept="image/*">
-				<input type="text" name="bgImage" id="bgImage">
+				<input type="text" name="bgLink" id="bgLink">
 				<span class="clearBg" id="clearBg"><i class="fa-solid fa-xmark"></i></span>
 			</div>
 			<div class="backgroundSize">
@@ -88,6 +88,8 @@
 					<option value="cover" selected>Cover</option>
 					<option value="auto">Auto</option>
 					<option value="contain">Contain</option>
+					<option value="150%">150%</option>
+					<option value="200%">200%</option>
 				</select>
 			</div>
 			<div class="backgroundPosition">
@@ -121,5 +123,8 @@
 		</div>
 		<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 	</div>
+	<video autoplay muted loop class="videoBg" id="videoBg">
+	  <source src="" type="video/mp4" >
+	</video>
 </body>
 </html>
