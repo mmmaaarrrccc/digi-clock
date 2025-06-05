@@ -54,9 +54,8 @@ function currentDay() {
 	const collection = document.getElementsByClassName("days");
 
 	for (let c = 0; c < collection.length; c++) {
-		collection[c].classList.add("active");
+		collection[c].classList.remove("active");
 	}
-	
 	collection[d].classList.add("active");
 }
 
@@ -77,7 +76,7 @@ function textToSpeech() {
 	let h24 = now.getHours();
 	let m = now.getMinutes();
 	let meridian;
-	
+
 	if (h24 < 12) {
 		if (h24 == 0) {
 			h24 = 12;
