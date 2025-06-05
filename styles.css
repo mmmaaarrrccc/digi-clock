@@ -181,12 +181,23 @@ body {
 .nameSection input:focus, .nameSection input:focus-visible {
 	outline: none !important;
 }
-.chargingIcon {    
-	stroke-width: 1.5px;
-    opacity: 0;
+.chargingIcon { 
+	scale: 0.8;
+	transform-origin: 50% 50%;
+  opacity: 0;
 	animation-name: batterycharging;
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
+}
+#batteryIcon {    
+  opacity: 1;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	filter: inherit;
+	transition: all 1s;
+}
+#batteryIconCharging {
+	transition: all 1s;
 }
 #Folder-2, .chargingIcon, .bci {
 	transition: opacity 0.3s;
@@ -252,9 +263,6 @@ body {
 		color: #010101;
 		background-color: var(--activeDm);
 	}
-	.chargingIcon {
-		stroke: black;
-	}
 }
 .lightm {
 	color: #010101;
@@ -263,9 +271,6 @@ body {
 	&::selection {
 		color: var(--activeDm);
 		background-color: #010101;
-	}
-	.chargingIcon {
-		stroke: white;
 	}
 }
 .oc.oc-out {
@@ -586,6 +591,14 @@ body {
 	color: white;	
 }
 
+.darkm #batteryIconCharging {
+	filter: invert(1);
+}
+
+.lightm #batteryIconCharging {
+	filter: invert(0);
+}
+
 .videoBg {
 	position: fixed;
 	right: 0;
@@ -723,4 +736,10 @@ body {
   0% {opacity: 1;}
   50% {opacity: 0;}
   100% {opacity: 1;}
+}
+
+@keyframes batterycharging2 {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
 }

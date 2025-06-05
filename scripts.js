@@ -241,8 +241,11 @@ $(document).ready(function() {
 			if (battery.charging) {
 				$("#Folder-2").css("opacity","1");
 				$(".bci").css("opacity", "0");
+				$("#batteryIconCharging").css("opacity","1");
+				$('#batteryIcon').css('animation-name','batterycharging2')
 			} else {
 				$("#Folder-2").css("opacity","0");
+				$("#batteryIconCharging").css("opacity","0");
 			}
 		}
 
