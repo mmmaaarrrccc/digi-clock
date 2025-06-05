@@ -43,11 +43,16 @@ function cookiesEnabled() {
   var video = $("#videoBg")[0];
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
+
+    if (backgroundImage.match('.mp4') != null) {
+      video.src = backgroundImage;
+      video.play();
+    }
+
     $('body').css('background-image','url(' + backgroundImage + ')');
-    video.src = backgroundImage;
-    video.play();
   } else {
     $('body').css('background-image','none');   
+      video.src = '';
   }
 
   let backgroundSize = Cookies.get('backgroundSize');
@@ -150,9 +155,13 @@ $(document).ready(function(){
   $("#bgLink").change(function(){
     let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
+
+    if (bgLink.match('.mp4') != null) {
+      video.src = bgLink;
+      video.play();
+    }
+
     $('body').css('background-image','url(' + bgLink + ')');
-    video.src = bgLink;
-    video.play();
     Cookies.set('backgroundImage', bgLink, { expires: 365 });
   });
 
