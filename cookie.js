@@ -40,15 +40,15 @@ function cookiesEnabled() {
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
-  var video = $("#videoBg")[0];
+  // var video = $("#videoBg")[0];
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
     $('body').css('background-image','url(' + backgroundImage + ')');
-    video.src = bgLink;
-    video.play();
+    // video.src = bgLink;
+    // video.play();
   } else {
     $('body').css('background-image','none');   
-    video.src = 'https://static.vecteezy.com/system/resources/previews/007/536/781/mp4/aerial-view-of-white-sand-beach-and-water-surface-texture-foamy-waves-with-sky-beautiful-tropical-beach-amazing-sandy-coastline-with-white-sea-waves-nature-seascape-and-summer-concept-free-video.mp4';
+    // video.src = 'https://static.vecteezy.com/system/resources/previews/007/536/781/mp4/aerial-view-of-white-sand-beach-and-water-surface-texture-foamy-waves-with-sky-beautiful-tropical-beach-amazing-sandy-coastline-with-white-sea-waves-nature-seascape-and-summer-concept-free-video.mp4';
   }
 
   let backgroundSize = Cookies.get('backgroundSize');
@@ -151,9 +151,9 @@ $(document).ready(function(){
     let bgLink = $("#bgLink").val();
     Cookies.remove('backgroundImage');
     $('body').css('background-image','url(' + bgLink + ')');
-    var video = $("#videoBg")[0];
-    video.src = bgLink;
-    video.play();
+    // var video = $("#videoBg")[0];
+    // video.src = bgLink;
+    // video.play();
     Cookies.set('backgroundImage', bgLink, { expires: 365 });
   });
 
