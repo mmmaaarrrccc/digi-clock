@@ -47,6 +47,8 @@ function cookiesEnabled() {
     if (backgroundImage.match('.mp4') != null) {
       video.src = backgroundImage;
       video.play();
+    } else {
+      video.src = '';   
     }
 
     $('body').css('background-image','url(' + backgroundImage + ')');
@@ -159,6 +161,8 @@ $(document).ready(function(){
     if (bgLink.match('.mp4') != null) {
       video.src = bgLink;
       video.play();
+    } else {
+      video.src = '';   
     }
 
     $('body').css('background-image','url(' + bgLink + ')');
