@@ -91,7 +91,7 @@ function cookiesEnabled() {
     $('.overlay').css('opacity',overlayOpacity);
     $('#opacityVal').html(overlayOpacity);
 
-    var percentage = ((overlayOpacity - min) / (max - min)) * 100;
+    var percentage = Math.round(((overlayOpacity - min) / (max - min)) * 100);
 
     r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
     r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
