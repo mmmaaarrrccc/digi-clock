@@ -317,7 +317,7 @@ $(document).ready(function(){
 	const max = $('#olOpacity').attr('max');
 	$('#olOpacity').on('input', function(){
 		var opacity = $('#olOpacity').val();
-		var percentage = ((opacity - min) / (max - min)) * 100;
+		var percentage = Math.round(((opacity - min) / (max - min)) * 100);
 		r.style.setProperty('--sliderbgDm', 'linear-gradient(to right, white ' + percentage + '%, black ' + percentage + '%)');
 		r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, black ' + percentage + '%, white ' + percentage + '%)');
 	});
