@@ -73,30 +73,30 @@ function currentMonth() {
 
 function textToSpeech() {
 	const now = new Date();
-	let h24 = now.getHours();
-	let m = now.getMinutes();
+	let hour = now.getHours();
+	let minutes = now.getMinutes();
 	let meridian;
-
-	if (h24 < 12) {
-		if (h24 == 0) {
-			h24 = 12;
+	
+	if (hour < 12) {
+		if (hour == 0) {
+			hour = 12;
 		}
 		meridian = ' A.M.';
-		speakTime(h24,m, meridian);
+		speakTime(hour,minutes, meridian);
 	} else {
+		if (hour > 12) {
+			hour = hour - 12;
+		}
 		meridian = ' P.M.';
-		speakTime(h24,m, meridian);
+		speakTime(hour,minutes, meridian);
 	}
 }
 
-function speakTime(h24,m, meridian) {
-	if (h24 > 12) {
-		h24 = h24 - 12;
+function speakTime(hour,minutes, meridian) {
+	if (minutes == 0 || minutes == '00'){
+		minutes = 'o&apos;clock';
 	}
-	if (m == 0 || m == '00'){
-		m = 'o&apos;clock';
-	}
-	const text = 'Time Now Is: ' + h24 + ':' + m + meridian;
+	const text = 'Time Now Is: ' + hour + ':' + minutes + meridian;
 	const voice = new SpeechSynthesisUtterance(text);
 	window.speechSynthesis.speak(voice);	
 }
