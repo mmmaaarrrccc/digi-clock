@@ -32,6 +32,7 @@ $(document).ready(function(){
 			$("#dim").removeClass('activemode');
 			$("#bright").addClass('activemode');
 		    var idleCount = setInterval(checkScreenSize, 60000);
+		    $('body').css('cursor','none');
 			checkScreenSize();
         }
         if (idleTime == 6) {
@@ -117,11 +118,13 @@ function idleUnlock() {
 	idleTime = 0;
 	document.getElementById('brightness').style.opacity = "0";
 	document.getElementById('options').style.opacity = "1";
+	$('body').css('cursor','default');
 }
 
 function idleLock() {
     document.getElementById('lock-btn').style.opacity = "1";
 	document.getElementById('brightness').style.opacity = "0";
+	$('body').css('cursor','default');
     idleTime = 0;
 }
 
