@@ -254,7 +254,7 @@ body {
 	border-radius: 50px;
 }
 
-.darkm {
+.darkm, .darkm ~ * {
 	color: var(--activeDm);
 	fill: var(--activeDm);
 
@@ -263,7 +263,7 @@ body {
 		background-color: var(--activeDm);
 	}
 }
-.lightm {
+.lightm, .lightm ~ * {
 	color: #010101;
 	fill: #010101;
 
@@ -357,7 +357,7 @@ body {
 	height: 100vh;
 	width: 100vw;
 	transition: all 1s;
-	z-index: 9;
+	z-index: 10;
 	opacity: 0;
 }
 .screenlock {
@@ -380,12 +380,8 @@ body {
 	border-style: solid;
 	border-width: 2px;
 	box-sizing: border-box;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate( -50%, -50%);
-	z-index: 11;
-	padding: 40px;
+	z-index: 9;
+	padding-bottom: 40px;
   font-family: "Orbitron", sans-serif;
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -394,6 +390,38 @@ body {
   line-height: 1.6em;
 	backdrop-filter: blur(10px);
 	overflow: hidden;
+	transition: background 0.3s;
+}
+
+#settingsWrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#settingsWrapper:has(+ .ui-draggable-dragging) {
+	display: block;
+}
+#titleBar {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	line-height: 28px;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.title {
+	padding: 0 8px;
+}
+
+.bgSettingsContainer {
+	padding:0 40px;
 }
 
 .bgSettings *:not(span, p, i, div) {
@@ -467,21 +495,18 @@ body {
 }
 
 .closeBtn {
-	position: absolute;
-	top: 0px;
-	right: 0px;
 	color: inherit;
 	cursor: pointer;
 	width: 30px;
-	height: 30px;
-	border: inherit;
+	height: 100%;
+	min-height: 30px;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-left-color: inherit;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-sizing: border-box;
 	transition: all 0.3s;
-	border-top-width: 0px;
-	border-right-width: 0px;
 }
 .closeBtn i {
 	width: 11px;
@@ -512,80 +537,80 @@ body {
 	transition: all 0.3s;
 }
 
-.darkm ~ .bgSettings #fileImage::file-selector-button {
+.darkm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button {
 	color: var(--activeDm);
 	border-color: white;
 }
 
-.darkm ~ .bgSettings #fileImage::file-selector-button:hover {
+.darkm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button:hover {
 	color: black;
 	background-color: white;
 }
 
-.lightm ~ .bgSettings #fileImage::file-selector-button {
+.lightm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button {
 	color: var(--activeLm);
 	border-color: black;
 }
 
-.lightm ~ .bgSettings #fileImage::file-selector-button:hover {
+.lightm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button:hover {
 	color: white;
 	background-color: black;
 }
 
-.darkm ~ .bgSettings .closeBtn:hover {
+.darkm ~ #settingsWrapper .bgSettings .closeBtn:hover {
 	background-color: white;
 	color: black;
 }
 
-.lightm ~ .bgSettings .closeBtn:hover {
+.lightm ~ #settingsWrapper .bgSettings .closeBtn:hover {
 	background-color: black;
 	color: white;
 }
 
-.darkm ~ .bgSettings {
+.darkm ~ #settingsWrapper .bgSettings {
 	background-color: rgba(0,0,0,0.8);	
 	border-color: white;
 	color: var(--activeDm) !important;
 }
 
-.lightm ~ .bgSettings {
+.lightm ~ #settingsWrapper .bgSettings {
 	background-color: rgba(255,255,255,0.8);	
 	border-color: black;
 	color: var(--activeLm);
 }
 
-.darkm ~ .bgSettings input[type=range] {
+.darkm ~ #settingsWrapper .bgSettings input[type=range] {
 	background: white;
 }
 
-.lightm ~ .bgSettings input[type=range] {
+.lightm ~ #settingsWrapper .bgSettings input[type=range] {
 	background: black;
 }
 
-.darkm ~ .bgSettings input[type=range]::-webkit-slider-thumb {
+.darkm ~ #settingsWrapper .bgSettings input[type=range]::-webkit-slider-thumb {
   background-image: var(--sliderbgDm);
   border-color: white;
 }
 
-.lightm ~ .bgSettings input[type=range]::-webkit-slider-thumb {
+.lightm ~ #settingsWrapper .bgSettings input[type=range]::-webkit-slider-thumb {
   background-image: var(--sliderbgLm);
   border-color: black;
 }
 
-.darkm ~ .bgSettings option {
+.darkm ~ #settingsWrapper .bgSettings option {
 	background-color: black;
 }
 
-.lightm ~ .bgSettings option {
+.lightm ~ #settingsWrapper .bgSettings option {
 	background-color: white;
 }
 
-.darkm ~ .bgSettings select:focus option:checked {
+.darkm ~ #settingsWrapper .bgSettings select:focus option:checked {
 	background-color: white;
 	color: black;	
 }
 
-.lightm ~ .bgSettings select:focus option:checked {
+.lightm ~ #settingsWrapper .bgSettings select:focus option:checked {
 	background-color: black;
 	color: white;	
 }
@@ -711,14 +736,16 @@ body {
 	.bgSettings {
 		max-height: 450px;
 		height: 100%;
-		padding: 40px 30px;
 		width: 85%;
+    display: flex;
+    flex-direction: column;
 	}
 	.bgSettingsContainer {
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
   	transition: all 0.3s;
+  	padding: 0 30px;
 	}
 	.bgSettings #bgImage {
 		padding-right: 30px;
@@ -728,6 +755,9 @@ body {
 		right: unset;
 		bottom: unset;
 		margin-top: 10px;
+	}
+	#titleBar .title {
+		font-size: 12px;
 	}
 }
 
