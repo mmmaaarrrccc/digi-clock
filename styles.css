@@ -17,17 +17,20 @@
 	font-family: DS-Digital;
 	src: url('fonts/DS-DIGIB.TTF');
 }
+html {
+	height: 100%;
+}
 body {
 	cursor: default;
 	background-color: #000000;
 	overflow: hidden;
 	position: relative;
-	height: 100vh;
+	height: 100%;
 	transition: all 1s;
 	margin: 0px;
 }
 .main {
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	display: flex;
 	align-items: center;
