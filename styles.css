@@ -744,13 +744,15 @@ body {
 		width: 90%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 30px;
+    font-size: 14px;
 	}
 	.bgSettingsContainer {
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
   	transition: all 0.3s;
-  	padding: 0 30px;
+  	padding: 0 20px;
 	}
 	.bgSettings #bgImage {
 		padding-right: 30px;
@@ -760,6 +762,9 @@ body {
 		right: unset;
 		bottom: unset;
 		margin-top: 10px;
+	}
+	#titleBar {
+		margin-bottom: 30px;
 	}
 	#titleBar .title {
 		font-size: 12px;
