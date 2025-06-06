@@ -19,7 +19,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		$( function() {
-			$( "#bgSettings" ).draggable({ containment: "#settingsWrapper", scroll: false, handle: "#titleBar", cancel: '#closeBtn' });
+			$( "#bgSettings" ).draggable({ containment: "#settingsWrapper", scroll: false, handle: "#titleName"});
 		});
 	</script>
 </head>
@@ -91,7 +91,7 @@
 	<div id="settingsWrapper">
 		<div class="bgSettings" id="bgSettings" style="display: none;">
 			<div id="titleBar">
-				<span class="title">Wallpaper Settings</span>
+				<span class="title" id="titleName">Wallpaper Settings</span>
 				<span class="closeBtn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
 			</div>
 			<div class="bgSettingsContainer">
