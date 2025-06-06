@@ -400,12 +400,13 @@ body {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	height: calc(100% - 40px);
-	width: calc(100% - 40px);
+	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 20px;
+	padding: 20px 20px 90px 20px;
+	box-sizing: border-box;
 }
 #settingsWrapper:has(+ .ui-draggable-dragging) {
 	display: block;
@@ -740,7 +741,7 @@ body {
 	.bgSettings {
 		max-height: 450px;
 		height: 100%;
-		width: 85%;
+		width: 90%;
     display: flex;
     flex-direction: column;
 	}
@@ -772,7 +773,12 @@ body {
 	#settingsWrapper {
 		width: 100%;
 		height: 100%;
-		margin: 0;
+		padding: 40px 20px 90px 20px;
+	}
+}
+@media only screen and (max-width: 375px) {
+	#titleBar .title {
+		font-size: 10px;
 	}
 }
 
