@@ -803,7 +803,7 @@ body {
 
 .vjs-poster {
 	pointer-events: none;
-	display: none;
+	display: none !important;
 }
 
 .vjs-loading-spinner {
@@ -818,8 +818,8 @@ body {
     width: 120px;
     height: 120px;
     padding: 10px;
-    background-color: black;
-    place-content: center;
+    background-color: rgba(0,0,0,0.7);
+    place-content: center !important;
     border-radius: 120px;
 }
 
