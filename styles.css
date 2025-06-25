@@ -7,8 +7,8 @@
 	--inactiveLm: #7a7a7a;
 	--def: 0.3;
 	--gaps: 20px;
-	--sliderbgDm: linear-gradient(to right, white 0%, black 0%);
-	--sliderbgLm: linear-gradient(to right, black 0%, white 0%);
+	--sliderbgDm: linear-gradient(to right, var(--activeDm) 80%, black 80%);
+	--sliderbgLm: linear-gradient(to right, black 80%, var(--activeDm) 80%);
 }
 /*.main div{
 	border: dashed 2px red;
@@ -190,6 +190,7 @@ body {
   opacity: 0;
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
+  transform: translate(-0.7px, 0px);
 }
 #batteryIcon {    
   opacity: 1;
@@ -220,7 +221,7 @@ body {
   background-position: bottom center;
 	height: 100vh;
 	width: 100vw;
-	transition: all 0.8s;
+	transition: background 0.8s;
 	opacity: 0.8;
 	z-index: 1;
 }
@@ -239,13 +240,87 @@ body {
 	overflow: hidden;
 	transition: all 0.3s;
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	pointer-events: none;
 	z-index: 7;
 }
 
-.options * {
+.options *, .media-options * {
 	pointer-events: initial;	
 }
+
+.mediaControlsSpace {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.media-options {
+	position: absolute;
+	top:20px;
+	right: 20px;
+	overflow: hidden;
+	transition: width 0.3s, height 0.3s, border-radius 0.3s, margin-left 0.3s, border-color 0.3s, fill 0.3s , color 0.3s, opacity 0.3s;
+	z-index: 12;
+	height: 50px;
+	width: 50px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  border-width: 2px;
+	border-style: solid;
+	border-color: inherit;
+	border-radius: 50px;
+	backdrop-filter: blur(10px);
+}
+
+.media-options:has(.mc-out) {
+	height: 125px !important;
+	width: 350px !important;
+	border-radius: 0px;
+}
+
+.mc-out {
+	width: 100% !important;
+	height: 35px !important;
+	min-height: 35px !important;
+	padding: 0 10px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 2px;
+	border-radius: 0px !important;
+	justify-content: start !important;
+	cursor: default !important;
+}
+
+.mediabtnwrapper {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.media-options:has(.mc-out) .mediabtnwrapper {
+	opacity: 1 !important;
+}
+
+#mc {
+	min-height: 50px;
+	width: 50px;
+	box-sizing: border-box;
+	transition: height 0.3s, min-height 0.3s;
+}
+#mc i {
+	font-size: initial !important;
+	opacity: 1;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
 .oc {
 	cursor: pointer;
 	min-width: 50px;
@@ -262,17 +337,17 @@ body {
 	fill: var(--activeDm);
 
 	&::selection {
-		color: #010101;
+		color: var(--activeLm);
 		background-color: var(--activeDm);
 	}
 }
 .lightm, .lightm ~ * {
-	color: #010101;
-	fill: #010101;
+	color: var(--activeLm);
+	fill: var(--activeLm);
 
 	&::selection {
 		color: var(--activeDm);
-		background-color: #010101;
+		background-color: var(--activeLm);
 	}
 }
 .oc.oc-out {
@@ -293,16 +368,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  backdrop-filter: blur(10px);
 
     i {
     	transition: all 0.3s;
     	opacity: 0;
-    	font-size: 0px;
+		font-size: 20px !important;
+    	line-height: 30px ;    
+    	position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
     }
     i.activemode {
     	opacity: 1 !important;
-		font-size: 20px !important;
-    	line-height: 30px ;
     }
 }
 .btn-mode:focus, .btn-mode:focus-visible, .btn-mode:active {
@@ -310,20 +390,20 @@ body {
 }
 
 .btn-mode.dark {
-	border-color: white;
-	color: white;
+	border-color:  var(--activeDm);
+	color:  var(--activeDm);
 }
 .btn-mode.light {
-	border-color: black;
-	color: black;
+	border-color: var(--activeLm);
+	color: var(--activeLm);
 }
 
 .btn-mode.dark:hover {
-	background: white;
+	background: var(--activeDm);
 	color: black;
 }
 .btn-mode.light:hover {
-	background: black;
+	background: var(--activeLm);
 	color: white;
 }
 
@@ -359,7 +439,7 @@ body {
 	pointer-events: none;
 	height: 100vh;
 	width: 100vw;
-	transition: all 1s;
+	transition: opacity 1s;
 	z-index: 10;
 	opacity: 0;
 }
@@ -379,11 +459,10 @@ body {
 	width: 80%;
 	height: auto;
 	max-width: 600px;
-	max-height: 600px;
 	border-style: solid;
 	border-width: 2px;
 	box-sizing: border-box;
-	z-index: 9;
+	z-index: 13;
 	padding-bottom: 40px;
   font-family: "Orbitron", sans-serif;
   letter-spacing: 5px;
@@ -391,9 +470,9 @@ body {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.6em;
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(20px);
 	overflow: hidden;
-	transition: background 0.3s;
+	transition: background 0.3s, opacity 0.3s;
 }
 
 #settingsWrapper {
@@ -448,13 +527,13 @@ body {
 
 .bgSettings input[type=range] {
 	width: calc(100% - 80px);
-	margin-bottom: 0px;
 	-webkit-appearance: none;
   -webkit-transition: .2s;
 	border: 0;
 	height: 3px;
 	padding: 0px;
-	margin-top: 10px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 }
 
 .bgSettings input[type=range]::-webkit-slider-thumb {
@@ -513,6 +592,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	transition: all 0.3s;
+	padding-right: 1px;
 }
 .closeBtn i {
 	width: 11px;
@@ -543,19 +623,76 @@ body {
 	transition: all 0.3s;
 }
 
+.subTitle {
+	font-size: x-small;
+}
+
+.coolors {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.coolors > div {
+	width: calc(50%  - 10px);
+	position: relative;
+}
+
+.coolors input {
+	border-width: 0px;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	height: 0px;
+	width: 0px;
+	position: absolute;
+	bottom: 290px;
+}
+
+.coolors label {
+	display: block;
+	height: 32px;
+	width: 32px;
+	margin: 0;
+	border-radius: 32px;
+	border-style: solid;
+	border-width: 2px;
+	transition: all 0.3s;
+}
+
+.coolors .subTitle {
+	margin: 5px 0 15px 0;
+	display: block;
+	line-height: 1em;
+}
+
+.colorSelector {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+.coolors .colorSelector i {
+	transition: scale 0.3s;
+	cursor: pointer;
+}
+
+.coolors .colorSelector i:hover {
+	scale: 1.2;
+}
+
 .darkm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button {
 	color: var(--activeDm);
-	border-color: white;
+	border-color: var(--activeDm);
 }
 
 .darkm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button:hover {
 	color: black;
-	background-color: white;
+	background-color: var(--activeDm);
 }
 
 .lightm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button {
 	color: var(--activeLm);
-	border-color: black;
+	border-color: var(--activeLm);
 }
 
 .lightm ~ #settingsWrapper .bgSettings #fileImage::file-selector-button:hover {
@@ -564,43 +701,43 @@ body {
 }
 
 .darkm ~ #settingsWrapper .bgSettings .closeBtn:hover {
-	background-color: white;
+	background-color: var(--activeDm);
 	color: black;
 }
 
 .lightm ~ #settingsWrapper .bgSettings .closeBtn:hover {
-	background-color: black;
+	background-color: var(--activeLm);
 	color: white;
 }
 
 .darkm ~ #settingsWrapper .bgSettings {
-	background-color: rgba(0,0,0,0.8);	
-	border-color: white;
+	background-color: rgba(0,0,0,0.4);	
+	border-color: var(--activeDm);
 	color: var(--activeDm) !important;
 }
 
 .lightm ~ #settingsWrapper .bgSettings {
-	background-color: rgba(255,255,255,0.8);	
-	border-color: black;
+	background-color: rgba(255,255,255,0.4);	
+	border-color: var(--activeLm);
 	color: var(--activeLm);
 }
 
 .darkm ~ #settingsWrapper .bgSettings input[type=range] {
-	background: white;
+	background: var(--activeDm);
 }
 
 .lightm ~ #settingsWrapper .bgSettings input[type=range] {
-	background: black;
+	background: var(--activeLm);
 }
 
 .darkm ~ #settingsWrapper .bgSettings input[type=range]::-webkit-slider-thumb {
   background-image: var(--sliderbgDm);
-  border-color: white;
+  border-color: var(--activeDm);
 }
 
 .lightm ~ #settingsWrapper .bgSettings input[type=range]::-webkit-slider-thumb {
   background-image: var(--sliderbgLm);
-  border-color: black;
+  border-color: var(--activeLm);
 }
 
 .darkm ~ #settingsWrapper .bgSettings option {
@@ -612,21 +749,34 @@ body {
 }
 
 .darkm ~ #settingsWrapper .bgSettings select:focus option:checked {
-	background-color: white;
+	background-color: var(--activeDm);
 	color: black;	
 }
 
 .lightm ~ #settingsWrapper .bgSettings select:focus option:checked {
-	background-color: black;
+	background-color: var(--activeLm);
 	color: white;	
 }
 
-.darkm #batteryIconCharging {
-	filter: invert(1);
+.darkm ~ #settingsWrapper .bgSettings .coolors label {
+	border-color: var(--activeDm);
+}
+.lightm ~ #settingsWrapper .bgSettings .coolors label {
+	border-color: var(--activeLm);
 }
 
-.lightm #batteryIconCharging {
-	filter: invert(0);
+.darkm ~ #settingsWrapper .bgSettings .coolors .pColor label {
+	background-color: var(--activeDm);
+}
+.lightm ~ #settingsWrapper .bgSettings .coolors .pColor label {
+	background-color: var(--activeLm);
+}
+
+.darkm ~ #settingsWrapper .bgSettings .coolors .sColor label {
+	background-color: var(--inactiveDm);
+}
+.lightm ~ #settingsWrapper .bgSettings .coolors .sColor label {
+	background-color: var(--inactiveLm);
 }
 
 .videoBg {
@@ -636,8 +786,21 @@ body {
 	min-width: 100%; 
 	min-height: 100%;
 	z-index: 0;
+	pointer-events: none;
 }
-
+.videoBg video, .videoBg iframe {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+.videoBg video {
+	min-width: 100%; 
+	min-height: 100%;	
+}
+.videoBg iframe {
+    aspect-ratio: 16 / 9;
+}
 @media only screen and (max-width: 1599px) {
 	.main {
 		flex-direction: row;
@@ -704,6 +867,9 @@ body {
 	}
 	.nameSection {
 		margin-bottom: -10px;
+	}
+	.videoBg iframe {
+	    width: auto !important;
 	}
 }
 
@@ -780,6 +946,49 @@ body {
 		width: 100%;
 		height: 100%;
 		padding: 40px 20px 90px 20px;
+	}
+	.coolors {
+		display: block !important;
+	}
+	.coolors .pColor {
+		margin-bottom: 20px;
+	}
+	.coolors > div {
+		width: 100% !important;
+	}
+	.media-options {
+		top: 40px;
+		left: calc(100% - 70px);
+	}
+	.media-options:not(:active) {
+		transition: top 0.3s, left 0.3s, right 0.3s, height 0.3s, width 0.3s, border-radius 0.3s;
+	}
+	.media-options:has(.mc-out) {
+		width: 280px !important;
+		height: 190px !important;
+		top: calc(100% - 285px) !important;
+		left: calc(50% - 140px) !important;
+		margin-left: 0 !important;
+	}
+	.mediabtnwrapper {
+		flex-wrap: wrap;
+		align-self: center;
+		width: 80%;
+	}
+	#rewind {
+		order: 1;
+	}
+	#playPause {
+		order: 2;
+	}
+	#forward {
+		order: 3;
+	}
+	#stop {
+		order: 4;
+	}
+	#mute {
+		order: 5;
 	}
 }
 @media only screen and (max-width: 375px) {
