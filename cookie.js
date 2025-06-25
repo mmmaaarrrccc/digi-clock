@@ -206,7 +206,7 @@ $(document).ready(function(){
 
   //---Overlay Opacity
   $("#olOpacity").change(function(){
-    olOpacity = $("#olOpacity").val();
+    var olOpacity = $("#olOpacity").val();
     Cookies.remove('overlayOpacity');
     Cookies.set('overlayOpacity', olOpacity, { expires: 365 });
   });
