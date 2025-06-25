@@ -103,7 +103,7 @@ function cookiesEnabled() {
     r.style.setProperty('--sliderbgLm', 'linear-gradient(to right, var(--activeLm) 80%, white 80%)');
   }
 
-  let primaryColor = Cookies.get('backgroundRepeat');
+  let primaryColor = Cookies.get('primaryColor');
   if (primaryColor != undefined) {
     $('#primaryColor').val(primaryColor);
     r.style.setProperty('--activeDm', primaryColor);
