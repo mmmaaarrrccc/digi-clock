@@ -20,6 +20,7 @@
 	<script>
 		$( function() {
 			$( "#bgSettings" ).draggable({ containment: "#settingsWrapper", scroll: false, handle: "#titleName"});
+			$( "#mediaOptions" ).draggable({ containment: "#settingsWrapper", scroll: false, handle: "#mc", snap: "#mediaControlsSnap", snapMode: "inner", snapTolerance: '20' });
 		});
 	</script>
 </head>
@@ -62,7 +63,11 @@
 							<path fill-rule="evenodd" class="bci b100" d="m16 9h-2v6h2v-6z"/>
 						</g>
 						<path id="batteryIcon" d="m19 6h-17v12h17v-2h3v-8h-3zm-2 2v2h2 1v4h-1-2v2h-13v-8z"/>
-						<use id="batteryIconCharging" href="#img1" x="2" y="6"/>
+						
+						<g id="batteryIconCharging">
+							<path class="s0" d="m19 5.9h-2.8l-1 2h1.8v2h3l2-2.1h-3zm0 10.1h2.9v-8.1l-2 1.5c0 0 0 4.4 0 4.5h-3l0.1 2h-4l-2.3 2h8.3z"/>
+							<path class="s0" d="m10.1 5.8l-8.1 0.1v12h3l0.8-2h-1.8v-8h4zm-6.1 2v8.1-0.1 0.1-0.1z"/>
+						</g>
 						<g id="Folder-2">
 							<path id="chargingIcon" class="chargingIcon" d="m15.8 11.2l-3.3-0.5 3.1-7.3c0.1-0.2-0.2-0.4-0.4-0.2l-10.1 9.2c-0.2 0.1-0.1 0.4 0.1 0.4l3.3 0.5-3.1 7.3c-0.1 0.2 0.2 0.4 0.4 0.2l10.1-9.2c0.2-0.1 0.1-0.4-0.1-0.4z"/>
 						</g>
@@ -76,12 +81,24 @@
 			</div>
 	</div>
 	<div class="overlay" id="overlay"></div>
-	<div class="options" id="options" style="width: 50px">
+	<div class="options" id="options" style="width: 50px; opacity: 1;">
 		<div class="oc darkm" id="oc"><i class="fa-solid fa-chevron-left"></i></div>
 		<button class="btn-mode dark" id="dl-mode"><i class="fa-regular fa-sun activemode" id="sun"></i><i class="fa-regular fa-moon" id="moon"></i></button>
 		<button class="btn-mode dark" id="toggleBGSettings"><i class="fa-regular fa-image activemode"></i></button>
-		<button class="btn-mode dark" id="speak"><i class="fa-solid fa-volume-high activemode"></i></button>
-		<button class="btn-mode dark" id="fs-mode" onclick="toggleFullscreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
+		<button class="btn-mode dark" id="speak"><i class="fa-solid fa-wave-square activemode"></i></button>
+		<button class="btn-mode dark" id="fs-mode" onclick="toggleFullScreen()"><i class="fa-solid fa-expand activemode" id="fs-on"></i><i class="fa-solid fa-compress" id="fs-off"></i></button>
+	</div>
+	<div class="mediaControlsSpace">
+		<div class="media-options" id="mediaOptions">
+			<div class="oc darkm" id="mc"><i class="fa-solid fa-music"></i></div>
+			<div class="mediabtnwrapper">
+				<button class="btn-mode dark" id="stop" title="Stop Video"><i class="fa-solid fa-stop activemode"></i></button>
+				<button class="btn-mode dark" id="rewind" title="Rewind 10s"><i class="fa-solid fa-backward-step activemode"></i></button>
+				<button class="btn-mode dark" id="playPause" title="Play/Pause"><i class="fa-solid fa-play" id="playing"></i><i class="fa-solid fa-pause activemode" id="paused"></i></button>
+				<button class="btn-mode dark" id="forward" title="Forward 10s"><i class="fa-solid fa-forward-step activemode"></i></button>
+				<button class="btn-mode dark" id="mute" title="Toggle Mute"><i class="fa-solid fa-volume-xmark activemode" id="muted"></i><i class="fa-solid fa-volume-high" id="unmute"></i></button>
+			</div>
+		</div>
 	</div>
 	<div class="pLock darkm" id="lock-btn">
 		<i class="fa-solid fa-lock-open activemode" id="lock"></i><i class="fa-solid fa-lock" id="ulock"></i>
@@ -96,7 +113,7 @@
 			</div>
 			<div class="bgSettingsContainer">
 				<div class="backgroundImage">
-					<p><span>Wallpaper </span><span style="font-size: x-small;">Images or MP4 only</span></p>
+					<p><span>Wallpaper </span><span class="subTitle">Images or MP4 only</span></p>
 					<input type="file" name="fileImage" id="fileImage" accept="image/*">
 					<input type="text" name="bgLink" id="bgLink">
 					<span class="clearBg" id="clearBg"><i class="fa-solid fa-xmark"></i></span>
@@ -139,11 +156,35 @@
 					<input type="range" name="olOpacity" id="olOpacity" min="0.4" max="0.9" step="0.01">
 					<span class="opacityVal" id="opacityVal"></span>
 				</div>
+				<div class="colorContainer">
+					<p>Theme Color</p>
+					<div class="coolors">
+						<div class="pColor">
+							<span class="subTitle">Primary Color</span>
+							<div class="colorSelector">
+								<label for="primaryColor" class="primaryColor"></label>
+								<i class="fa-solid fa-arrow-rotate-left" id="resetPColor"></i>
+							</div>
+							<input type="color" name="primaryColor" id="primaryColor" colorpick-eyedropper-active="false">
+						</div>
+						<div class="sColor">
+							<span class="subTitle">Secondary Color</span>
+							<div class="colorSelector">
+								<label for="secondaryColor" class="secondaryColor"></label>
+								<i class="fa-solid fa-arrow-rotate-left" id="resetSColor"></i>
+							</div>
+							<input type="color" name="secondaryColor" id="secondaryColor" colorpick-eyedropper-active="false">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		<div class="mediaControlsSnap" id="mediaControlsSnap" style="width: calc(100% - 40px);height: 110vh;pointer-events: none;position: absolute;z-index: 0;"></div>
 	</div>
-	<video autoplay muted loop class="videoBg" id="videoBg">
-	  <source src="" type="video/mp4">
-	</video>
+	<div class="videoBg" id="videoBg"></div>
+	<link href="https://vjs.zencdn.net/8.23.3/video-js.min.css" rel="stylesheet">
+	<script src="https://vjs.zencdn.net/8.23.3/video.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/3.0.1/Youtube.min.js" integrity="sha512-W11MwS4c4ZsiIeMchCx7OtlWx7yQccsPpw2dE94AEsZOa3pmSMbrcFjJ2J7qBSHjnYKe6yRuROHCUHsx8mGmhA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/3.0.1/Youtube.js" integrity="sha512-U0OTmn6sp7s4GEL5vB45aX15fnXLydyDeaqAERRbf8DnVgo+ZwhUm674/ozek44R+nvuHgM2779EH2TXyUgrzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
