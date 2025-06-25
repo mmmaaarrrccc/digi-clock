@@ -40,15 +40,32 @@ function cookiesEnabled() {
   }
 
   let backgroundImage = Cookies.get('backgroundImage');
-  var video = $("#videoBg")[0];
+  var vidOptions = {autoplay: 'true', 
+  muted: true,
+  controls: false, 
+  loop: true, 
+  techOrder: ["youtube", "html5"],
+  youtube: { ytControls: 0, disablekb: 1, modestbranding: 0, showinfo: 0 }};
+  
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
 
-    if (backgroundImage.match('.mp4') != null) {
-      video.src = backgroundImage;
-      video.play();
+    if (backgroundImage.match('.mp4') != null || backgroundImage.match('youtube.com') != null) {
+      videojs('videoBg').dispose();
+      $("body").append("<video id='videoBg' class='videoBg'><source></video>");
+      $("#mediaOptions").show();
+      $("#mediaOptions").css('opacity','1');
+
+      if (backgroundImage.match('.mp4') != null) {
+        vidOptions.sources = [{"src": backgroundImage}];
+        videojs('videoBg', vidOptions);
+      } else if (backgroundImage.match('youtube.com') != null) {
+        vidOptions.sources = [{ "type": "video/youtube", "src": backgroundImage}];
+        videojs('videoBg', vidOptions);
+      }
     } else {
-      video.src = '';   
+      $("#mediaOptions").css('opacity','0');
+      setTimeout(function(){$("#mediaOptions").toggle();},300);
     }
 
     $('body').css('background-image','url(' + backgroundImage + ')');
