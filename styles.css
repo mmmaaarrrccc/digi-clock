@@ -801,6 +801,11 @@ body {
 .videoBg iframe {
     aspect-ratio: 16 / 9;
 }
+
+.vjs-poster {
+	pointer-events: none;
+}
+
 @media only screen and (max-width: 1599px) {
 	.main {
 		flex-direction: row;
