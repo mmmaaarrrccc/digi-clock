@@ -372,7 +372,6 @@ $(document).mouseup(function(e) {
 });
 
 $(document).ready(function(){
-	var video = $("#videoBg")[0];
 	var vidOptions = {autoplay: 'true', 
 	muted: true,
 	controls: false, 
