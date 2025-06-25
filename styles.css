@@ -808,9 +808,9 @@ body {
 
 .vjs-loading-spinner {
     font-family: 'DS-Digital';
-    width: 160px !important;
-    height: 160px !important;
-    text-align: center;
+    width: 163px !important;
+    height: 163px !important;
+    text-align: center !important;
     font-size: 20px;
 }
 
@@ -819,7 +819,7 @@ body {
     height: 120px;
     padding: 10px;
     background-color: rgba(0,0,0,0.7);
-    place-content: center !important;
+    place-content: center;
     border-radius: 120px;
 }
 
