@@ -453,7 +453,7 @@ $(document).ready(function(){
 	});
 
 	$("#olOpacity").on('input',function(){
-	    olOpacity = $("#olOpacity").val();
+	    var olOpacity = $("#olOpacity").val();
 	    $('.overlay').css('opacity', olOpacity);
 	    $('#opacityVal').html(olOpacity);
   	});
