@@ -803,6 +803,24 @@ body {
 
 .vjs-poster {
 	pointer-events: none;
+	display: none;
+}
+
+.vjs-loading-spinner {
+    font-family: 'DS-Digital';
+    width: 160px !important;
+    height: 160px !important;
+    text-align: center;
+    font-size: 20px;
+}
+
+.vjs-control-text {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    background-color: black;
+    place-content: center;
+    border-radius: 120px;
 }
 
 @media only screen and (max-width: 1599px) {
