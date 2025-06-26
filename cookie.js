@@ -50,7 +50,7 @@ function cookiesEnabled() {
   if (backgroundImage != undefined) {
     $('#bgLink').val(backgroundImage);
 
-    if (backgroundImage.match('.mp4') != null || backgroundImage.match('youtube.com') != null) {
+    if (backgroundImage.match('.mp4') != null || backgroundImage.match('youtube.com') != null || backgroundImage.match('youtu.be') != null) {
       videojs('videoBg').dispose();
       $("body").append("<video id='videoBg' class='videoBg'><source></video>");
       $("#mediaOptions").show();
@@ -59,7 +59,7 @@ function cookiesEnabled() {
       if (backgroundImage.match('.mp4') != null) {
         vidOptions.sources = [{"src": backgroundImage}];
         videojs('videoBg', vidOptions);
-      } else if (backgroundImage.match('youtube.com') != null) {
+      } else if (backgroundImage.match('youtube.com') != null || backgroundImage.match('youtu.be') != null) {
         vidOptions.sources = [{ "type": "video/youtube", "src": backgroundImage}];
         videojs('videoBg', vidOptions);
       }
