@@ -64,8 +64,8 @@ function cookiesEnabled() {
         videojs('videoBg', vidOptions);
       }
     } else {
+      $("#mediaOptions").hide();
       $("#mediaOptions").css('opacity','0');
-      setTimeout(function(){$("#mediaOptions").toggle();},300);
     }
 
     $('body').css('background-image','url(' + backgroundImage + ')');
