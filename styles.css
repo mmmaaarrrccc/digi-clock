@@ -26,7 +26,7 @@ body {
 	overflow: hidden;
 	position: relative;
 	height: 100%;
-	transition: all 1s;
+	transition: background-color 1s, background-image 1s, background-size 1s, background-repeat 1s;
 	margin: 0px;
 }
 .main {
@@ -786,6 +786,7 @@ body {
 	min-width: 100%; 
 	min-height: 100%;
 	z-index: 0;
+	pointer-events: none;
 }
 .videoBg video, .videoBg iframe {
     position: absolute !important;
