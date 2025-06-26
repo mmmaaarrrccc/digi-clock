@@ -392,7 +392,7 @@ $(document).ready(function(){
 		videojs('videoBg').dispose();
 	    $("body").append("<video id='videoBg' class='videoBg'><source></video>");
 
-	    if (bgLink.match('.mp4') != null || bgLink.match('youtube.com') != null) {
+	    if (bgLink.match('.mp4') != null || bgLink.match('youtube.com') != null || bgLink.match('youtu.be') != null) {
 			$("#mediaOptions").show();
 			$("#mediaOptions").css('opacity','1');
 	    } else {
@@ -403,7 +403,7 @@ $(document).ready(function(){
 	    if (bgLink.match('.mp4') != null) {
 	      vidOptions.sources = [{"src": bgLink}];
 	      videojs('videoBg', vidOptions);
-	    } else if (bgLink.match('youtube.com') != null) {
+	    } else if (bgLink.match('youtube.com') != null || bgLink.match('youtu.be') != null) {
 	      vidOptions.sources = [{ "type": "video/youtube", "src": bgLink}];
 	      videojs('videoBg', vidOptions);
 	    } 
