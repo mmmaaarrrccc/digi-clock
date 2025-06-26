@@ -233,7 +233,7 @@ $(document).mouseup(function(e) {
     	closeOptions();
     }
     var mediaContainer = $("#mediaOptions");
-    if (!mediaContainer.is(e.target) && mediaContainer.has(e.target).length === 0) {
+    if (!mediaContainer.is(e.target) && mediaContainer.has(e.target).length === 0 && mediaContainer.is(":visible")) {
     	closeMediaOptions();
     }
 });
@@ -393,11 +393,11 @@ $(document).ready(function(){
 	    $("body").append("<video id='videoBg' class='videoBg'><source></video>");
 
 	    if (bgLink.match('.mp4') != null || bgLink.match('youtube.com') != null) {
-	      $("#mediaOptions").show();
-	      $("#mediaOptions").css('opacity','1');
+			$("#mediaOptions").show();
+			$("#mediaOptions").css('opacity','1');
 	    } else {
-	      $("#mediaOptions").css('opacity','0');
-	      setTimeout(hideShowOptions,300);
+			$("#mediaOptions").hide();
+			$("#mediaOptions").css('opacity','0');
 	    }
 
 	    if (bgLink.match('.mp4') != null) {
