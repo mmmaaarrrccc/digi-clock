@@ -282,7 +282,6 @@ function closeMediaOptions() {
 //Check Battery
 //---Start---//
 $(document).ready(function() {
-
 	navigator.getBattery().then((battery) => {
 		function updateAllBatteryInfo() {
 			updateChargingInfo();
@@ -293,11 +292,13 @@ $(document).ready(function() {
 
 		//When the charging status changes
 		battery.addEventListener("chargingchange", () => {
+			batteryNotificationCharging(battery);
 			updateAllBatteryInfo();
 		});
 
-		//When the Battery Levvel Changes
+		//When the Battery Level Changes
 		battery.addEventListener("levelchange", () => {
+			batteryNotificationFull(battery);
 			updateAllBatteryInfo();
 		});
 
@@ -306,7 +307,7 @@ $(document).ready(function() {
 				$(".bci").css("opacity", "0");
 				$("#batteryIconCharging").css("opacity","1");
 				$("#chargingIcon").css('animation-name','batterycharging');
-				$('#batteryIcon').css('animation-name','batterycharging2')
+				$('#batteryIcon').css('animation-name','batterycharging2');
 			} else {
 				$("#batteryIconCharging").css("opacity","0");
 				$("#chargingIcon").css('animation-name','');
@@ -319,34 +320,62 @@ $(document).ready(function() {
 		    let batteryLevel = Math.round(battery.level * 100);
 			$("#batteryPerc").text(batteryLevel);
 			if (!battery.charging) {
-				if (batteryLevel >=80 ) {
+				if (batteryLevel ==100 ) {
 					$(".bci").css("opacity", "1");
 				}
+				if (batteryLevel <100 ) {
+					$(".bci").css("opacity", "1");
+					$(".bci.full").css("opacity", "0");
+				}
 				if (batteryLevel >=60 && batteryLevel < 80) {
-					$(".bci.b25").css("opacity", "1");
-					$(".bci.b50").css("opacity", "1");
-					$(".bci.b75").css("opacity", "1");
+					$(".bci").css("opacity", "1");
 					$(".bci.b100").css("opacity", "0");
+					$(".bci.full").css("opacity", "0");
 				}
 				if (batteryLevel >=40 && batteryLevel < 60) {
+					$(".bci").css("opacity", "0");
 					$(".bci.b25").css("opacity", "1");
 					$(".bci.b50").css("opacity", "1");
-					$(".bci.b75").css("opacity", "0");
-					$(".bci.b100").css("opacity", "0");
 				}
 				if (batteryLevel >=20 && batteryLevel < 40) {
+					$(".bci").css("opacity", "0");
 					$(".bci.b25").css("opacity", "1");
-					$(".bci.b50").css("opacity", "0");
-					$(".bci.b75").css("opacity", "0");
-					$(".bci.b100").css("opacity", "0");
 				}
 				if (batteryLevel >=0 && batteryLevel < 20) {
 					$(".bci").css("opacity", "0");
+				}
+
+				if (batteryLevel == 40 || batteryLevel == 30) {
+					$('body').append('<audio class="batteryNotification" id="batteryLow" autoplay><source src="./audio/low.mp3" type="audio/mpeg"></audio>');
+					removeBatteryNotification();
 				}
 			}
 		}
 	});
 });
+
+function batteryNotificationCharging(battery) {
+		if (battery.charging) {
+			$('body').append('<audio class="batteryNotification" id="batteryConnected" autoplay><source src="./audio/connected.mp3" type="audio/mpeg"></audio>');
+			removeBatteryNotification();
+		} else if (!battery.charging) {
+			$('body').append('<audio class="batteryNotification" id="batteryDisconnected" autoplay><source src="./audio/disconnected.mp3" type="audio/mpeg"></audio>');
+			removeBatteryNotification();
+		}
+}
+
+function batteryNotificationFull(battery) {
+	if (battery.charging && battery.level === 1) {
+		$('body').append('<audio class="batteryNotification" id="batteryFull" autoplay><source src="./audio/full.mp3" type="audio/mpeg"></audio>');
+		removeBatteryNotification();
+	}
+}
+
+function removeBatteryNotification() {
+	$('.batteryNotification').on('ended', function() {
+		$('.batteryNotification').remove();
+	});
+}
 
 //---End---//
 
