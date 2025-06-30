@@ -965,6 +965,9 @@ body {
 	.backgroundImage input[type=text] {
 		padding-right: 20px;
 	}
+	.backgroundImage .clearBg {
+		bottom: 1.82em !important;
+	}
 	#settingsWrapper {
 		width: 100%;
 		height: 100%;
