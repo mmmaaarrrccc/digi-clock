@@ -273,6 +273,7 @@ body {
 	border-color: inherit;
 	border-radius: 50px;
 	backdrop-filter: blur(10px);
+	opacity: 0;
 }
 
 .media-options:has(.mc-out) {
@@ -596,12 +597,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	transition: all 0.3s;
-	padding-right: 1px;
+	padding: 0 1px;
 }
 .closeBtn i {
 	width: 11px;
 	height: 11px;
 	line-height: 11px;
+  padding: 1px 1px 0 0;
 }
 
 .bgSettings #fileImage {
@@ -706,11 +708,13 @@ body {
 
 .darkm ~ #settingsWrapper .bgSettings .closeBtn:hover {
 	background-color: var(--activeDm);
+	border-color: var(--activeDm);
 	color: black;
 }
 
 .lightm ~ #settingsWrapper .bgSettings .closeBtn:hover {
 	background-color: var(--activeLm);
+	border-color: var(--activeLm);
 	color: white;
 }
 
@@ -1019,6 +1023,12 @@ body {
 	}
 	#mute {
 		order: 5;
+	}
+	.closeBtn {
+		padding: 0 2px 0 2px;
+	}
+	.closeBtn i {
+		padding: 0.5px 0 0.5px 0;
 	}
 }
 @media only screen and (max-width: 375px) {
