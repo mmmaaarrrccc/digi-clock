@@ -8,7 +8,7 @@
 	--def: 0.3;
 	--gaps: 20px;
 	--sliderbgDm: linear-gradient(to right, var(--activeDm) 80%, black 80%);
-	--sliderbgLm: linear-gradient(to right, black 80%, var(--activeDm) 80%);
+	--sliderbgLm: linear-gradient(to right, var(--activeLm) 80%, white 80%);
 }
 /*.main div{
 	border: dashed 2px red;
@@ -530,7 +530,7 @@ body {
 	-webkit-appearance: none;
   -webkit-transition: .2s;
 	border: 0;
-	height: 3px;
+	height: 2px;
 	padding: 0px;
 	margin-top: 20px;
 	margin-bottom: 25px;
@@ -564,7 +564,7 @@ body {
 }
 .backgroundImage .clearBg {
 	position: absolute;
-	bottom: 2.15em;
+	bottom: 2.165em;
 	right: -3px;
 	cursor: pointer;
 	width: 30px;
@@ -577,6 +577,10 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+}
+
+.opacityVal {
+	margin-bottom: 5px;
 }
 
 .closeBtn {
@@ -966,7 +970,7 @@ body {
 		padding-right: 20px;
 	}
 	.backgroundImage .clearBg {
-		bottom: 1.82em !important;
+		bottom: 1.835em !important;
 	}
 	#settingsWrapper {
 		width: 100%;
